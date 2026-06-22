@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en" data-kit="property">
+<head>
+<meta name="p:domain_verify" content="6a511fc13104c3bea9ccd2ef9c337af4"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Property Tax Appeal Kit · Owedify</title>
+<link rel="stylesheet" href="/styles.css">
+<style>
+  :root{ --tau:var(--accent-600); --tau7:var(--accent-700); --ink:#1F2A35; --paper:#FBFAF7; }
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  body{background:var(--paper);color:var(--text-strong);font-family:var(--font-sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  ::selection{background:var(--accent-200);}
+  a{color:inherit;text-decoration:none;}
+  p{margin:0;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 40px;}
+  .disp{font-family:var(--font-display);font-weight:800;letter-spacing:-0.032em;line-height:1.06;text-wrap:balance;}
+  .eyebrow{font-family:var(--font-mono);font-weight:500;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--tau);}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:none;cursor:pointer;font-family:var(--font-sans);font-weight:700;border-radius:11px;white-space:nowrap;transition:transform .12s cubic-bezier(.2,0,0,1),background .15s;}
+  .btn:active{transform:scale(.97);}
+  .btn-accent{background:var(--tau);color:#fff;font-size:15px;padding:13px 22px;}
+  .btn-accent:hover{background:var(--tau7);}
+  .btn-lg{font-size:16px;padding:16px 30px;border-radius:12px;}
+  .nav .btn-accent{font-size:14px;padding:10px 18px;}
+
+  .nav{position:sticky;top:0;z-index:40;background:rgba(251,250,247,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-subtle);}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;}
+  .brand{display:flex;align-items:center;gap:9px;font-family:var(--font-display);font-weight:800;font-size:18px;letter-spacing:-0.02em;color:var(--ink);}
+  .brand small{font-weight:500;font-size:13px;color:var(--text-muted);font-family:var(--font-sans);}
+  .brand .shield{width:24px;height:24px;}
+
+  /* ===== hero ===== */
+  .hero{padding:78px 0 36px;text-align:center;}
+  .hero h1{font-size:clamp(40px,5.4vw,68px);margin:18px auto 0;max-width:26ch;}
+  .hero .sub{font-size:19px;line-height:1.55;color:var(--text-muted);max-width:60ch;margin:22px auto 0;}
+  .hero .buy{display:inline-flex;align-items:center;gap:18px;margin-top:30px;flex-wrap:wrap;justify-content:center;}
+  .hero .price{font-size:14.5px;color:var(--text-muted);}
+  .hero .price b{color:var(--text-strong);font-weight:800;font-family:var(--font-display);font-size:16px;}
+  .showcase-embed{width:100%;max-width:1180px;margin:30px auto 0;padding:0 20px;}
+  .showcase-embed iframe{width:100%;aspect-ratio:1024/608;border:0;display:block;}
+
+  /* ===== comparables (signature) ===== */
+  .comps{padding:96px 0;border-top:1px solid var(--border-subtle);background:#fff;}
+  .comps .wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:60px;align-items:center;}
+  .comps h2{font-size:clamp(28px,3.8vw,44px);margin-top:12px;}
+  .comps .lede{font-size:18px;line-height:1.5;color:var(--text-body);font-weight:500;margin:16px 0 0;max-width:38ch;}
+  .comps p.detail{font-size:15.5px;line-height:1.62;color:var(--text-muted);margin:14px 0 0;max-width:46ch;}
+  .comps .keyline{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-family:var(--font-display);font-weight:800;font-size:16px;color:var(--tau7);background:var(--accent-50);border:1px solid var(--accent-100);border-radius:999px;padding:9px 16px;}
+  .comps .keyline .lucide{width:17px;height:17px;color:var(--tau);}
+  .compcard{background:var(--paper);border:1px solid var(--border-subtle);border-radius:20px;box-shadow:0 28px 60px -38px rgba(31,42,53,.4);padding:24px;}
+  .compcard .ch{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+  .compcard .ch b{font-family:var(--font-display);font-weight:800;font-size:16px;color:var(--text-strong);}
+  .compcard .ch span{font-family:var(--font-mono);font-size:11px;color:var(--text-subtle);}
+  .crow{display:flex;align-items:center;gap:13px;padding:14px 16px;border-radius:13px;background:#fff;border:1px solid var(--border-subtle);margin-bottom:9px;}
+  .crow .ic{width:32px;height:32px;border-radius:9px;flex:0 0 auto;background:var(--accent-50);display:flex;align-items:center;justify-content:center;}
+  .crow .ic .lucide{width:17px;height:17px;color:var(--tau7);}
+  .crow .who{flex:1;min-width:0;}
+  .crow .who .a{font-size:14px;font-weight:600;color:var(--text-strong);}
+  .crow .who .m{font-size:12px;color:var(--text-subtle);margin-top:1px;}
+  .crow .amt{font-family:var(--font-display);font-weight:800;font-size:18px;color:var(--tau7);}
+  .crow.you{background:var(--ink);border-color:transparent;}
+  .crow.you .ic{background:var(--tau);}
+  .crow.you .ic .lucide{color:#fff;}
+  .crow.you .who .a{color:#fff;}
+  .crow.you .who .m{color:var(--accent-200);}
+  .crow.you .amt{color:#fff;}
+  .clabel{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;color:var(--text-subtle);text-align:center;margin:12px 0 11px;}
+  .cfoot{margin-top:14px;border-top:1px dashed var(--accent-200);padding-top:16px;display:flex;align-items:center;justify-content:space-between;}
+  .cfoot .l{font-size:14px;color:var(--text-muted);}
+  .cfoot .v{font-family:var(--font-display);font-weight:800;font-size:22px;color:var(--tau7);}
+  .cfoot .v small{display:block;font-family:var(--font-sans);font-weight:600;font-size:11.5px;color:var(--tau);text-align:right;margin-top:2px;}
+
+  /* ===== local rules / deadline ===== */
+  .local{padding:74px 0;background:var(--ink);color:#fff;}
+  .local .wrap{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center;}
+  .local .big{font-family:var(--font-display);font-weight:800;letter-spacing:-0.03em;line-height:1.0;font-size:clamp(40px,5.4vw,72px);color:#fff;max-width:9ch;}
+  .local .big em{font-style:normal;color:var(--accent-200);}
+  .local h2{font-size:clamp(24px,3vw,34px);color:#fff;margin:0;}
+  .local p{font-size:16.5px;line-height:1.6;color:rgba(255,255,255,.74);margin:14px 0 0;max-width:52ch;}
+  .local .chk{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-size:14px;font-weight:600;color:#fff;}
+  .local .chk .lucide{width:17px;height:17px;color:var(--accent-200);}
+
+  /* ===== exemptions ===== */
+  .exempt{padding:96px 0;border-top:1px solid var(--border-subtle);}
+  .exempt .head{max-width:680px;margin:0 0 46px;}
+  .exempt h2{font-size:clamp(28px,3.8vw,44px);margin-top:12px;}
+  .exempt .head p{font-size:17.5px;line-height:1.55;color:var(--text-muted);margin:16px 0 0;max-width:54ch;}
+  .exgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .extile{background:#fff;border:1px solid var(--border-subtle);border-radius:16px;padding:24px;}
+  .extile .ic{width:42px;height:42px;border-radius:11px;background:var(--accent-50);display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+  .extile .ic .lucide{width:21px;height:21px;color:var(--tau);}
+  .extile h3{font-family:var(--font-display);font-weight:800;font-size:17px;letter-spacing:-0.01em;margin:0 0 6px;color:var(--text-strong);}
+  .extile p{font-size:13.5px;line-height:1.55;color:var(--text-muted);}
+  .exnote{display:flex;align-items:center;gap:11px;margin-top:22px;font-size:15px;color:var(--tau7);background:var(--accent-50);border:1px solid var(--accent-100);border-radius:14px;padding:16px 22px;font-weight:600;}
+  .exnote .lucide{width:18px;height:18px;color:var(--tau);flex:0 0 auto;}
+
+  /* ===== ad spotlight ===== */
+  .spot{padding:92px 0;border-top:1px solid var(--border-subtle);background:#fff;}
+  .spot .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center;}
+  .spot .art{display:flex;justify-content:center;}
+  .spot .copy h2{font-size:clamp(28px,3.6vw,42px);margin-top:12px;}
+  .spot .lede{font-size:18px;line-height:1.5;color:var(--text-body);margin:16px 0 0;font-weight:500;max-width:38ch;}
+  .spot p.detail{font-size:15.5px;line-height:1.62;color:var(--text-muted);margin:14px 0 0;max-width:46ch;}
+  .adphone{width:266px;background:#1C2530;border-radius:40px;padding:9px;box-shadow:0 44px 80px -34px rgba(31,42,53,.5);}
+  .adphone .vp{width:248px;height:536px;border-radius:32px;overflow:hidden;background:#1B2A3A;position:relative;}
+  .adphone iframe{position:absolute;top:0;left:0;width:248px;height:536px;border:0;}
+
+  /* ===== save it yourself ===== */
+  .save{padding:92px 0;border-top:1px solid var(--border-subtle);}
+  .save .wrap{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center;}
+  .save h2{font-size:clamp(26px,3.4vw,38px);margin-top:12px;}
+  .save .lede{font-size:16.5px;line-height:1.55;color:var(--text-muted);margin:16px 0 0;max-width:40ch;}
+  .save .note{display:flex;gap:9px;align-items:flex-start;margin-top:18px;font-size:13.5px;color:var(--text-subtle);max-width:42ch;}
+  .save .note .lucide{width:15px;height:15px;color:var(--tau);flex:0 0 auto;margin-top:1px;}
+  .ltab .lr{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:18px 0;border-bottom:1px solid var(--border-subtle);}
+  .ltab .lr:first-child{border-top:1px solid var(--border-subtle);}
+  .ltab .lr .what{font-size:15px;color:var(--text-muted);}
+  .ltab .lr .amt{font-family:var(--font-display);font-weight:800;font-size:19px;color:var(--text-strong);white-space:nowrap;}
+  .ltab .lr.win .what{color:var(--text-strong);font-weight:700;}
+  .ltab .lr.win .amt{color:var(--tau7);}
+
+  /* ===== reviews ===== */
+  .reviews{padding:90px 0;border-top:1px solid var(--border-subtle);background:#fff;}
+  .reviews .head{text-align:center;margin-bottom:44px;}
+  .reviews h2{font-size:clamp(28px,3.6vw,42px);margin-top:12px;}
+  .ogrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .ocard{background:var(--paper);border:1px solid var(--border-subtle);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow-xs);}
+  .ocard .stars{color:var(--tau);font-size:15px;letter-spacing:2px;}
+  .ocard .q{font-size:15.5px;line-height:1.55;color:var(--text-body);font-weight:500;}
+  .ocard .by{margin-top:auto;}
+  .ocard .nm{font-weight:700;font-size:14px;color:var(--text-strong);}
+  .ocard .lc{font-size:12.5px;color:var(--text-subtle);margin-top:2px;}
+
+  /* ===== close ===== */
+  .close{position:relative;padding:108px 0;text-align:center;background:radial-gradient(130% 110% at 50% 128%, var(--accent-100), var(--accent-50) 42%, var(--paper) 78%);border-top:1px solid var(--border-subtle);overflow:hidden;}
+  .close .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--accent-200);border-radius:999px;padding:7px 16px;font-size:13px;font-weight:700;color:var(--tau7);margin-bottom:20px;box-shadow:var(--shadow-xs);}
+  .close .badge .lucide{width:15px;height:15px;color:var(--tau);}
+  .close h2{font-size:clamp(34px,5.2vw,60px);max-width:24ch;margin:0 auto;}
+  .close .price{margin-top:16px;font-size:15px;color:var(--text-muted);}
+  .close .price b{color:var(--text-strong);font-weight:800;}
+  .close .go{margin-top:30px;}
+  .close .fine{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px 20px;justify-content:center;font-size:13px;color:var(--text-subtle);}
+  .close .fine span{display:inline-flex;align-items:center;gap:6px;}
+  .close .fine .lucide{width:14px;height:14px;color:var(--tau);}
+  footer{padding:40px 0 56px;border-top:1px solid var(--border-subtle);}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center;}
+  footer .legal{font-size:12.5px;line-height:1.6;color:var(--text-subtle);max-width:70ch;}
+  footer a{color:var(--text-muted);text-decoration:underline;}
+
+  .reveal.in{animation:rise .7s cubic-bezier(.2,0,0,1) both;}
+  @keyframes rise{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:none;}}
+  @media (prefers-reduced-motion: reduce){ .reveal.in{animation:none;} }
+
+  @media (max-width:920px){
+    .comps .wrap,.local .wrap,.spot .wrap,.save .wrap{grid-template-columns:1fr;gap:32px;}
+    .exgrid{grid-template-columns:1fr 1fr;}
+    .ogrid{grid-template-columns:1fr;}
+  }
+  @media (max-width:560px){ .exgrid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><svg class="shield" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 3.5 L40 9 V23.5 C40 33.8 33.2 40.8 24 44 C14.8 40.8 8 33.8 8 23.5 V9 Z" fill="#847058"/><path d="M16.5 24 l5 5 l10 -12.5" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Owedify <small>· Property tax</small></a>
+    <a class="btn btn-accent" href="https://owedify.lemonsqueezy.com/checkout/buy/c10c8e05-be2c-4acf-b0b5-041e2fc2e2bf">Get the kit · $29</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow">Property Tax Appeal Kit</div>
+    <h1 class="disp">There's a good chance your property tax bill is too high.</h1>
+    <p class="sub">Assessments are a formula applied across thousands of homes, so errors are normal. The kit helps you gather the recent sale prices of similar homes near you, the proof that shows your value is too high, on any device.</p>
+    <div class="buy">
+      <a class="btn btn-accent btn-lg" href="https://owedify.lemonsqueezy.com/checkout/buy/c10c8e05-be2c-4acf-b0b5-041e2fc2e2bf">Get the kit</a>
+      <div class="price"><b>$29.</b> One time, yours forever.</div>
+    </div>
+  </div>
+  <div class="showcase-embed">
+    <iframe src="mockup-property-b.html" title="Owedify Property Tax app on every device" scrolling="no" loading="lazy"></iframe>
+  </div>
+</header>
+
+<section class="comps">
+  <div class="wrap">
+    <div class="copy reveal">
+      <div class="eyebrow">The winning evidence</div>
+      <h2 class="disp">Your value, next to the homes around you.</h2>
+      <p class="lede">An appeal is won by showing similar homes sold for less, not by arguing the tax is too high.</p>
+      <p class="detail">The kit walks you through finding three to five recent sales of similar homes near you, lining their prices up against your assessed value, and turning the gap into the number you ask for. It builds the worksheet and the cover letter from what you enter.</p>
+      <div class="keyline"><i class="lucide" data-lucide="scale"></i> Value wins, rate loses</div>
+    </div>
+    <div class="art reveal">
+      <div class="compcard">
+        <div class="ch"><b>Similar homes sold nearby</b><span>parcel 04-118</span></div>
+        <div class="crow you"><span class="ic"><i class="lucide" data-lucide="home"></i></span><div class="who"><div class="a">18 Maple St</div><div class="m">Your assessment</div></div><div class="amt">$340,000</div></div>
+        <div class="clabel">SIMILAR HOMES, RECENTLY SOLD</div>
+        <div class="crow"><span class="ic"><i class="lucide" data-lucide="home"></i></span><div class="who"><div class="a">22 Maple St</div><div class="m">Sold Apr 2026 · 3 bed</div></div><div class="amt">$305,000</div></div>
+        <div class="crow"><span class="ic"><i class="lucide" data-lucide="home"></i></span><div class="who"><div class="a">9 Oak Ave</div><div class="m">Sold Mar 2026 · 3 bed</div></div><div class="amt">$298,000</div></div>
+        <div class="crow"><span class="ic"><i class="lucide" data-lucide="home"></i></span><div class="who"><div class="a">14 Birch Ln</div><div class="m">Sold Feb 2026 · 3 bed</div></div><div class="amt">$291,000</div></div>
+        <div class="cfoot"><span class="l">Value you would request</span><span class="v">$298,000<small>about $42,000 lower</small></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="local">
+  <div class="wrap">
+    <div class="big reveal">Every <em>county</em> is different.</div>
+    <div class="reveal">
+      <h2 class="disp">The deadline is on your notice.</h2>
+      <p>Property tax appeals are local, so the deadline, the form, and the board are different in every county. Many give you a short window from the date your assessment notice was mailed. The kit helps you find your county's exact rule then helps you add the deadline to your calendar.</p>
+    </div>
+  </div>
+</section>
+
+<section class="exempt">
+  <div class="wrap">
+    <div class="head reveal"><div class="eyebrow">The savings most people miss</div><h2 class="disp">Exemptions stack on top of an appeal.</h2><p>An appeal lowers your assessed value. Exemptions lower the taxable part separately, so you can claim both. Sometimes a single missed exemption saves more than a won appeal.</p></div>
+    <div class="exgrid">
+      <div class="extile reveal"><div class="ic"><i class="lucide" data-lucide="house"></i></div><h3>Homestead</h3><p>For the home you live in as your primary residence. The most common one, and often missed.</p></div>
+      <div class="extile reveal"><div class="ic"><i class="lucide" data-lucide="user-round"></i></div><h3>Senior or disability</h3><p>Based on age, income, or a qualifying disability. Many counties also offer a value freeze.</p></div>
+      <div class="extile reveal"><div class="ic"><i class="lucide" data-lucide="shield"></i></div><h3>Disabled veteran</h3><p>A service-connected disability can reduce or even eliminate the bill in many places.</p></div>
+      <div class="extile reveal"><div class="ic"><i class="lucide" data-lucide="layers"></i></div><h3>Local programs</h3><p>Freezes, abatements, and circuit breakers that vary by county. The kit helps you ask for every one.</p></div>
+    </div>
+    <div class="exnote reveal"><i class="lucide" data-lucide="info"></i> Not sure which you qualify for? The kit drafts a single letter that asks your assessor about every program your property may be eligible for.</div>
+  </div>
+</section>
+
+<section class="spot">
+  <div class="wrap">
+    <div class="art reveal">
+      <div class="adphone"><div class="vp"><iframe src="property-phone-ad.html" title="Owedify Property Tax ad" scrolling="no" loading="lazy"></iframe></div></div>
+    </div>
+    <div class="copy reveal">
+      <div class="eyebrow">When your notice arrives</div>
+      <h2 class="disp">It helps you gather the sale prices of similar nearby homes and draft your appeal.</h2>
+      <p class="lede">An assessment notice is easy to file away and forget. The kit shows you whether yours is worth challenging.</p>
+      <p class="detail">It helps you check the county's facts about your home for mistakes, since a wrong square footage or bedroom count is common, compare your value to what similar homes nearby recently sold for, and write the first letter that asks the assessor for a review. You read it, change anything, and send it yourself.</p>
+    </div>
+  </div>
+</section>
+
+<section class="save">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">What it costs to do it yourself</div>
+      <h2 class="disp">Free to file, and you keep the savings.</h2>
+      <p class="lede">Informal reviews and board hearings cost nothing. A consultant takes a slice of your savings every year they help. The kit is yours once.</p>
+    </div>
+    <div class="ltab reveal">
+      <div class="lr"><span class="what">A tax consultant</span><span class="amt">25% to 50% of year-one savings</span></div>
+      <div class="lr"><span class="what">An attorney for a hearing</span><span class="amt">a retainer up front</span></div>
+      <div class="lr win"><span class="what">The Owedify kit</span><span class="amt">$29, once</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="wrap">
+    <div class="head reveal"><div class="eyebrow">From people who used it</div><h2 class="disp">It paid for itself many times over.</h2></div>
+    <div class="ogrid">
+      <div class="ocard reveal" data-review="1"><div class="stars" aria-label="5 out of 5">★★★★★</div><div class="q">The steps given truly work. I pulled three recent sales on my street, all lower, and the assessor dropped my value at the informal review. No hearing needed and I saved so much money.</div><div class="by"><div class="nm">Karen B.</div><div class="lc">Travis County, TX</div></div></div>
+      <div class="ocard reveal" data-review="2"><div class="stars" aria-label="5 out of 5">★★★★★</div><div class="q">My record card for my house claimed 2,400 square feet. My house was actually only 2,050. Thanks to the kit I was able to catch this error. That one correction lowered my assessment so much! Thank you Owedify!!</div><div class="by"><div class="nm">Devin O.</div><div class="lc">Cook County, IL</div></div></div>
+      <div class="ocard reveal" data-review="3"><div class="stars" aria-label="5 out of 5">★★★★★</div><div class="q">I had no idea I qualified for a homestead exemption. The kit flagged it and gave me all the steps I needed to take. That saved me more than the appeal did, and it also carries forward every year.</div><div class="by"><div class="nm">Marisol T.</div><div class="lc">Maricopa County, AZ</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap">
+    <div class="badge reveal"><i class="lucide" data-lucide="shield-check"></i> Before your county's deadline</div>
+    <h2 class="disp reveal">File before your deadline,<br>and pay less every year.</h2>
+    <div class="price reveal"><b>$29.</b> One time purchase, yours forever, on every device.</div>
+    <div class="go reveal"><a class="btn btn-accent btn-lg" href="https://owedify.lemonsqueezy.com/checkout/buy/c10c8e05-be2c-4acf-b0b5-041e2fc2e2bf">Get the kit</a></div>
+    <div class="fine reveal"><span><i class="lucide" data-lucide="wifi-off"></i> Works offline</span><span><i class="lucide" data-lucide="user-x"></i> No account</span><span><i class="lucide" data-lucide="lock"></i> Nothing uploaded</span></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top"><svg class="shield" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 3.5 L40 9 V23.5 C40 33.8 33.2 40.8 24 44 C14.8 40.8 8 33.8 8 23.5 V9 Z" fill="#847058"/><path d="M16.5 24 l5 5 l10 -12.5" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Owedify</a>
+    <div class="legal">Owedify is an educational self help tool that helps you write and track your own property tax appeal. It is not legal or financial advice, and is not affiliated with any assessor's office or board. Your county's rules and deadlines always control. · <a href="https://owedify.com/#kits">Browse all kits</a></div>
+  </div>
+</footer>
+
+<script src="/lucide.min.js"></script>
+<script>
+  const io = new IntersectionObserver((ents) => {
+    ents.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach((el, i) => { el.style.animationDelay = (i % 4 * 70) + 'ms'; io.observe(el); });
+  function icons(){ if (window.lucide) window.lucide.createIcons(); }
+  icons(); setInterval(icons, 800);
+</script>
+  <script src="/owedify-consent-and-popup.js" defer></script>
+  <script src="/owedify-accessibility.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="p:domain_verify" content="6a511fc13104c3bea9ccd2ef9c337af4"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Thank you for your order, Owedify</title>
+<link rel="icon" href="/assets/logo/owedify-favicon.svg">
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/site.css">
+<style>
+  .ty-wrap{max-width:640px;margin:0 auto;padding:0 24px;}
+  .ty{min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:64px 0;}
+  .ty .mark{width:64px;height:64px;border-radius:50%;background:var(--teal-100);display:flex;align-items:center;justify-content:center;margin-bottom:22px;}
+  .ty .mark svg{width:30px;height:30px;color:var(--teal-700);}
+  .ty h1{font-family:var(--font-display);font-weight:800;font-size:clamp(28px,5vw,40px);line-height:1.08;letter-spacing:-0.03em;color:var(--text-strong);margin:0 0 14px;}
+  .ty p{font-size:17px;line-height:1.6;color:var(--text-body);margin:0 0 14px;max-width:48ch;}
+  .ty .box{background:var(--teal-100);border:1px solid var(--teal-200);border-radius:14px;padding:18px 20px;margin:18px 0 6px;}
+  .ty .box p{color:var(--teal-800);font-size:15px;margin:0;}
+  .ty .btn{margin-top:26px;}
+</style>
+</head>
+<body>
+<section class="ty"><div class="ty-wrap">
+  <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+  <h1>Thank you for your order.</h1>
+  <p>Your kit is on its way. Your download link is on the Lemon Squeezy confirmation screen, and a copy is in your email receipt.</p>
+  <div class="box"><p>Open the email from Lemon Squeezy, download the ZIP, unzip it, and open the kit in any browser. The one-page Start Here guide walks you through it in about 30 seconds.</p></div>
+  <p>If you do not see the email within a few minutes, check spam, or email <a href="mailto:help@owedify.com">help@owedify.com</a> and we will resend it.</p>
+  <a class="btn" href="/">Back to Owedify</a>
+</div></section>
+
+<script src="/owedify-consent-and-popup.js" defer></script>
+<script src="/owedify-accessibility.js" defer></script>
+<script>
+/* Fires a Purchase conversion for Meta, Pinterest, and Google after a Lemon Squeezy checkout.
+   Only runs if the visitor accepted cookies (the consent script loads the pixels first).
+   Fires once per order so a page refresh does not double-count. */
+(function () {
+  var q = new URLSearchParams(location.search);
+  var orderId = q.get("order") || q.get("order_id") || "";
+  var rawTotal = q.get("value") || q.get("total") || "";
+  var value = parseFloat(String(rawTotal).replace(/[^0-9.]/g, ""));
+  if (!isFinite(value)) value = undefined;
+
+  var firedKey = "owedify-purchase-fired-" + (orderId || "noid");
+  try { if (sessionStorage.getItem(firedKey)) return; } catch (e) {}
+
+  function consentGranted() {
+    try { return localStorage.getItem("owedify-consent") === "granted"; } catch (e) { return false; }
+  }
+
+  var tries = 0;
+  var timer = setInterval(function () {
+    tries++;
+    if (!consentGranted()) { if (tries > 40) clearInterval(timer); return; } // ~20s, then give up quietly
+
+    var any = false;
+    var ev = { currency: "USD" };
+    if (value !== undefined) ev.value = value;
+
+    if (window.fbq) { window.fbq("track", "Purchase", ev); any = true; }
+    if (window.pintrk) { window.pintrk("track", "checkout", { value: value, currency: "USD", order_id: orderId, order_quantity: 1 }); any = true; }
+    if (window.gtag) {
+      window.gtag("event", "purchase", { transaction_id: orderId, value: value, currency: "USD" });
+      /* Google Ads conversion: uncomment and fill once your conversion ID + label are set up.
+      window.gtag("event", "conversion", { send_to: "AW-XXXXXXXXXX/XXXXXXXXXXXXXXX", value: value, currency: "USD", transaction_id: orderId });
+      */
+      any = true;
+    }
+
+    if (any) { try { sessionStorage.setItem(firedKey, "1"); } catch (e) {} clearInterval(timer); }
+    if (tries > 40) clearInterval(timer);
+  }, 500);
+})();
+</script>
+</body>
+</html>

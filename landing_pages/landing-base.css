@@ -1,0 +1,59 @@
+/* ============================================================
+   OWEDIFY LANDING PAGES · shared invariants only.
+   Link order: styles.css (design system)  ->  this file  ->
+   the template's own <style> (its unique direction).
+   Only truly-shared primitives live here so each template
+   can still read as its own distinct design.
+   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: var(--font-sans); color: var(--text-body); background: var(--color-surface); -webkit-font-smoothing: antialiased; line-height: 1.5; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+svg { display: block; }
+img { max-width: 100%; }
+.lucide { width: 1em; height: 1em; stroke-width: 1.9; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: clamp(20px, 5vw, 40px); padding-right: clamp(20px, 5vw, 40px); }
+.reading { max-width: 720px; }
+
+/* ---- buttons (marketing scale) ---- */
+.lbtn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; background: var(--accent); color: #fff; font-family: var(--font-sans); font-weight: 700; font-size: 16px; line-height: 1; padding: 16px 26px; border-radius: var(--radius-md); border: none; cursor: pointer; white-space: nowrap; transition: transform var(--dur-fast) var(--ease-standard), background var(--dur-fast) var(--ease-standard), box-shadow var(--dur-fast) var(--ease-standard); }
+.lbtn:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.lbtn:active { transform: translateY(0) scale(0.98); }
+.lbtn .lucide { width: 18px; height: 18px; }
+.lbtn-navy { background: var(--brand); }
+.lbtn-navy:hover { background: var(--brand-hover); }
+.lbtn-ghost { background: var(--color-surface); color: var(--text-strong); border: 1.5px solid var(--border); }
+.lbtn-ghost:hover { background: var(--color-surface-sunken); border-color: var(--border-strong); transform: none; box-shadow: none; }
+.lbtn-ondark { background: rgba(255,255,255,.12); color: #fff; }
+.lbtn-ondark:hover { background: rgba(255,255,255,.2); box-shadow: none; }
+.lbtn-lg { padding: 18px 32px; font-size: 17px; }
+.price-note { font-family: var(--font-sans); font-weight: 600; font-size: 13px; color: var(--text-muted); }
+
+/* ---- eyebrow ---- */
+.eyebrow { font-family: var(--font-sans); font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-hover); }
+
+/* ---- star rating glyphs ---- */
+.stars { display: inline-flex; gap: 2px; color: #D9A032; }
+.stars svg { width: 16px; height: 16px; }
+.stars.lg svg { width: 20px; height: 20px; }
+
+/* ---- header (shared shell, themed per template) ---- */
+.lp-header { position: sticky; top: 0; z-index: 90; background: rgba(248,250,252,.85); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border-subtle); }
+.lp-nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
+.lp-logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 800; font-size: 21px; letter-spacing: -0.035em; color: var(--brand); }
+.lp-logo img { width: 28px; height: 28px; }
+.lp-nav-cta { display: flex; align-items: center; gap: 14px; }
+.lp-nav-cta .lbtn { padding: 12px 20px; font-size: 14px; }
+@media (max-width: 560px) { .lp-nav-cta .price-note { display: none; } }
+
+/* ---- footer ---- */
+.lp-footer { background: var(--color-surface); border-top: 1px solid var(--border-subtle); padding: clamp(40px, 5vw, 56px) 0; }
+.lp-footer .frow { display: flex; justify-content: space-between; gap: 22px; flex-wrap: wrap; align-items: center; }
+.lp-footer .flogo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 800; font-size: 19px; letter-spacing: -0.03em; color: var(--brand); }
+.lp-footer .flogo img { width: 24px; height: 24px; }
+.lp-footer .flinks { display: flex; gap: 22px; font-weight: 600; font-size: 14px; color: var(--text-muted); flex-wrap: wrap; }
+.lp-footer .flinks a:hover { color: var(--text-strong); }
+.lp-disc { font-weight: 500; font-size: 12px; line-height: 1.7; color: var(--text-subtle); max-width: 680px; margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--border-subtle); }
+.lp-cp { margin-top: 12px; font-weight: 500; font-size: 12px; color: var(--text-subtle); }
+
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } html { scroll-behavior: auto; } }

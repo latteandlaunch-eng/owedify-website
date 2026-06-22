@@ -1,0 +1,53 @@
+/* ============================================================
+   OWEDIFY · PER-KIT ACCENT THEMES
+   Same brand (navy ink, cloud neutrals, Schibsted/Hanken), only the
+   accent ramp changes per kit. Hues are chosen to MATCH the subject:
+     Medical = teal (health) · Credit = violet (finance/trust) ·
+     Disability = blue (accessibility) · VA = green (service) ·
+     Property = taupe (home/earth) · Debt = plum (serious).
+   All desaturated, no orange, nothing harsh.
+
+   Usage:  <div class="kit-app" data-kit="disability"> … </div>
+   ============================================================ */
+
+/* Medical Bills, Teal (health / care), default ramp in colors.css */
+[data-kit="medical"] {
+  --accent-50:#F0F6F4; --accent-100:#DCEDE9; --accent-200:#B6D6CF; --accent-300:#7FB3A8;
+  --accent-600:#3C7E72; --accent-700:#2E6358; --accent-800:#244E46;
+  --focus-ring: rgba(60,126,114,0.40);
+}
+
+/* Credit Disputes, Violet (finance / trust) */
+[data-kit="credit"] {
+  --accent-50:#F2F0F8; --accent-100:#E6E2F0; --accent-200:#CDC6E0; --accent-300:#A99FC8;
+  --accent-600:#6B5A9E; --accent-700:#574A82; --accent-800:#443A66;
+  --focus-ring: rgba(107,90,158,0.40);
+}
+
+/* Disability (SSDI), Blue (the accessibility blue) */
+[data-kit="disability"] {
+  --accent-50:#EEF3F8; --accent-100:#DCE7F1; --accent-200:#BBD0E2; --accent-300:#8FB0CE;
+  --accent-600:#3E6E9C; --accent-700:#335B82; --accent-800:#284766;
+  --focus-ring: rgba(62,110,156,0.40);
+}
+
+/* VA Rating, Green (service / military) */
+[data-kit="va"] {
+  --accent-50:#EFF5EF; --accent-100:#DEEBDE; --accent-200:#BFD8C0; --accent-300:#93BA95;
+  --accent-600:#4F7A52; --accent-700:#3F6342; --accent-800:#314E34;
+  --focus-ring: rgba(79,122,82,0.40);
+}
+
+/* Property Tax, Taupe / umber (home / earth) */
+[data-kit="property"] {
+  --accent-50:#F6F2EB; --accent-100:#ECE6DC; --accent-200:#DCD0BE; --accent-300:#BFAB8E;
+  --accent-600:#847058; --accent-700:#6A5945; --accent-800:#524634;
+  --focus-ring: rgba(132,112,88,0.40);
+}
+
+/* Debt Letters, Plum (serious / formal) */
+[data-kit="debt"] {
+  --accent-50:#F8F1F5; --accent-100:#F0E4EC; --accent-200:#E0C9D6; --accent-300:#C49FB4;
+  --accent-600:#8A5A74; --accent-700:#714A60; --accent-800:#5A3B4D;
+  --focus-ring: rgba(138,90,116,0.40);
+}

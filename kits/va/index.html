@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" data-kit="va">
+<head>
+<meta name="p:domain_verify" content="6a511fc13104c3bea9ccd2ef9c337af4"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VA Disability Appeal Kit · Owedify</title>
+<link rel="stylesheet" href="/styles.css">
+<style>
+  :root{ --grn:var(--accent-600); --grn7:var(--accent-700); --ink:#1B2A3A; --paper:#FBFCFB; }
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  body{background:var(--paper);color:var(--text-strong);font-family:var(--font-sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  ::selection{background:var(--accent-200);}
+  a{color:inherit;text-decoration:none;}
+  p{margin:0;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 40px;}
+  .disp{font-family:var(--font-display);font-weight:800;letter-spacing:-0.032em;line-height:1.06;text-wrap:balance;}
+  .eyebrow{font-family:var(--font-mono);font-weight:500;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--grn);}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:none;cursor:pointer;font-family:var(--font-sans);font-weight:700;border-radius:11px;white-space:nowrap;transition:transform .12s cubic-bezier(.2,0,0,1),background .15s;}
+  .btn:active{transform:scale(.97);}
+  .btn-accent{background:var(--grn);color:#fff;font-size:15px;padding:13px 22px;}
+  .btn-accent:hover{background:var(--grn7);}
+  .btn-lg{font-size:16px;padding:16px 30px;border-radius:12px;}
+  .nav .btn-accent{font-size:14px;padding:10px 18px;}
+
+  .nav{position:sticky;top:0;z-index:40;background:rgba(251,252,251,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-subtle);}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;}
+  .brand{display:flex;align-items:center;gap:9px;font-family:var(--font-display);font-weight:800;font-size:18px;letter-spacing:-0.02em;color:var(--ink);}
+  .brand small{font-weight:500;font-size:13px;color:var(--text-muted);font-family:var(--font-sans);}
+  .brand .shield{width:24px;height:24px;}
+
+  /* ===== hero ===== */
+  .hero{padding:78px 0 36px;text-align:center;}
+  .hero h1{font-size:clamp(40px,5.4vw,68px);margin:18px auto 0;max-width:26ch;}
+  .hero .sub{font-size:19px;line-height:1.55;color:var(--text-muted);max-width:60ch;margin:22px auto 0;}
+  .hero .buy{display:inline-flex;align-items:center;gap:18px;margin-top:30px;flex-wrap:wrap;justify-content:center;}
+  .hero .price{font-size:14.5px;color:var(--text-muted);}
+  .hero .price b{color:var(--text-strong);font-weight:800;font-family:var(--font-display);font-size:16px;}
+  .showcase-embed{width:100%;max-width:1180px;margin:30px auto 0;padding:0 20px;}
+  .showcase-embed iframe{width:100%;aspect-ratio:1024/608;border:0;display:block;}
+
+  /* ===== lane decoder (signature) ===== */
+  .lanes{padding:96px 0 90px;border-top:1px solid var(--border-subtle);background:#fff;}
+  .lanes .head{max-width:680px;margin:0 auto 50px;text-align:center;}
+  .lanes h2{font-size:clamp(30px,4vw,48px);margin-top:12px;}
+  .lanes .head p{font-size:17.5px;line-height:1.55;color:var(--text-muted);margin:16px auto 0;max-width:54ch;}
+  .lgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .lcard{background:var(--paper);border:1px solid var(--border-subtle);border-radius:18px;padding:28px 26px;display:flex;flex-direction:column;}
+  .lcard .form{align-self:flex-start;font-family:var(--font-mono);font-size:11.5px;font-weight:500;color:var(--grn7);background:var(--accent-100);border-radius:999px;padding:5px 12px;letter-spacing:.03em;}
+  .lcard h3{font-family:var(--font-display);font-weight:800;font-size:22px;letter-spacing:-0.02em;margin:16px 0 0;color:var(--text-strong);}
+  .lcard .when{font-size:15.5px;font-weight:600;color:var(--grn7);margin:10px 0 0;}
+  .lcard p{font-size:14.5px;line-height:1.58;color:var(--text-muted);margin:11px 0 0;}
+  .lcard .num{margin-top:18px;padding-top:16px;border-top:1px solid var(--border-subtle);display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--text-strong);}
+  .lcard .num .lucide{width:16px;height:16px;color:var(--grn);}
+  .lnote{display:flex;align-items:center;gap:11px;justify-content:center;margin-top:24px;font-size:14.5px;color:var(--text-muted);background:var(--accent-50);border:1px solid var(--accent-100);border-radius:14px;padding:16px 22px;}
+  .lnote .lucide{width:18px;height:18px;color:var(--grn);flex:0 0 auto;}
+
+  /* ===== deadline ===== */
+  .deadband{padding:74px 0;background:var(--ink);color:#fff;}
+  .deadband .wrap{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center;}
+  .deadband .big{font-family:var(--font-display);font-weight:800;letter-spacing:-0.04em;line-height:.88;font-size:clamp(64px,9vw,128px);color:#fff;white-space:nowrap;}
+  .deadband .big span{display:block;font-size:.2em;letter-spacing:.16em;text-transform:uppercase;font-family:var(--font-mono);font-weight:500;color:var(--accent-200);margin-top:14px;}
+  .deadband h2{font-size:clamp(24px,3vw,34px);color:#fff;margin:0;}
+  .deadband p{font-size:16.5px;line-height:1.6;color:rgba(255,255,255,.74);margin:14px 0 0;max-width:52ch;}
+  .deadband .chk{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-size:14px;font-weight:600;color:#fff;}
+  .deadband .chk .lucide{width:17px;height:17px;color:var(--accent-200);}
+
+  /* ===== VA math ===== */
+  .vamath{padding:96px 0;border-top:1px solid var(--border-subtle);}
+  .vamath .wrap{display:grid;grid-template-columns:1fr .9fr;gap:60px;align-items:center;}
+  .vamath h2{font-size:clamp(28px,3.6vw,42px);margin-top:12px;}
+  .vamath .lede{font-size:18px;line-height:1.5;color:var(--text-body);font-weight:500;margin:16px 0 0;max-width:40ch;}
+  .vamath p.detail{font-size:15.5px;line-height:1.62;color:var(--text-muted);margin:14px 0 0;max-width:46ch;}
+  .mathcard{background:#fff;border:1px solid var(--border-subtle);border-radius:20px;box-shadow:0 26px 58px -36px rgba(20,32,44,.42);padding:32px 30px;}
+  .mathcard .mlabel{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-subtle);text-align:center;margin-bottom:22px;}
+  .mathrow{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;}
+  .mchip{font-family:var(--font-display);font-weight:800;font-size:30px;letter-spacing:-0.02em;color:var(--text-strong);background:var(--accent-50);border:1px solid var(--accent-100);border-radius:14px;padding:14px 22px;}
+  .mop{font-family:var(--font-display);font-weight:700;font-size:24px;color:var(--text-subtle);}
+  .mresult{font-family:var(--font-display);font-weight:800;font-size:34px;letter-spacing:-0.02em;color:#fff;background:var(--grn);border-radius:14px;padding:14px 24px;}
+  .mwrong{margin-top:22px;text-align:center;font-size:15px;color:var(--text-muted);}
+  .mwrong s{color:var(--text-subtle);}
+  .mwrong b{color:var(--grn7);font-weight:700;}
+
+  /* ===== ad spotlight ===== */
+  .spot{padding:92px 0;border-top:1px solid var(--border-subtle);background:#fff;}
+  .spot .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center;}
+  .spot .art{display:flex;justify-content:center;}
+  .spot .copy h2{font-size:clamp(28px,3.6vw,42px);margin-top:12px;}
+  .spot .lede{font-size:18px;line-height:1.5;color:var(--text-body);margin:16px 0 0;font-weight:500;max-width:38ch;}
+  .spot p.detail{font-size:15.5px;line-height:1.62;color:var(--text-muted);margin:14px 0 0;max-width:46ch;}
+  .adphone{width:266px;background:#1C2530;border-radius:40px;padding:9px;box-shadow:0 44px 80px -34px rgba(20,32,44,.5);}
+  .adphone .vp{width:248px;height:536px;border-radius:32px;overflow:hidden;background:#1B2A3A;position:relative;}
+  .adphone iframe{position:absolute;top:0;left:0;width:248px;height:536px;border:0;}
+
+  /* ===== save it yourself ===== */
+  .save{padding:92px 0;border-top:1px solid var(--border-subtle);background:#fff;}
+  .save .head{text-align:center;max-width:620px;margin:0 auto 44px;}
+  .save h2{font-size:clamp(28px,3.6vw,42px);margin-top:12px;}
+  .save .head p{font-size:17px;line-height:1.55;color:var(--text-muted);margin:16px auto 0;max-width:50ch;}
+  .scols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;}
+  .scard{border-radius:18px;padding:28px;border:1px solid var(--border-subtle);background:var(--paper);}
+  .scard .st{font-family:var(--font-display);font-weight:800;font-size:18px;color:var(--text-strong);}
+  .scard .sp{font-family:var(--font-display);font-weight:800;font-size:24px;letter-spacing:-0.02em;margin:8px 0 14px;color:var(--text-strong);}
+  .scard p{font-size:14px;line-height:1.55;color:var(--text-muted);}
+  .scard.warn{border-color:var(--accent-200);}
+  .scard.win{background:linear-gradient(155deg,var(--grn7),var(--ink));border-color:transparent;color:#fff;}
+  .scard.win .st,.scard.win .sp{color:#fff;}
+  .scard.win p{color:rgba(255,255,255,.82);}
+  .scard .pill{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;font-family:var(--font-mono);letter-spacing:.04em;border-radius:999px;padding:4px 10px;margin-bottom:14px;}
+  .scard.warn .pill{background:var(--accent-100);color:var(--grn7);}
+  .scard.free .pill{background:#E3EFE3;color:var(--grn7);}
+  .scard.win .pill{background:rgba(255,255,255,.16);color:#fff;}
+
+  /* ===== reviews ===== */
+  .reviews{padding:90px 0;border-top:1px solid var(--border-subtle);}
+  .reviews .head{text-align:center;margin-bottom:44px;}
+  .reviews h2{font-size:clamp(28px,3.6vw,42px);margin-top:12px;}
+  .ogrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .ocard{background:#fff;border:1px solid var(--border-subtle);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow-xs);}
+  .ocard .stars{color:var(--grn);font-size:15px;letter-spacing:2px;}
+  .ocard .q{font-size:15.5px;line-height:1.55;color:var(--text-body);font-weight:500;}
+  .ocard .by{margin-top:auto;}
+  .ocard .nm{font-weight:700;font-size:14px;color:var(--text-strong);}
+  .ocard .lc{font-size:12.5px;color:var(--text-subtle);margin-top:2px;}
+
+  /* ===== close ===== */
+  .close{position:relative;padding:108px 0;text-align:center;background:radial-gradient(130% 110% at 50% 128%, var(--accent-100), var(--accent-50) 42%, var(--paper) 78%);border-top:1px solid var(--border-subtle);overflow:hidden;}
+  .close .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--accent-200);border-radius:999px;padding:7px 16px;font-size:13px;font-weight:700;color:var(--grn7);margin-bottom:20px;box-shadow:var(--shadow-xs);}
+  .close .badge .lucide{width:15px;height:15px;color:var(--grn);}
+  .close h2{font-size:clamp(34px,5.2vw,60px);max-width:17ch;margin:0 auto;}
+  .close .price{margin-top:16px;font-size:15px;color:var(--text-muted);}
+  .close .price b{color:var(--text-strong);font-weight:800;}
+  .close .go{margin-top:30px;}
+  .close .fine{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px 20px;justify-content:center;font-size:13px;color:var(--text-subtle);}
+  .close .fine span{display:inline-flex;align-items:center;gap:6px;}
+  .close .fine .lucide{width:14px;height:14px;color:var(--grn);}
+
+  footer{padding:40px 0 56px;border-top:1px solid var(--border-subtle);}
+  footer .wrap{display:flex;flex-direction:column;gap:18px;}
+  footer .ft-top{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center;}
+  footer .crisis{font-size:13px;color:var(--text-muted);background:var(--accent-50);border:1px solid var(--accent-100);border-radius:12px;padding:12px 16px;display:inline-flex;align-items:center;gap:9px;}
+  footer .crisis .lucide{width:16px;height:16px;color:var(--grn);flex:0 0 auto;}
+  footer .crisis b{color:var(--text-strong);font-weight:700;}
+  footer .legal{font-size:12.5px;line-height:1.6;color:var(--text-subtle);max-width:72ch;}
+  footer a{color:var(--text-muted);text-decoration:underline;}
+
+  .reveal.in{animation:rise .7s cubic-bezier(.2,0,0,1) both;}
+  @keyframes rise{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:none;}}
+  @media (prefers-reduced-motion: reduce){ .reveal.in{animation:none;} }
+
+  @media (max-width:920px){
+    .lgrid,.scols{grid-template-columns:1fr;}
+    .deadband .wrap,.vamath .wrap,.spot .wrap{grid-template-columns:1fr;gap:32px;}
+    .ogrid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><svg class="shield" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 3.5 L40 9 V23.5 C40 33.8 33.2 40.8 24 44 C14.8 40.8 8 33.8 8 23.5 V9 Z" fill="#4F7A52"/><path d="M16.5 24 l5 5 l10 -12.5" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Owedify <small>· VA disability</small></a>
+    <a class="btn btn-accent" href="https://owedify.lemonsqueezy.com/checkout/buy/ff223a4c-aff7-4d2d-b637-6c62f9078a99">Get the kit · $29</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow">VA Disability Appeal Kit</div>
+    <h1 class="disp">Rated too low?<br>You could be owed more.</h1>
+    <p class="sub">A higher rating means more money each month, plus back pay to the date you were first eligible, and you have one year to appeal. The kit explains your decision, points you to the right review, and drafts the filing with you, on any device.</p>
+    <div class="buy">
+      <a class="btn btn-accent btn-lg" href="https://owedify.lemonsqueezy.com/checkout/buy/ff223a4c-aff7-4d2d-b637-6c62f9078a99">Get the kit</a>
+      <div class="price"><b>$29.</b> One time, yours forever.</div>
+    </div>
+  </div>
+  <div class="showcase-embed">
+    <iframe src="mockup-va-b.html" title="Owedify VA app on every device" scrolling="no" loading="lazy"></iframe>
+  </div>
+</header>
+
+<section class="lanes">
+  <div class="wrap">
+    <div class="head reveal"><div class="eyebrow">The decision review</div><h2 class="disp">One year. Three paths.</h2><p>A decision review is not one process, it is three, and picking the wrong one costs you time. The kit identifies your situation and tells you which lane fits, then prepares that exact form.</p></div>
+    <div class="lgrid">
+      <div class="lcard reveal"><span class="form">VA Form 20-0995</span><h3>Supplemental Claim</h3><div class="when">I have new evidence VA never saw</div><p>A reviewer decides your claim again with the new records. VA has a duty to assist and must help gather the records you identify.</p><div class="num"><i class="lucide" data-lucide="file-plus"></i> New evidence reopens it</div></div>
+      <div class="lcard reveal"><span class="form">VA Form 20-0996</span><h3>Higher-Level Review</h3><div class="when">VA made a mistake with what it had</div><p>A senior reviewer takes a fresh look at the same evidence. You add nothing new; instead you point to the specific errors, and can ask for a call to explain them.</p><div class="num"><i class="lucide" data-lucide="search-x"></i> No new evidence, just the errors</div></div>
+      <div class="lcard reveal"><span class="form">VA Form 10182</span><h3>Board Appeal</h3><div class="when">I want a Veterans Law Judge to decide</div><p>Your case goes to the Board of Veterans' Appeals. You choose a direct review, new evidence, or a hearing with the judge.</p><div class="num"><i class="lucide" data-lucide="gavel"></i> A judge reviews your case</div></div>
+    </div>
+    <div class="lnote reveal"><i class="lucide" data-lucide="compass"></i> Condition got worse, on the PACT Act list, or unable to work? The kit decodes a claim for increase, presumptives, and TDIU too.</div>
+  </div>
+</section>
+
+<section class="deadband">
+  <div class="wrap">
+    <div class="big reveal">1 year<span>to file a review</span></div>
+    <div class="reveal">
+      <h2 class="disp">Your deadline is the day the VA receives your review, not the day you mail it.</h2>
+      <p>You have one year from the date on your decision letter to file a review, and filing in time protects your effective date, which is what protects your back pay. The VA goes by the date it receives your form, not the postmark, so the kit counts backward and helps you add the deadline to your calendar.</p>
+      <span class="chk"><i class="lucide" data-lucide="calendar-check"></i> Counted to the date received, added to your calendar</span>
+    </div>
+  </div>
+</section>
+
+<section class="vamath">
+  <div class="wrap">
+    <div class="copy reveal">
+      <div class="eyebrow">The part nobody explains</div>
+      <h2 class="disp">VA ratings combine. They do not add.</h2>
+      <p class="lede">This is why a stack of ratings often lands lower than veterans expect.</p>
+      <p class="detail">Each new rating only applies to what is left after the last one, then the total rounds to the nearest ten. The kit does this math for you, shows where you actually stand, and flags when an increase or a missed condition could move you up a bracket.</p>
+    </div>
+    <div class="art reveal">
+      <div class="mathcard">
+        <div class="mlabel">A 50% and a 30% rating</div>
+        <div class="mathrow">
+          <span class="mchip">50%</span>
+          <span class="mop">+</span>
+          <span class="mchip">30%</span>
+          <span class="mop">=</span>
+          <span class="mresult">70%</span>
+        </div>
+        <div class="mwrong">Not <s>80%</s>. They combine to 65%, then round to <b>70%</b>.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="spot">
+  <div class="wrap">
+    <div class="copy reveal">
+      <div class="eyebrow">When the decision arrives</div>
+      <h2 class="disp">It explains your decision and drafts the review.</h2>
+      <p class="lede">VA decision letters are dense and easy to misread. The kit tells you what it actually means.</p>
+      <p class="detail">From a few answers it points you to the right review, drafts your statement and the cover letter, and shows the date it has to be in by. You read it, change anything, and file it yourself. </p>
+    </div>
+    <div class="art reveal">
+      <div class="adphone"><div class="vp"><iframe src="va-phone-ad.html" title="Owedify VA ad" scrolling="no" loading="lazy"></iframe></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="save">
+  <div class="wrap">
+    <div class="head reveal"><div class="eyebrow">What it costs, and who you pay</div><h2 class="disp">You never have to pay for the filing itself.</h2><p>Filing a review is free. The only people who can legally charge for help are accredited attorneys, and only a capped share of your back pay, and only after your first decision. Anyone else who wants a percentage up front is breaking the law.</p></div>
+    <div class="scols">
+      <div class="scard warn reveal"><span class="pill">avoid</span><div class="st">A claim shark</div><div class="sp">A slice of your back pay</div><p>Unaccredited consultants who charge percentage fees. Taking a cut for VA claim help is against federal law.</p></div>
+      <div class="scard reveal"><span class="pill" style="background:var(--cloud-100);color:var(--text-muted);">paid</span><div class="st">A disability attorney</div><div class="sp">Up to 20% of back pay</div><p>Accredited attorneys can take a capped percentage of your back pay, and usually only at the higher appeal stages. Worth it for a complex case, costly for a straightforward one.</p></div>
+      <div class="scard win reveal"><span class="pill">yours</span><div class="st">The Owedify kit</div><div class="sp">$29, once</div><p>Do it yourself with the steps, the right form, and the deadline. Yours forever, on every device.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="wrap">
+    <div class="head reveal"><div class="eyebrow">From veterans who used it</div><h2 class="disp">It made the choice obvious.</h2></div>
+    <div class="ogrid">
+      <div class="ocard reveal" data-review="1"><div class="stars" aria-label="5 out of 5">★★★★★</div><div class="q">I had no idea there was so much that went into this. The kit asked me a few questions and pointed me straight to a Supplemental Claim. My rating went up and the customer service was amazing!</div><div class="by"><div class="nm">Marcus D.</div><div class="lc">Fayetteville, NC</div></div></div>
+      <div class="ocard reveal" data-review="2"><div class="stars" aria-label="5 out of 5">★★★★★</div><div class="q">The rating math never made sense to me until Owedify. I thought I was at 80 and I was at 70. Knowing that is why I filed for an increase instead of giving up.</div><div class="by"><div class="nm">Tony R.</div><div class="lc">Pueblo, CO</div></div></div>
+      <div class="ocard reveal" data-review="3"><div class="stars" aria-label="5 out of 5">★★★★★</div><div class="q">I was ready to give up after my denial. The kit explained everything I needed to do, pointed me to the right review, and drafted my statement. I was able to file myself. Thank you!</div><div class="by"><div class="nm">Gail W.</div><div class="lc">Lawton, OK</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap">
+    <div class="badge reveal"><i class="lucide" data-lucide="shield-check"></i> Pick the right review the first time</div>
+    <h2 class="disp reveal">File your review before the year is up.</h2>
+    <div class="price reveal"><b>$29.</b> One time purchase, yours forever, on every device.</div>
+    <div class="go reveal"><a class="btn btn-accent btn-lg" href="https://owedify.lemonsqueezy.com/checkout/buy/ff223a4c-aff7-4d2d-b637-6c62f9078a99">Get the kit</a></div>
+    <div class="fine reveal"><span><i class="lucide" data-lucide="wifi-off"></i> Works offline</span><span><i class="lucide" data-lucide="user-x"></i> No account</span><span><i class="lucide" data-lucide="lock"></i> Nothing uploaded</span></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ft-top">
+      <a class="brand" href="#top"><svg class="shield" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 3.5 L40 9 V23.5 C40 33.8 33.2 40.8 24 44 C14.8 40.8 8 33.8 8 23.5 V9 Z" fill="#4F7A52"/><path d="M16.5 24 l5 5 l10 -12.5" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Owedify</a>
+      <div class="crisis"><i class="lucide" data-lucide="heart-handshake"></i> In crisis? The <b>Veterans Crisis Line</b> is 988, then press 1.</div>
+    </div>
+    <div class="legal">Owedify is an educational self help tool that helps you write and track your own VA decision review. It is not legal advice, not a law firm, and not affiliated with the Department of Veterans Affairs. · <a href="https://owedify.com/#kits">Browse all kits</a></div>
+  </div>
+</footer>
+
+<script src="/lucide.min.js"></script>
+<script>
+  const io = new IntersectionObserver((ents) => {
+    ents.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach((el, i) => { el.style.animationDelay = (i % 3 * 70) + 'ms'; io.observe(el); });
+  function icons(){ if (window.lucide) window.lucide.createIcons(); }
+  icons(); setInterval(icons, 800);
+</script>
+  <script src="/owedify-consent-and-popup.js" defer></script>
+  <script src="/owedify-accessibility.js" defer></script>
+</body>
+</html>

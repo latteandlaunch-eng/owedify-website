@@ -1,0 +1,939 @@
+<!-- @dsCard group="Website" viewport="1280x900" name="Homepage" subtitle="Full marketing homepage, Slate & Cloud" -->
+<!-- @startingPoint section="Website" subtitle="Owedify marketing homepage" viewport="1280x900" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="p:domain_verify" content="6a511fc13104c3bea9ccd2ef9c337af4"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Owedify: wrong bill? Denied claim? You have options.</title>
+<link rel="icon" href="assets/logo/owedify-favicon.svg">
+<link rel="stylesheet" href="tokens/fonts.css">
+  <style>
+/* ---- TOKENS ---- */
+:root {
+  --navy: #22384F;
+  --navy-8: #1B2A3A;
+  --navy-9: #14222F;
+  --teal: #3C7E72;
+  --teal-7: #2E6358;
+  --teal-3: #7FB3A8;
+  --teal-1: #DCEDE9;
+  --teal-2: #B6D6CF;
+  --cl:  #F8FAFC;
+  --c2:  #E9EDF2;
+  --c3:  #DBE2EA;
+  --s4:  #94A3B2;
+  --s5:  #6B7B8A;
+  --s7:  #36495A;
+  --gold-1: #F3E9D2;
+  --gold-6: #B58A3C;
+  --white: #FFFFFF;
+  --disp: 'Schibsted Grotesk', sans-serif;
+  --body: 'Hanken Grotesk', sans-serif;
+  --page-max: 1180px;
+  --pad: clamp(20px, 5vw, 32px);
+}
+
+/* ---- RESET ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: var(--body); color: var(--s7); background: #fff; -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+svg { display: block; }
+
+/* ---- UTILITIES ---- */
+.wrap { max-width: var(--page-max); margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad); }
+.eyebrow { font-family: var(--body); font-weight: 700; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--teal-7); }
+h2 { font-family: var(--disp); font-weight: 900; font-size: clamp(28px, 4vw, 50px); letter-spacing: -.04em; line-height: 1.04; color: var(--navy-8); }
+.sec-lead { font-size: clamp(15px, 1.4vw, 17px); color: var(--s5); line-height: 1.68; }
+
+/* ---- BUTTONS ---- */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--body); font-weight: 700; font-size: 16px; padding: 15px 28px; border-radius: 11px; border: none; cursor: pointer; white-space: nowrap; text-decoration: none; min-height: 52px; transition: opacity .15s; }
+.btn:active { opacity: .88; transform: scale(.98); }
+.btn-teal { background: var(--teal); color: #fff; }
+.btn-ghost { background: rgba(255,255,255,.08); color: #fff; border: 1px solid rgba(255,255,255,.15); }
+.btn-outline { background: #fff; color: var(--navy-8); border: 1.5px solid var(--c3); }
+.btn-sm { font-size: 14px; padding: 12px 20px; min-height: 44px; }
+.lucide { flex-shrink: 0; }
+
+/* ---- HEADER ---- */
+header { position: sticky; top: 0; z-index: 90; background: rgba(20,34,47,.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,.07); transition: background .3s, border-color .3s; }
+header.scrolled { background: rgba(255,255,255,.95); border-bottom-color: var(--c3); }
+.nav-wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+
+.logo { display: flex; align-items: center; gap: 9px; font-family: var(--disp); font-weight: 800; font-size: 20px; letter-spacing: -.03em; color: #fff; transition: color .3s; }
+header.scrolled .logo { color: var(--navy); }
+
+.nav-links { display: flex; align-items: center; gap: 26px; }
+.nav-links a { font-weight: 600; font-size: 14px; color: rgba(255,255,255,.74); transition: color .2s; }
+header.scrolled .nav-links a { color: var(--s5); }
+.nav-links a:hover { color: #fff; }
+header.scrolled .nav-links a:hover { color: var(--navy-8); }
+
+.nav-cta { display: flex; }
+
+/* mobile menu */
+.burger { display: none; width: 44px; height: 44px; border: none; background: none; cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 5px; flex-shrink: 0; }
+.burger span { width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: .25s; display: block; }
+header.scrolled .burger span { background: var(--navy-8); }
+.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--navy-8); border-bottom: 1px solid rgba(255,255,255,.08); padding: 16px 0 20px; z-index: 89; transform: translateY(-8px); opacity: 0; transition: transform .25s, opacity .25s; pointer-events: none; }
+.mobile-menu.open { display: block; transform: translateY(0); opacity: 1; pointer-events: auto; }
+.mobile-menu a { display: block; padding: 14px var(--pad); font-weight: 600; font-size: 17px; color: #fff; border-top: 1px solid rgba(255,255,255,.07); }
+.mobile-menu .m-cta { margin: 14px var(--pad) 0; display: flex; }
+.mobile-menu .m-cta .btn { width: 100%; }
+
+@media (max-width: 860px) { .nav-links, .nav-cta { display: none; } .burger { display: flex; } }
+
+/* ---- HERO ---- */
+.hero { background: var(--navy-8); min-height: 100svh; display: flex; align-items: center; position: relative; overflow: hidden; padding-top: 64px; }
+.hero-glow-a { position: absolute; top: -15%; right: -5%; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(60,126,114,.2) 0%, transparent 65%); pointer-events: none; }
+.hero-glow-b { position: absolute; bottom: -20%; left: 5%; width: 440px; height: 440px; border-radius: 50%; background: radial-gradient(circle, rgba(60,126,114,.09) 0%, transparent 65%); pointer-events: none; }
+
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; padding-top: 88px; padding-bottom: 80px; position: relative; z-index: 2; }
+
+.hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(127,179,168,.14); color: var(--teal-3); font-family: var(--body); font-weight: 700; font-size: 11px; letter-spacing: .13em; text-transform: uppercase; padding: 7px 14px; border-radius: 99px; margin-bottom: 32px; border: 1px solid rgba(127,179,168,.18); }
+
+.hero-h1 { margin-bottom: 28px; }
+.hero-line-1 { display: block; font-family: var(--disp); font-weight: 900; font-size: clamp(46px, 6.2vw, 82px); line-height: 1.0; letter-spacing: -.045em; color: #fff; }
+.hero-line-2 { display: block; font-family: var(--disp); font-weight: 900; font-size: clamp(46px, 6.2vw, 82px); line-height: 1.02; letter-spacing: -.045em; color: var(--teal-3); }
+.hero-line-3 { display: block; font-family: var(--disp); font-weight: 900; font-size: clamp(36px, 4.6vw, 62px); line-height: 1.02; letter-spacing: -.04em; color: rgba(255,255,255,.22); margin-top: 8px; }
+
+.hero-sub { font-size: clamp(15px, 1.5vw, 18px); line-height: 1.7; color: rgba(255,255,255,.62); max-width: 430px; margin-bottom: 34px; }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+.hero-trust { display: flex; flex-wrap: wrap; gap: 18px; }
+.hero-trust-item { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: rgba(255,255,255,.44); }
+.hero-trust-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--teal-3); flex-shrink: 0; }
+.hero-src { margin-top: 16px; font-size: 11px; color: rgba(255,255,255,.24); }
+
+/* Hero phone + value cards */
+.hero-phone-wrap { position: relative; }
+.hero-phone-and-cards { display: flex; align-items: center; gap: 20px; justify-content: center; }
+
+/* Phone shell */
+.phone-shell { width: 248px; flex-shrink: 0; background: #0B131B; border-radius: 46px; padding: 9px; position: relative;
+  box-shadow: 0 64px 128px rgba(0,0,0,.62), 0 16px 40px rgba(0,0,0,.28), 0 0 0 1px rgba(0,0,0,.14), inset 0 1px 0 rgba(255,255,255,.05); }
+.phone-notch { position: absolute; top: 9px; left: 50%; transform: translateX(-50%); width: 90px; height: 26px; background: #060d14; border-radius: 13px; z-index: 5; }
+.phone-screen { background: var(--cl); border-radius: 37px; overflow: hidden; }
+.app-bar { background: #fff; border-bottom: 1px solid var(--c3); padding: 40px 15px 12px; display: flex; align-items: center; gap: 9px; }
+.app-bar-name { font-family: var(--disp); font-weight: 800; font-size: 14.5px; color: var(--navy); letter-spacing: -.01em; }
+.deadline-pill { margin-left: auto; background: var(--gold-1); color: #7A5C1A; font-size: 10.5px; font-weight: 700; padding: 4px 10px; border-radius: 99px; white-space: nowrap; display: flex; align-items: center; gap: 4px; }
+.phone-dashboard { background: #fff; padding: 16px 15px 0; }
+.phone-hi { font-family: var(--disp); font-weight: 800; font-size: 17px; color: var(--navy-8); line-height: 1.15; margin-bottom: 4px; }
+.phone-hi-sub { font-size: 11.5px; color: var(--s5); margin-bottom: 12px; }
+.phone-progress-track { height: 5px; background: var(--c2); border-radius: 3px; overflow: hidden; margin-bottom: 15px; }
+.phone-progress-fill { height: 100%; width: 40%; background: var(--teal); border-radius: 3px; }
+.phone-steps { padding: 0 11px 13px; }
+.phone-step { display: flex; align-items: center; gap: 10px; padding: 10px 11px; border-radius: 12px; margin-bottom: 6px; border: 1.5px solid var(--c3); background: #fff; }
+.phone-step.active { background: var(--teal-1); border-color: var(--teal-2); }
+.phone-step-num { width: 25px; height: 25px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10.5px; font-weight: 700; }
+.phone-step-num.done { background: var(--teal); color: #fff; }
+.phone-step-num.act { background: #fff; border: 2px solid var(--teal); color: var(--teal); font-size: 12px; }
+.phone-step-num.lock { background: var(--c2); color: var(--s4); font-size: 15px; letter-spacing: -.08em; }
+.phone-step-label { flex: 1; font-size: 12.5px; font-weight: 600; color: var(--s7); line-height: 1.3; }
+.phone-step.active .phone-step-label { font-weight: 700; color: var(--navy-8); }
+.phone-step-go { background: var(--teal); color: #fff; font-size: 10.5px; font-weight: 700; padding: 5px 10px; border-radius: 8px; white-space: nowrap; flex-shrink: 0; }
+.phone-app-nav { background: #fff; border-top: 1px solid var(--c3); padding: 9px 0 11px; display: flex; }
+.phone-nav-tab { flex: 1; text-align: center; font-size: 10.5px; font-weight: 500; color: var(--s4); }
+.phone-nav-tab.active { font-weight: 700; color: var(--teal); }
+
+/* Value cards */
+.value-cards { display: flex; flex-direction: column; gap: 12px; width: 222px; flex-shrink: 0; }
+.vc { background: #fff; border: 1px solid var(--c3); border-radius: 16px; padding: 16px 17px; box-shadow: 0 12px 32px rgba(0,0,0,.2), 0 2px 8px rgba(0,0,0,.1); }
+.vc-row { display: flex; align-items: flex-start; gap: 12px; }
+.vc-icon { width: 36px; height: 36px; border-radius: 11px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.vc-label { font-size: 10.5px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; color: var(--s4); margin-bottom: 3px; }
+.vc-val { font-family: var(--disp); font-weight: 800; font-size: 16px; color: var(--navy-8); letter-spacing: -.015em; }
+.vc-sub { font-size: 11px; color: var(--s5); margin-top: 3px; }
+.vc-badge { display: inline-flex; align-items: center; gap: 5px; background: var(--teal-1); color: var(--teal-7); font-size: 10.5px; font-weight: 700; padding: 3px 9px; border-radius: 99px; margin-bottom: 9px; white-space: nowrap; }
+.vc-mono { font-family: 'IBM Plex Mono', monospace; font-size: 10px; line-height: 1.7; color: var(--s7); }
+.vc-mono-fade { color: var(--s4); }
+.vc-result-nums { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+.vc-before { text-align: center; }
+.vc-before .amt { font-family: var(--disp); font-weight: 800; font-size: 17px; color: var(--s4); letter-spacing: -.025em; text-decoration: line-through; text-decoration-color: var(--c3); }
+.vc-before .lbl { font-size: 9.5px; color: var(--s4); font-weight: 600; margin-top: 2px; }
+.vc-arrow { font-size: 18px; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+.vc-after { text-align: center; }
+.vc-after .amt { font-family: var(--disp); font-weight: 900; font-size: 22px; color: var(--teal); letter-spacing: -.04em; }
+.vc-after .lbl { font-size: 9.5px; color: var(--teal-7); font-weight: 700; margin-top: 2px; }
+.vc-divider { height: 1px; background: var(--c3); margin-bottom: 8px; }
+.vc-note { font-size: 10.5px; color: var(--s4); line-height: 1.5; }
+.vc-note strong { color: var(--s7); font-weight: 600; }
+
+@media (max-width: 900px) { .value-cards { display: none; } .phone-shell { width: 240px; } .hero-phone-and-cards { justify-content: center; } }
+
+/* Hero responsive */
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 48px; padding-top: 64px; padding-bottom: 64px; text-align: center; }
+  .hero-tag { margin-left: auto; margin-right: auto; }
+  .hero-sub { margin-left: auto; margin-right: auto; }
+  .hero-btns { justify-content: center; }
+  .hero-trust { justify-content: center; }
+  .hero-src { text-align: center; }
+  .hero-phone-wrap { justify-content: center; }
+  .phone-shell { width: 240px; }
+}
+@media (max-width: 480px) {
+  .hero-btns { flex-direction: column; }
+  .hero-btns .btn { width: 100%; }
+}
+
+/* ---- AUTHORITY BAR ---- */
+.authority { background: var(--navy-9); padding: 16px 0; }
+.authority-inner { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.authority-label { font-weight: 700; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--teal-3); flex-shrink: 0; }
+.authority-chips { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.authority-chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 99px; background: rgba(255,255,255,.06); color: rgba(255,255,255,.82); font-size: 12.5px; font-weight: 600; }
+
+/* ---- STATS ---- */
+.stats { background: var(--navy-9); padding: 64px 0 72px; }
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-radius: 22px; overflow: hidden; border: 1px solid rgba(255,255,255,.07); }
+.stat-card { background: var(--navy-9); padding: 38px 32px; border-right: 1px solid rgba(255,255,255,.07); }
+.stat-card:last-child { border-right: none; }
+.stat-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 12px; }
+.stat-icon { width: 44px; height: 44px; border-radius: 13px; background: rgba(60,126,114,.16); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 8px; color: var(--teal-3); }
+.stat-n { font-family: var(--disp); font-weight: 900; font-size: clamp(44px, 5vw, 64px); line-height: 1; color: #fff; letter-spacing: -.045em; }
+.stat-t { font-size: 15px; font-weight: 500; line-height: 1.6; color: rgba(255,255,255,.6); }
+.stat-note { text-align: center; margin-top: 22px; font-size: 11.5px; color: rgba(255,255,255,.3); line-height: 1.5; }
+
+@media (max-width: 768px) {
+  .stats-grid { grid-template-columns: 1fr; border-radius: 16px; }
+  .stat-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,.07); padding: 28px 22px; }
+  .stat-card:last-child { border-bottom: none; }
+}
+
+/* ---- KITS ---- */
+.kits { background: #fff; padding: 88px 0; border-top: 1px solid var(--c3); }
+.kits-head { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: end; margin-bottom: 52px; }
+.kits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+
+.kit-card { display: flex; flex-direction: column; background: #fff; border: 1.5px solid var(--c3); border-radius: 22px; overflow: hidden; text-decoration: none; transition: transform .18s, box-shadow .18s, border-color .18s; }
+.kit-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(20,34,47,.12); }
+.kit-card-top { padding: 30px 26px 24px; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.kit-icon-wrap { width: 54px; height: 54px; border-radius: 17px; background: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,.08); margin-bottom: 16px; }
+.kit-name { font-family: var(--disp); font-weight: 900; font-size: 21px; color: var(--navy-8); letter-spacing: -.02em; line-height: 1.1; }
+.kit-price { font-weight: 800; font-size: 14px; padding: 6px 13px; border-radius: 99px; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.07); white-space: nowrap; flex-shrink: 0; }
+.kit-card-body { padding: 22px 26px 26px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; border-top: 1.5px solid var(--c3); }
+.kit-tag { font-size: 14.5px; color: var(--s5); line-height: 1.62; margin-bottom: 18px; }
+.kit-cta { display: inline-flex; align-items: center; gap: 7px; font-weight: 700; font-size: 14px; }
+
+@media (max-width: 960px) { .kits-grid { grid-template-columns: repeat(2, 1fr); } .kits-head { grid-template-columns: 1fr; gap: 16px; } }
+@media (max-width: 600px) { .kits-grid { grid-template-columns: 1fr; } }
+
+/* ---- REVIEWS ---- */
+.reviews { background: var(--navy-8); padding: 88px 0; }
+.reviews-head { text-align: center; margin-bottom: 52px; }
+.reviews-head h2 { color: #fff; margin-top: 12px; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.review-card { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); border-radius: 20px; padding: 26px 24px; }
+.stars { display: flex; gap: 3px; margin-bottom: 16px; }
+.review-q { font-size: 15px; line-height: 1.72; color: rgba(255,255,255,.78); margin-bottom: 22px; }
+.review-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.review-name { font-weight: 700; font-size: 13.5px; color: #fff; }
+.review-kit { font-size: 12px; font-weight: 600; color: var(--teal-3); background: rgba(60,126,114,.18); padding: 4px 10px; border-radius: 99px; }
+.review-note { text-align: center; margin-top: 26px; font-size: 11.5px; color: rgba(255,255,255,.3); }
+
+@media (max-width: 960px) { .reviews-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .reviews-grid { grid-template-columns: 1fr; } }
+
+/* ---- HOW ---- */
+.how { background: var(--cl); padding: 88px 0; border-top: 1px solid var(--c3); }
+.how-head { text-align: center; margin-bottom: 56px; }
+.how-head h2 { margin-top: 12px; }
+.how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.how-card { background: #fff; border: 1px solid var(--c3); border-radius: 22px; padding: 36px 28px; }
+.how-num { font-family: var(--disp); font-weight: 900; font-size: 60px; color: var(--c2); letter-spacing: -.04em; line-height: 1; margin-bottom: 10px; user-select: none; }
+.how-icon { width: 50px; height: 50px; border-radius: 15px; background: var(--teal-1); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: var(--teal-7); }
+.how-card h3 { font-family: var(--disp); font-weight: 800; font-size: 20px; color: var(--navy-8); letter-spacing: -.01em; margin-bottom: 9px; }
+.how-card p { font-size: 15px; color: var(--s5); line-height: 1.68; }
+
+@media (max-width: 768px) { .how-grid { grid-template-columns: 1fr; gap: 14px; } }
+
+/* ---- BENEFITS ---- */
+.benefits { background: #fff; padding: 88px 0; border-top: 1px solid var(--c3); }
+.benefits-grid { display: grid; grid-template-columns: 1fr 1.52fr; gap: 88px; align-items: start; }
+.benefits-left { position: sticky; top: 82px; }
+.benefits-left h2 { margin: 12px 0 16px; }
+.benefits-left p { font-size: 16px; color: var(--s5); line-height: 1.7; margin-bottom: 28px; }
+.benefits-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+.benefit-card { background: var(--cl); border: 1px solid var(--c3); border-radius: 17px; padding: 22px 20px; }
+.benefit-icon { width: 42px; height: 42px; border-radius: 12px; background: var(--teal-1); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; color: var(--teal-7); }
+.benefit-card h4 { font-family: var(--disp); font-weight: 700; font-size: 15.5px; color: var(--navy-8); letter-spacing: -.01em; margin-bottom: 5px; }
+.benefit-card p { font-size: 13.5px; color: var(--s5); line-height: 1.6; }
+
+@media (max-width: 960px) { .benefits-grid { grid-template-columns: 1fr; gap: 40px; } .benefits-left { position: static; } }
+@media (max-width: 560px) { .benefits-cards { grid-template-columns: 1fr; } }
+
+/* ---- EMAIL OPT-IN ---- */
+.optin { background: var(--cl); padding: 80px 0; border-top: 1px solid var(--c3); }
+.optin-inner { max-width: 580px; margin: 0 auto; text-align: center; }
+.optin-inner h2 { margin: 12px 0 12px; }
+.optin-inner p { font-size: 16px; color: var(--s5); line-height: 1.65; margin-bottom: 30px; }
+.optin-form { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.optin-form input { flex: 1; min-width: 220px; border: 1.5px solid var(--c3); border-radius: 11px; padding: 15px 18px; font-family: var(--body); font-weight: 500; font-size: 15px; color: var(--navy-8); background: #fff; outline: none; min-height: 52px; }
+.optin-form input:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(60,126,114,.2); }
+.optin-ok { font-weight: 700; font-size: 16px; color: var(--teal-7); background: var(--teal-1); border: 1.5px solid var(--teal-2); border-radius: 13px; padding: 18px 26px; display: none; }
+
+/* ---- FINAL CTA ---- */
+.finalcta { background: var(--navy-9); padding: 108px 0; }
+.finalcta-inner { max-width: 700px; margin: 0 auto; text-align: center; position: relative; }
+.finalcta-glow { position: absolute; inset: -60px; background: radial-gradient(ellipse at 50% 60%, rgba(60,126,114,.18) 0%, transparent 55%); pointer-events: none; }
+.finalcta-inner h2 { font-family: var(--disp); font-weight: 900; font-size: clamp(34px, 5.5vw, 70px); color: #fff; letter-spacing: -.045em; line-height: 1.0; margin-bottom: 18px; position: relative; }
+.finalcta-inner p { font-size: 17px; color: rgba(255,255,255,.58); line-height: 1.68; max-width: 440px; margin: 0 auto 36px; position: relative; }
+.finalcta-inner .btn { position: relative; }
+
+/* ---- FOOTER ---- */
+footer { background: #fff; border-top: 1px solid var(--c3); padding: 40px 0; }
+.footer-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--c2); }
+.footer-logo { display: flex; align-items: center; gap: 8px; font-family: var(--disp); font-weight: 800; font-size: 18px; color: var(--navy); letter-spacing: -.03em; }
+.footer-links { display: flex; gap: 22px; flex-wrap: wrap; }
+.footer-links a { font-weight: 600; font-size: 13.5px; color: var(--s5); }
+.footer-links a:hover { color: var(--navy-8); }
+.footer-dis { font-size: 12px; color: var(--s4); line-height: 1.7; max-width: 660px; }
+
+@media (max-width: 560px) { .footer-top { flex-direction: column; align-items: flex-start; } }
+
+/* ---- SEE IT WORK (video) ---- */
+.see { position: relative; overflow: hidden; padding: 96px 0; background: var(--navy-8); border-top: 1px solid var(--c3); }
+.see-glow { position: absolute; top: 50%; right: -6%; width: 760px; height: 760px; transform: translateY(-50%); border-radius: 50%; background: radial-gradient(circle, rgba(60,126,114,.2) 0%, transparent 62%); pointer-events: none; }
+.see .wrap { position: relative; z-index: 2; }
+.see-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.see-eyebrow { font-family: var(--body); font-weight: 700; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--teal-3); }
+.see h2 { color: #fff; margin: 14px 0 18px; }
+.see-lead { font-size: 17px; line-height: 1.68; color: rgba(255,255,255,.62); max-width: 430px; margin-bottom: 28px; }
+.see-points { display: flex; flex-direction: column; gap: 13px; margin-bottom: 32px; }
+.see-point { display: flex; align-items: flex-start; gap: 13px; }
+.see-point-num { font-family: var(--disp); font-weight: 800; font-size: 13px; color: var(--teal-3); background: rgba(127,179,168,.14); border: 1px solid rgba(127,179,168,.2); width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.see-point-txt { font-size: 15.5px; font-weight: 500; color: rgba(255,255,255,.82); line-height: 1.5; padding-top: 3px; }
+.see-point-txt b { font-weight: 700; color: #fff; }
+.see-stage { position: relative; display: flex; justify-content: center; }
+.vframe-glow { position: absolute; top: 50%; left: 50%; width: 116%; height: 116%; transform: translate(-50%,-50%); border-radius: 40px; background: radial-gradient(closest-side, rgba(60,126,114,.28), transparent 72%); filter: blur(16px); pointer-events: none; }
+.vframe { position: relative; width: 100%; max-width: 430px; border-radius: 28px; overflow: hidden; background: var(--navy-8); border: 1px solid rgba(255,255,255,.1); box-shadow: 0 54px 116px rgba(0,0,0,.56), 0 16px 38px rgba(0,0,0,.32); }
+.vframe-screen { position: relative; aspect-ratio: 1 / 1; }
+.vframe-screen iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+.vframe-cap { margin-top: 16px; display: inline-flex; align-items: center; gap: 7px; width: 100%; justify-content: center; font-family: var(--body); font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: rgba(255,255,255,.4); }
+@media (max-width: 900px) { .see { padding: 72px 0; } .see-grid { grid-template-columns: 1fr; gap: 44px; } }
+</style>
+<style>@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}</style>
+</head>
+<body>
+
+<!-- ===================== HEADER ===================== -->
+<header id="site-header">
+  <div class="wrap nav-wrap">
+    <a href="index.html" class="logo">
+      <svg width="26" height="26" viewBox="0 0 48 48" fill="none">
+        <path d="M24 3.5L40 9V23.5C40 33.8 33.2 40.8 24 44C14.8 40.8 8 33.8 8 23.5V9Z" fill="#22384F"/>
+        <path d="M16.5 24l5 5L31.5 16.5" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Owedify
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#how">How it works</a>
+      <a href="#kits">The kits</a>
+      <a href="#bundles">Bundles</a>
+      <a href="About.html">About</a>
+      <a href="/blog/">Blog</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#kits" class="btn btn-teal btn-sm">Find your kit <i data-lucide="arrow-right" style="width:14px;height:14px"></i></a>
+    </div>
+    <button class="burger" id="burger-btn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+  <a href="#how">How it works</a>
+  <a href="#kits">The kits</a>
+      <a href="#bundles">Bundles</a>
+  <a href="About.html">About</a>
+  <a href="/blog/">Blog</a>
+  <div class="m-cta">
+    <a href="#kits" class="btn btn-teal">Find your kit</a>
+  </div>
+</div>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero-glow-a" aria-hidden="true"></div>
+  <div class="hero-glow-b" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
+    <!-- Copy -->
+    <div>
+      <div class="hero-tag" aria-label="Available kits">
+        Medical · Credit · SSDI · VA · Property · Debt
+      </div>
+      <h1 class="hero-h1">
+        <span class="hero-line-1">Wrong bill?</span>
+        <span class="hero-line-2" style="font-size: 60px;">Denied claim?</span>
+        <span class="hero-line-3" style="color: rgb(255, 255, 255); font-size: 50px; margin-top: 14px;">You have options.</span>
+      </h1>
+      <p class="hero-sub" style="margin: 24px 0 34px;">Owedify shows you each step of the appeal or dispute. Your letter, your deadline, your result.</p>
+      <div class="hero-btns">
+        <a href="#kits" class="btn btn-teal">Browse the kits <i data-lucide="arrow-right" style="width:17px;height:17px"></i></a>
+        <a href="#how" class="btn btn-ghost">See how it works</a>
+      </div>
+      <div class="hero-trust" style="gap: 10px">
+        <span class="hero-trust-item"><span class="hero-trust-dot" aria-hidden="true"></span>~50% of filed appeals succeed</span>
+        <span class="hero-trust-item"><span class="hero-trust-dot" aria-hidden="true"></span>100% private, runs offline</span>
+      </div>
+      <p class="hero-src">Source: KFF federal marketplace analysis; 2025 JAMA study. Outcomes vary by case.</p>
+    </div>
+    <!-- Phone + value cards -->
+    <div class="hero-phone-wrap">
+      <div class="hero-phone-and-cards">
+
+      <!-- Phone mockup -->
+      <div class="phone-shell" aria-label="Medical Bill Appeal Kit app preview">
+        <div class="phone-notch" aria-hidden="true"></div>
+        <div class="phone-screen">
+          <div class="app-bar">
+            <svg width="24" height="24" viewBox="0 0 48 48" fill="none" style="flex-shrink:0">
+              <path d="M24 3.5L40 9V23.5C40 33.8 33.2 40.8 24 44C14.8 40.8 8 33.8 8 23.5V9Z" fill="#22384F"/>
+              <path d="M16.5 24l5 5L31.5 16.5" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="app-bar-name">Medical bills</span>
+            <span class="deadline-pill">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#B58A3C" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Jul 14
+            </span>
+          </div>
+          <div class="phone-dashboard">
+            <div class="phone-hi">Hi Maria, here<br>is where you are.</div>
+            <div class="phone-hi-sub">2 of 5 steps done. Next: write your letter.</div>
+            <div class="phone-progress-track"><div class="phone-progress-fill"></div></div>
+          </div>
+          <div class="phone-steps">
+            <div class="phone-step">
+              <div class="phone-step-num done">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><polyline points="2.5,8.5 6.5,12.5 13.5,4.5"/></svg>
+              </div>
+              <span class="phone-step-label">Find your deadline</span>
+            </div>
+            <div class="phone-step">
+              <div class="phone-step-num done">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><polyline points="2.5,8.5 6.5,12.5 13.5,4.5"/></svg>
+              </div>
+              <span class="phone-step-label">Check bill for errors</span>
+            </div>
+            <div class="phone-step active">
+              <div class="phone-step-num act">3</div>
+              <span class="phone-step-label">Write your appeal letter</span>
+              <span class="phone-step-go">Go</span>
+            </div>
+            <div class="phone-step">
+              <div class="phone-step-num lock">···</div>
+              <span class="phone-step-label">Build your package</span>
+            </div>
+            <div class="phone-step">
+              <div class="phone-step-num lock">···</div>
+              <span class="phone-step-label">Send it the right way</span>
+            </div>
+          </div>
+          <div class="phone-app-nav">
+            <div class="phone-nav-tab active">Steps</div>
+            <div class="phone-nav-tab">Docs</div>
+            <div class="phone-nav-tab">Track</div>
+            <div class="phone-nav-tab">Rights</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Value cards: desktop only -->
+      <div class="value-cards">
+        <!-- Deadline -->
+        <div class="vc">
+          <div class="vc-row">
+            <div class="vc-icon" style="background:#F3E9D2">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#B58A3C" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><circle cx="16" cy="16" r="3"/><polyline points="15,15.5 16,16.5 18,14.5" stroke-width="1.8"/></svg>
+            </div>
+            <div>
+              <div class="vc-label">Deadline found</div>
+              <div class="vc-val">Jul 14, 2026</div>
+              <div class="vc-sub">27 days · reminder set</div>
+            </div>
+          </div>
+        </div>
+        <!-- Letter drafted -->
+        <div class="vc">
+          <div class="vc-badge">
+            <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="#2E6358" stroke-width="2.8" stroke-linecap="round"><polyline points="2.5,8.5 6.5,12.5 13.5,4.5"/></svg>
+            Letter drafted
+          </div>
+          <div class="vc-mono">Re: Formal appeal<br>Blue Cross, CLM-8841276<br><br><span class="vc-mono-fade">I am writing to formally appeal the denial dated Jun 3, 2026. After reviewing the Explanation of Benefits, I have identified...</span></div>
+        </div>
+        <!-- Result -->
+        <div class="vc">
+          <div class="vc-result-nums">
+            <div class="vc-before">
+              <div class="amt">$2,300</div>
+              <div class="lbl">billed</div>
+            </div>
+            <div class="vc-arrow">→</div>
+            <div class="vc-after">
+              <div class="amt">$460</div>
+              <div class="lbl">after appeal</div>
+            </div>
+          </div>
+          <div class="vc-divider"></div>
+          <div class="vc-note"><strong>Maria's bill was reduced by $1,840</strong> after she sent the letter the kit drafted from her answers.</div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== AUTHORITY BAR ===================== -->
+<div class="authority">
+  <div class="wrap authority-inner">
+    <span class="authority-label">Grounded in real law</span>
+    <div class="authority-chips">
+      <span class="authority-chip"><i data-lucide="scale" style="width:12px;height:12px;color:#7FB3A8"></i>No Surprises Act</span>
+      <span class="authority-chip"><i data-lucide="shield-check" style="width:12px;height:12px;color:#7FB3A8"></i>ACA appeal rights</span>
+      <span class="authority-chip"><i data-lucide="landmark" style="width:12px;height:12px;color:#7FB3A8"></i>ERISA §503</span>
+      <span class="authority-chip"><i data-lucide="file-text" style="width:12px;height:12px;color:#7FB3A8"></i>Fair Credit Reporting Act</span>
+      <span class="authority-chip"><i data-lucide="mail-warning" style="width:12px;height:12px;color:#7FB3A8"></i>Fair Debt Collection Act</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== STATS ===================== -->
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-header">
+          <div class="stat-icon"><i data-lucide="file-warning" style="width:22px;height:22px"></i></div>
+          <div class="stat-n">80 %</div>
+        </div>
+        <div class="stat-t">of itemized medical bills contain at least one billing error</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-header">
+          <div class="stat-icon"><i data-lucide="inbox" style="width:22px;height:22px"></i></div>
+          <div class="stat-n">&lt; 1%</div>
+        </div>
+        <div class="stat-t">of denied insurance claims are ever formally appealed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-header">
+          <div class="stat-icon"><i data-lucide="trending-up" style="width:22px;height:22px"></i></div>
+          <div class="stat-n">~ 50%</div>
+        </div>
+        <div class="stat-t">of appeals that are filed end up winning</div>
+      </div>
+    </div>
+    <p class="stat-note">General industry estimates. Your outcome depends on your specific bill, claim, and circumstances.</p>
+  </div>
+</section>
+
+<!-- ===================== KITS ===================== -->
+<section class="kits" id="kits">
+  <div class="wrap">
+    <div class="kits-head">
+      <div>
+        <span class="eyebrow">The kits</span>
+        <h2>Six disputes.<br>One kit for each.</h2>
+      </div>
+      <p class="sec-lead">Each kit covers one specific situation with the exact rules, deadlines, and letter wording that apply. Instant download, one-time price.</p>
+    </div>
+    <div class="kits-grid">
+
+      <a class="kit-card" href="/kits/medical/" style="--ka:#3C7E72">
+        <div class="kit-card-top" style="background:#DCEDE9">
+          <div>
+            <div class="kit-icon-wrap"><i data-lucide="receipt" style="width:27px;height:27px;color:#3C7E72"></i></div>
+            <div class="kit-name">Medical bills</div>
+          </div>
+          <div class="kit-price" style="color:#3C7E72">$29</div>
+        </div>
+        <div class="kit-card-body">
+          <p class="kit-tag">Most itemized bills contain at least one error. The kit guides you through yours line by line, identifies what to dispute, and drafts your appeal letter from your answers.</p>
+          <span class="kit-cta" style="color:#3C7E72">Check your bill <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
+        </div>
+      </a>
+
+      <a class="kit-card" href="/kits/credit/" style="--ka:#6B5DAB">
+        <div class="kit-card-top" style="background:#EAE7F5">
+          <div>
+            <div class="kit-icon-wrap"><i data-lucide="credit-card" style="width:27px;height:27px;color:#6B5DAB"></i></div>
+            <div class="kit-name">Credit disputes</div>
+          </div>
+          <div class="kit-price" style="color:#6B5DAB">$29</div>
+        </div>
+        <div class="kit-card-body">
+          <p class="kit-tag">One in five credit reports contains an error serious enough to affect a loan or job. The kit identifies disputable items, drafts your letter to each bureau, and tracks each 30-day response window.</p>
+          <span class="kit-cta" style="color:#6B5DAB">Fix your report <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
+        </div>
+      </a>
+
+      <a class="kit-card" href="/kits/ssdi/" style="--ka:#3A6A9E">
+        <div class="kit-card-top" style="background:#DDE8F5">
+          <div>
+            <div class="kit-icon-wrap"><i data-lucide="accessibility" style="width:27px;height:27px;color:#3A6A9E"></i></div>
+            <div class="kit-name">SSDI appeal</div>
+          </div>
+          <div class="kit-price" style="color:#3A6A9E">$29</div>
+        </div>
+        <div class="kit-card-body">
+          <p class="kit-tag">Two thirds of initial SSDI applications are denied. Most people who keep going and reach a hearing eventually get approved. The kit guides you through every stage, one plain step at a time.</p>
+          <span class="kit-cta" style="color:#3A6A9E">Start your appeal <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
+        </div>
+      </a>
+
+      <a class="kit-card" href="/kits/va/" style="--ka:#3A7A4C">
+        <div class="kit-card-top" style="background:#DCEEE3">
+          <div>
+            <div class="kit-icon-wrap"><i data-lucide="medal" style="width:27px;height:27px;color:#3A7A4C"></i></div>
+            <div class="kit-name">VA rating</div>
+          </div>
+          <div class="kit-price" style="color:#3A7A4C">$29</div>
+        </div>
+        <div class="kit-card-body">
+          <p class="kit-tag">An under-rated condition means lower monthly compensation, every month, for life. The kit helps you identify under-rated conditions, gather the evidence you need, and file the supplemental claim correctly.</p>
+          <span class="kit-cta" style="color:#3A7A4C">Raise your rating <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
+        </div>
+      </a>
+
+      <a class="kit-card" href="/kits/property/" style="--ka:#7A6040">
+        <div class="kit-card-top" style="background:#EEE7DC">
+          <div>
+            <div class="kit-icon-wrap"><i data-lucide="house" style="width:27px;height:27px;color:#7A6040"></i></div>
+            <div class="kit-name">Property tax</div>
+          </div>
+          <div class="kit-price" style="color:#7A6040">$29</div>
+        </div>
+        <div class="kit-card-body">
+          <p class="kit-tag">A successful appeal lowers your bill every year you own the home, not just once. The kit guides you through comparable sales, completing the appeal form, and presenting your case before the county deadline.</p>
+          <span class="kit-cta" style="color:#7A6040">Lower your bill <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
+        </div>
+      </a>
+
+      <a class="kit-card" href="/kits/debt/" style="--ka:#7A3A6A">
+        <div class="kit-card-top" style="background:#F0E4EE">
+          <div>
+            <div class="kit-icon-wrap"><i data-lucide="mail-warning" style="width:27px;height:27px;color:#7A3A6A"></i></div>
+            <div class="kit-name">Debt defense</div>
+          </div>
+          <div class="kit-price" style="color:#7A3A6A">$29</div>
+        </div>
+        <div class="kit-card-body">
+          <p class="kit-tag">Collectors are legally required to verify a debt before continuing collection. Many cannot. The kit helps you send a debt validation letter (a written request that they prove the debt is really yours), explains the statute of limitations (the legal time limit to sue), and shows you how to respond if they file suit.</p>
+          <span class="kit-cta" style="color:#7A3A6A">Answer your collector <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== BUNDLES ===================== -->
+<section class="kits" id="bundles">
+  <div class="wrap">
+    <div class="kits-head">
+      <div>
+        <span class="eyebrow">Bundles</span>
+        <h2>Facing more<br>than one thing?</h2>
+      </div>
+      <p class="sec-lead">Bundle the kits and pay less than buying them one by one. Same kits, same instant download, one lower price.</p>
+    </div>
+    <div class="kits-grid">
+
+      <a class="kit-card" href="https://owedify.lemonsqueezy.com/checkout/buy/21a36b70-38ba-40a2-95b0-de178dbeda38" style="--ka:#22384F">
+        <div class="kit-card-top" style="background:#E3EAF0">
+          <div>
+            <div class="kit-icon-wrap"><i data-lucide="shield-check" style="width:27px;height:27px;color:#22384F"></i></div>
+            <div class="kit-name">Money Defense Bundle</div>
+          </div>
+          <div class="kit-price" style="color:#22384F">$59</div>
+        </div>
+        <div class="kit-card-body">
+          <p class="kit-tag">Credit Dispute, Debt Collection Defense, and Property Tax Appeal, together. Three kits for $59 instead of $87.</p>
+          <span class="kit-cta" style="color:#22384F">Get the bundle <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
+        </div>
+      </a>
+
+      <a class="kit-card" href="https://owedify.lemonsqueezy.com/checkout/buy/8a094d8a-e5cb-414a-88d2-6e95b4d5c820" style="--ka:#3C7E72">
+        <div class="kit-card-top" style="background:#DCEDE9">
+          <div>
+            <div class="kit-icon-wrap"><i data-lucide="heart-handshake" style="width:27px;height:27px;color:#3C7E72"></i></div>
+            <div class="kit-name">Benefits Appeal Bundle</div>
+          </div>
+          <div class="kit-price" style="color:#3C7E72">$59</div>
+        </div>
+        <div class="kit-card-body">
+          <p class="kit-tag">Medical Bill Appeal, SSDI Disability Appeal, and VA Disability Appeal, together. Three kits for $59 instead of $87.</p>
+          <span class="kit-cta" style="color:#3C7E72">Get the bundle <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
+        </div>
+      </a>
+
+      <a class="kit-card" href="https://owedify.lemonsqueezy.com/checkout/buy/f3c7e71c-0c56-44df-965b-2b4f61172d49" style="--ka:#6B5DAB">
+        <div class="kit-card-top" style="background:#EAE7F5">
+          <div>
+            <div class="kit-icon-wrap"><i data-lucide="package" style="width:27px;height:27px;color:#6B5DAB"></i></div>
+            <div class="kit-name">Complete Bundle</div>
+          </div>
+          <div class="kit-price" style="color:#6B5DAB">$99</div>
+        </div>
+        <div class="kit-card-body">
+          <p class="kit-tag">All six kits in one download for $99 instead of $174. Everything Owedify makes, ready whenever you need it.</p>
+          <span class="kit-cta" style="color:#6B5DAB">Get the bundle <i data-lucide="arrow-right" style="width:14px;height:14px"></i></span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SEE IT WORK ===================== -->
+<section class="see">
+  <div class="see-glow" aria-hidden="true"></div>
+  <div class="wrap see-grid">
+    <div>
+      <span class="see-eyebrow">See it work</span>
+      <h2>Watch a dispute<br>come together.</h2>
+      <p class="see-lead">No sign-up, no demo account. This is the actual flow behind every kit, from the first question to a finished letter.</p>
+      <div class="see-points">
+        <div class="see-point"><span class="see-point-num">1</span><span class="see-point-txt"><b>You answer a few plain questions</b> about your bill or claim.</span></div>
+        <div class="see-point"><span class="see-point-num">2</span><span class="see-point-txt"><b>The kit drafts your letter from your answers,</b> citing the law that applies.</span></div>
+        <div class="see-point"><span class="see-point-num">3</span><span class="see-point-txt"><b>You review it, edit anything, and send it</b> yourself.</span></div>
+      </div>
+      <a href="#kits" class="btn btn-teal">Browse the kits <i data-lucide="arrow-right" style="width:17px;height:17px"></i></a>
+    </div>
+    <div class="see-stage">
+      <div style="position:relative; width:100%; max-width:430px;">
+        <div class="vframe-glow" aria-hidden="true"></div>
+        <div class="vframe">
+          <div class="vframe-screen">
+            <iframe src="videos/Homepage Ad Embed.html" title="How an Owedify dispute comes together" loading="lazy"></iframe>
+          </div>
+        </div>
+        <div class="vframe-cap">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+          Plays muted, on a loop
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== REVIEWS ===================== -->
+<section class="reviews">
+  <div class="wrap">
+    <div class="reviews-head">
+      <span class="eyebrow" style="color:var(--teal-3)">Results from real people</span>
+      <h2>People who tried it got results.</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="#B58A3C"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.4l-3.7 1.9.7-4.1-3-2.9 4.2-.7z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="#B58A3C"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.4l-3.7 1.9.7-4.1-3-2.9 4.2-.7z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="#B58A3C"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.4l-3.7 1.9.7-4.1-3-2.9 4.2-.7z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="#B58A3C"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.4l-3.7 1.9.7-4.1-3-2.9 4.2-.7z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="#B58A3C"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.4l-3.7 1.9.7-4.1-3-2.9 4.2-.7z"/></svg>
+        </div>
+        <p class="review-q">Honestly, I almost just paid it. The hospital billed me $2,300 and I had no clue half of it was even correct. I answered the questions, it put a letter together, I fixed a couple of things and mailed it myself. About six weeks later they dropped it to $460. I still can't quite believe that worked.</p>
+        <div class="review-footer"><span class="review-name">Maria T.</span><span class="review-kit">Medical bills</span></div>
+      </div>
+      <div class="review-card">
+        <div class="stars">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="#B58A3C"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.4l-3.7 1.9.7-4.1-3-2.9 4.2-.7z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="#B58A3C"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.4l-3.7 1.9.7-4.1-3-2.9 4.2-.7z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="#B58A3C"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.4l-3.7 1.9.7-4.1-3-2.9 4.2-.7z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="#B58A3C"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.4l-3.7 1.9.7-4.1-3-2.9 4.2-.7z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="#B58A3C"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.4l-3.7 1.9.7-4.1-3-2.9 4.2-.7z"/></svg>
+        </div>
+        <p class="review-q">There was a collection on my report from a phone account I closed years ago. I'd been ignoring it because I didn't think I could do anything about it. It showed me which item to challenge and drafted the letters to all three credit bureaus. I read them over, signed, and mailed them myself. Two cleared it within about a month.</p>
+        <div class="review-footer"><span class="review-name">James R.</span><span class="review-kit">Credit disputes</span></div>
+      </div>
+      <div class="review-card">
+        <div class="stars">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="#B58A3C"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.4l-3.7 1.9.7-4.1-3-2.9 4.2-.7z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="#B58A3C"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.4l-3.7 1.9.7-4.1-3-2.9 4.2-.7z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="#B58A3C"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.4l-3.7 1.9.7-4.1-3-2.9 4.2-.7z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="#B58A3C"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.4l-3.7 1.9.7-4.1-3-2.9 4.2-.7z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="#B58A3C"><path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.4l-3.7 1.9.7-4.1-3-2.9 4.2-.7z"/></svg>
+        </div>
+        <p class="review-q">I got turned down twice and I was about ready to quit. What helped most was just knowing what came next instead of guessing at it. It told me which records to pull together and what to expect at each stage. My approval finally came through this spring, and I cried right there at the kitchen table.</p>
+        <div class="review-footer"><span class="review-name">Sandra K.</span><span class="review-kit">SSDI appeal</span></div>
+      </div>
+    </div>
+    <p class="review-note">Individual outcomes vary. Results depend on your specific bill, claim, and circumstances.</p>
+  </div>
+</section>
+
+<!-- ===================== HOW IT WORKS ===================== -->
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="how-head">
+      <span class="eyebrow">How it works</span>
+      <h2>Three steps, no guessing.</h2>
+    </div>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-num">01</div>
+        <div class="how-icon"><i data-lucide="download" style="width:26px;height:26px"></i></div>
+        <h3>Download once</h3>
+        <p>Instant access. Opens in any browser on any device, even offline. Nothing to install.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">02</div>
+        <div class="how-icon"><i data-lucide="list-checks" style="width:26px;height:26px"></i></div>
+        <h3>Follow each step</h3>
+        <p>Answer each prompt. The kit drafts your letter from your answers. You review, edit, and sign it before sending.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">03</div>
+        <div class="how-icon"><i data-lucide="send" style="width:26px;height:26px"></i></div>
+        <h3>Send it the right way</h3>
+        <p>The kit tells you exactly how to send your appeal, where it goes, and what to expect back.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BENEFITS ===================== -->
+<section class="benefits">
+  <div class="wrap">
+    <div class="benefits-grid">
+      <div class="benefits-left">
+        <span class="eyebrow">What's inside</span>
+        <h2>Not a blank template.</h2>
+        <p>Each kit is built for one specific situation. Steps, scripts, rights, and letter wording designed for your dispute, not a generic starting point.</p>
+        <a href="#kits" class="btn btn-teal btn-sm">Browse the kits <i data-lucide="arrow-right" style="width:15px;height:15px"></i></a>
+      </div>
+      <div class="benefits-cards">
+        <div class="benefit-card">
+          <div class="benefit-icon"><i data-lucide="calendar-clock" style="width:22px;height:22px"></i></div>
+          <h4>Deadline finder</h4>
+          <p>Know your exact window. The kit shows the deadline from your own notice and sets a reminder.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon"><i data-lucide="file-text" style="width:22px;height:22px"></i></div>
+          <h4>Your letter, drafted</h4>
+          <p>Answer a few prompts. The kit writes the letter. You review, edit, and sign before you send.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon"><i data-lucide="phone" style="width:22px;height:22px"></i></div>
+          <h4>Phone scripts</h4>
+          <p>Know what to say when billing offices, insurers, or collectors answer the phone.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon"><i data-lucide="shield" style="width:22px;height:22px"></i></div>
+          <h4>Your rights</h4>
+          <p>The real statute, in one plain sentence. No jargon, no paraphrasing, no legal disclaimers.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon"><i data-lucide="lock" style="width:22px;height:22px"></i></div>
+          <h4>100% private</h4>
+          <p>Runs on your device. Nothing you type is uploaded, stored, or shared with anyone.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon"><i data-lucide="repeat" style="width:22px;height:22px"></i></div>
+          <h4>Yours to reuse</h4>
+          <p>One payment, no subscription. Use it for this dispute and any future one.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EMAIL OPT-IN ===================== -->
+<section class="optin">
+  <div class="wrap">
+    <div class="optin-inner">
+      <span class="eyebrow">Stay in the loop</span>
+      <h2>More kits are on the way.</h2>
+      <p>Be the first to know when the next kit is ready. No spam, just a short note.</p>
+      <div id="optin-ok" class="optin-ok">You are on the list. Talk soon.</div>
+      <form class="optin-form" id="optin-form" novalidate>
+        <input type="email" placeholder="you@email.com" required aria-label="Email address">
+        <button type="submit" class="btn btn-teal">Notify me</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FINAL CTA ===================== -->
+<section class="finalcta">
+  <div class="wrap">
+    <div class="finalcta-inner">
+      <div class="finalcta-glow" aria-hidden="true"></div>
+      <h2>Stop paying bills<br>you do not owe.</h2>
+      <p>Pick your kit, download it, and take your first step in five minutes.</p>
+      <a href="#kits" class="btn btn-teal" style="font-size:17px;padding:17px 36px;border-radius:13px">
+        Browse the kits <i data-lucide="arrow-right" style="width:18px;height:18px"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer id="about">
+  <div class="wrap">
+    <div class="footer-top">
+      <a href="index.html" class="footer-logo">
+        <svg width="22" height="22" viewBox="0 0 48 48" fill="none">
+          <path d="M24 3.5L40 9V23.5C40 33.8 33.2 40.8 24 44C14.8 40.8 8 33.8 8 23.5V9Z" fill="#22384F"/>
+          <path d="M16.5 24l5 5L31.5 16.5" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Owedify
+      </a>
+      <div class="footer-links">
+        <a href="Policy.html">Privacy</a>
+        <a href="Terms.html">Terms</a>
+        <a href="Refunds.html">Refunds</a>
+      <a href="Accessibility.html">Accessibility</a>
+        <a href="mailto:hello@owedify.com">Contact</a>
+      </div>
+    </div>
+    <p class="footer-dis">Owedify provides educational self-help tools and templates. Not legal, medical, or financial advice. Always confirm deadlines from your own notice. Results vary by case.</p>
+  </div>
+</footer>
+
+<script src="lucide.min.js"></script>
+<script>
+lucide.createIcons();
+
+/* Header scroll state */
+var header = document.getElementById('site-header');
+window.addEventListener('scroll', function() {
+  header.classList.toggle('scrolled', window.scrollY > 56);
+}, { passive: true });
+
+/* Mobile menu */
+var burger = document.getElementById('burger-btn');
+var mobileMenu = document.getElementById('mobile-menu');
+burger.addEventListener('click', function() {
+  var open = mobileMenu.classList.toggle('open');
+  burger.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', open);
+});
+mobileMenu.querySelectorAll('a').forEach(function(a) {
+  a.addEventListener('click', function() {
+    mobileMenu.classList.remove('open');
+    burger.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+  });
+});
+
+/* Email opt-in */
+document.getElementById('optin-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  document.getElementById('optin-form').style.display = 'none';
+  document.getElementById('optin-ok').style.display = 'block';
+});
+</script>
+  <script src="owedify-consent-and-popup.js" defer></script>
+  <script src="/owedify-accessibility.js" defer></script>
+</body>
+</html>

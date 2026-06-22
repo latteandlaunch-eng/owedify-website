@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en" data-kit="credit">
+<head>
+<meta name="p:domain_verify" content="6a511fc13104c3bea9ccd2ef9c337af4"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Credit Dispute Kit · Owedify</title>
+<link rel="stylesheet" href="/styles.css">
+<style>
+  :root{ --vio:var(--accent-600); --vio7:var(--accent-700); --ink:#1B2A3A; --paper:#FCFCFD; }
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  body{background:var(--paper);color:var(--text-strong);font-family:var(--font-sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  ::selection{background:var(--accent-200);}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 40px;}
+  .disp{font-family:var(--font-display);font-weight:800;letter-spacing:-0.03em;line-height:1.05;text-wrap:balance;}
+  .eyebrow{font-family:var(--font-mono);font-weight:500;font-size:12.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--vio);}
+  .mono{font-family:var(--font-mono);}
+
+  .nav{position:sticky;top:0;z-index:40;background:rgba(252,252,253,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-subtle);}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .brand{display:flex;align-items:center;gap:9px;font-family:var(--font-display);font-weight:800;font-size:18px;letter-spacing:-0.02em;color:var(--ink);}
+  .brand small{font-weight:500;font-size:13px;color:var(--text-muted);font-family:var(--font-sans);}
+  .brand .shield{width:24px;height:24px;}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:none;cursor:pointer;font-family:var(--font-sans);font-weight:700;border-radius:11px;white-space:nowrap;transition:transform .12s cubic-bezier(.2,0,0,1),background .15s;}
+  .btn:active{transform:scale(.97);}
+  .btn-accent{background:var(--vio);color:#fff;font-size:15px;padding:13px 22px;}
+  .btn-accent:hover{background:var(--vio7);}
+  .btn-light{background:#fff;color:var(--vio7);font-size:15px;padding:13px 22px;box-shadow:0 1px 0 rgba(0,0,0,.04);}
+  .btn-light:hover{background:var(--accent-50);}
+  .btn-lg{font-size:16px;padding:15px 28px;border-radius:12px;}
+  .nav .btn-accent{font-size:14px;padding:10px 18px;}
+
+  /* hero: centered, leads with the three-bureau signature tracker */
+  .hero{position:relative;background:linear-gradient(180deg,var(--accent-50),var(--paper) 70%);padding:74px 0 60px;text-align:center;overflow:hidden;}
+  .hero::before{content:"";position:absolute;top:-12%;left:50%;transform:translateX(-50%);width:760px;height:520px;background:radial-gradient(closest-side, rgba(107,90,158,.16), transparent 72%);pointer-events:none;}
+  .hero .wrap{position:relative;z-index:2;}
+  .hero .eyebrow{margin-bottom:15px;}
+  .hero h1{font-size:clamp(38px,4.7vw,57px);max-width:24ch;margin:0 auto;letter-spacing:-0.035em;}
+  .hero .sub{font-size:19px;line-height:1.5;color:var(--text-body);max-width:56ch;margin:19px auto 0;font-weight:500;}
+  .hero .facts{display:flex;flex-wrap:wrap;justify-content:center;gap:9px 20px;margin-top:18px;}
+  .hero .facts span{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;color:var(--text-muted);}
+  .hero .facts .lucide{width:15px;height:15px;color:var(--vio);}
+  .hero .buy{display:inline-flex;align-items:center;gap:18px;margin-top:28px;flex-wrap:wrap;justify-content:center;}
+  .hero .price{font-size:14.5px;color:var(--text-muted);}
+  .hero .price b{color:var(--text-strong);font-weight:800;font-family:var(--font-display);font-size:16px;}
+
+  /* signature mockup: three-bureau tracker */
+  .tracker{position:relative;max-width:860px;margin:42px auto 0;background:#fff;border:1px solid var(--border-subtle);border-radius:22px;box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 44px 90px -46px rgba(43,28,74,.45),0 12px 28px -22px rgba(20,32,44,.3);overflow:hidden;text-align:left;}
+  .tracker .thead{display:flex;align-items:center;gap:10px;padding:17px 22px;border-bottom:1px solid var(--border-subtle);background:linear-gradient(180deg,var(--accent-50),#fff);}
+  .tracker .thead .dot{width:9px;height:9px;border-radius:50%;background:var(--vio);box-shadow:0 0 0 0 rgba(107,90,158,.5);animation:pulseDot 2.4s ease-out infinite;}
+  @keyframes pulseDot{0%{box-shadow:0 0 0 0 rgba(107,90,158,.45);}70%{box-shadow:0 0 0 7px rgba(107,90,158,0);}100%{box-shadow:0 0 0 0 rgba(107,90,158,0);}}
+  @media (prefers-reduced-motion: reduce){ .tracker .thead .dot{animation:none;} }
+  .tracker .thead h4{font-family:var(--font-display);font-weight:800;font-size:16px;margin:0;color:var(--text-strong);}
+  .tracker .thead .meta{margin-left:auto;font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--vio7);background:var(--accent-100);border-radius:999px;padding:5px 11px;letter-spacing:.02em;}
+  .tracker .cols{display:grid;grid-template-columns:repeat(3,1fr);}
+  .bcol{padding:24px 22px;border-right:1px solid var(--border-subtle);}
+  .bcol:last-child{border-right:none;}
+  .bcol .bn{font-family:var(--font-display);font-weight:800;font-size:18px;color:var(--ink);letter-spacing:-0.01em;}
+  .bcol .chip{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;border-radius:999px;padding:4px 10px;margin-top:12px;}
+  .chip.sent{background:var(--accent-100);color:var(--vio7);}
+  .chip.review{background:#FBF1DC;color:#9A6B1E;}
+  .chip.fixed{background:#DCF0E4;color:#2E6F4E;}
+  .bcol .by{font-size:13px;color:var(--text-muted);margin-top:14px;}
+  .bcol .by b{color:var(--text-strong);font-family:var(--font-display);}
+  .bcol .bar{height:7px;border-radius:5px;background:var(--accent-50);margin-top:10px;overflow:hidden;}
+  .bcol .bar i{display:block;height:100%;border-radius:5px;background:var(--vio);}
+  .bcol .days{font-family:var(--font-mono);font-size:11.5px;color:var(--text-subtle);margin-top:8px;}
+
+  /* section scaffold */
+  section.band{padding:96px 0;}
+  .split{display:grid;grid-template-columns:1.04fr .96fr;gap:56px;align-items:center;}
+  .split.flip .copy{order:2;}.split.flip .art{order:1;}
+  .copy .eyebrow{margin-bottom:13px;}
+  .copy h2{font-size:clamp(28px,3.5vw,40px);}
+  .copy .lede{font-size:18px;line-height:1.5;color:var(--text-body);margin:16px 0 0;font-weight:500;max-width:40ch;}
+  .copy p.detail{font-size:15.5px;line-height:1.62;color:var(--text-muted);margin:14px 0 0;max-width:46ch;}
+  .copy .note{display:flex;gap:9px;align-items:flex-start;margin-top:18px;font-size:14px;color:var(--text-muted);}
+  .copy .note .lucide{width:16px;height:16px;color:var(--vio);flex:0 0 auto;margin-top:1px;}
+  .tint{background:linear-gradient(180deg,var(--paper),var(--accent-50));}
+
+  /* report error-scan mockup */
+  .scan{background:#fff;border:1px solid var(--border-subtle);border-radius:18px;box-shadow:0 26px 60px -38px rgba(20,32,44,.4);padding:20px;max-width:430px;}
+  .scan h5{font-family:var(--font-display);font-weight:800;font-size:15px;margin:2px 2px 14px;color:var(--text-strong);display:flex;align-items:center;gap:8px;}
+  .scan h5 .lucide{width:17px;height:17px;color:var(--vio);}
+  .srow{display:flex;align-items:center;gap:12px;padding:13px;border-radius:12px;border:1.5px solid var(--border-subtle);margin-bottom:10px;}
+  .srow.flag{border-color:var(--vio);background:var(--accent-50);}
+  .srow .nm{font-size:14px;font-weight:600;color:var(--text-strong);}
+  .srow .mt{font-size:12px;color:var(--text-subtle);margin-top:1px;}
+  .srow .tag{margin-left:auto;font-size:11px;font-weight:700;font-family:var(--font-mono);border-radius:6px;padding:4px 8px;white-space:nowrap;}
+  .tag.ok{background:var(--soft);color:var(--text-subtle);}
+  .tag.bad{background:var(--accent-100);color:var(--vio7);}
+
+  /* phone */
+  .device-phone{position:relative;background:#0B131B;border-radius:38px;padding:9px;box-shadow:0 40px 78px -34px rgba(20,32,44,.55);width:248px;margin:0 auto;}
+  .device-phone iframe{width:100%;aspect-ratio:380/800;border:0;border-radius:30px;display:block;background:#F8FAFC;}
+
+  /* letters menu */
+  .lmenu{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px;max-width:430px;}
+  .lpill{display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--border-subtle);border-radius:11px;padding:11px 13px;font-size:13.5px;font-weight:600;color:var(--text-body);box-shadow:var(--shadow-xs);}
+  .lpill .lucide{width:15px;height:15px;color:var(--vio);flex:0 0 auto;}
+
+  /* process strip */
+  .proc{border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);background:var(--soft);}
+  .proc .wrap{padding:54px 40px;}
+  .proc .head{text-align:center;margin-bottom:38px;}
+  .proc h2{font-size:clamp(26px,3.2vw,36px);margin-top:10px;}
+  .pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .pstep{background:#fff;border:1px solid var(--border-subtle);border-radius:16px;padding:22px;}
+  .pstep .n{font-family:var(--font-mono);font-size:12px;font-weight:600;color:var(--vio);}
+  .pstep h3{font-family:var(--font-display);font-weight:800;font-size:18px;letter-spacing:-0.01em;margin:10px 0 0;color:var(--text-strong);}
+  .pstep p{font-size:13.5px;line-height:1.5;color:var(--text-muted);margin:7px 0 0;}
+
+  /* identity theft highlight */
+  .idblock{padding:96px 0;}
+  .idcard{background:linear-gradient(150deg,var(--vio7),var(--ink));color:#fff;border-radius:24px;padding:52px;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;}
+  .idcard .eyebrow{color:var(--accent-200);}
+  .idcard h2{font-family:var(--font-display);font-weight:800;font-size:clamp(28px,3.4vw,40px);letter-spacing:-0.02em;margin:12px 0 0;}
+  .idcard p{font-size:16.5px;line-height:1.55;color:rgba(255,255,255,.8);margin:16px 0 0;max-width:42ch;}
+  .idcard .big{text-align:center;}
+  .idcard .big .num{font-family:var(--font-display);font-weight:800;font-size:clamp(48px,7vw,86px);letter-spacing:-0.04em;line-height:1;}
+  .idcard .big .cap{font-size:14px;color:rgba(255,255,255,.72);margin-top:10px;}
+
+  /* cost comparison */
+  .compare{padding:92px 0;border-top:1px solid var(--border-subtle);}
+  .compare .head{text-align:center;margin-bottom:40px;}
+  .compare h2{font-size:clamp(28px,3.6vw,42px);margin-top:12px;}
+  .compare .sub{font-size:16px;color:var(--text-muted);margin:14px auto 0;max-width:46ch;line-height:1.55;}
+  .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:840px;margin:0 auto;}
+  .ccard{border-radius:20px;padding:30px;border:1px solid var(--border-subtle);}
+  .ccard .ct{font-family:var(--font-display);font-weight:800;font-size:19px;margin-bottom:8px;}
+  .ccard .cp{font-family:var(--font-display);font-weight:800;font-size:30px;letter-spacing:-0.02em;margin-bottom:20px;}
+  .ccard .cp small{font-size:14px;font-weight:600;font-family:var(--font-sans);opacity:.7;}
+  .ccard ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:13px;}
+  .ccard li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.5;}
+  .ccard li .lucide{width:17px;height:17px;flex:0 0 auto;margin-top:1px;}
+  .ccard.muted{background:var(--soft);}
+  .ccard.muted .ct,.ccard.muted .cp{color:var(--text-muted);}
+  .ccard.muted li{color:var(--text-muted);}
+  .ccard.muted li .lucide{color:var(--text-subtle);}
+  .ccard.hot{background:linear-gradient(150deg,var(--vio7),var(--ink));color:#fff;border-color:transparent;}
+  .ccard.hot .ct{color:#fff;}.ccard.hot .cp{color:#fff;}
+  .ccard.hot li{color:rgba(255,255,255,.9);}
+  .ccard.hot li .lucide{color:var(--accent-200);}
+
+  /* reviews: featured + two */
+  .reviews{padding:30px 0 100px;}
+  .reviews .head{margin-bottom:44px;text-align:center;}
+  .reviews h2{font-size:clamp(28px,3.6vw,42px);margin-top:12px;}
+  .rwrap{display:grid;grid-template-columns:1.2fr 1fr;gap:22px;}
+  .rlead{background:linear-gradient(150deg,var(--vio7),var(--ink));color:#fff;border-radius:24px;padding:42px;display:flex;flex-direction:column;gap:18px;}
+  .rlead .stars{color:#C4BBE4;font-size:17px;letter-spacing:3px;}
+  .rlead .q{font-family:var(--font-display);font-weight:700;font-size:25px;line-height:1.3;letter-spacing:-0.01em;}
+  .rlead .by{margin-top:auto;display:flex;flex-direction:column;}
+  .rlead .nm{font-weight:700;font-size:15px;}
+  .rlead .lc{font-size:13px;color:rgba(255,255,255,.6);margin-top:2px;}
+  .rcol{display:flex;flex-direction:column;gap:22px;}
+  .rcard{background:#fff;border:1px solid var(--border-subtle);border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow-xs);flex:1;}
+  .rcard .stars{color:var(--vio);font-size:14px;letter-spacing:2px;}
+  .rcard .q{font-size:15px;line-height:1.55;color:var(--text-body);font-weight:500;}
+  .rcard .by{margin-top:auto;display:flex;flex-direction:column;}
+  .rcard .nm{font-weight:700;font-size:14px;color:var(--text-strong);}
+  .rcard .lc{font-size:12.5px;color:var(--text-subtle);margin-top:2px;}
+
+  .privacy{border-top:1px solid var(--border-subtle);}
+  .privacy .wrap{display:flex;flex-wrap:wrap;gap:14px 36px;justify-content:center;align-items:center;padding:26px 40px;}
+  .privacy span{display:inline-flex;align-items:center;gap:9px;font-size:14.5px;font-weight:600;color:var(--text-muted);}
+  .privacy .lucide{width:16px;height:16px;color:var(--vio);}
+
+  .faq{padding:96px 0;}
+  .faq .grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:50px;align-items:center;}
+  .faq h2{font-size:clamp(28px,3.6vw,42px);margin-top:12px;}
+  .faq .list{border-top:1px solid var(--border-subtle);}
+  .qa{border-bottom:1px solid var(--border-subtle);}
+  .qa button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;text-align:left;background:none;border:none;cursor:pointer;padding:22px 4px;font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--text-strong);}
+  .qa .a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+  .qa .a p{margin:0 4px 22px;font-size:15px;line-height:1.6;color:var(--text-muted);max-width:62ch;}
+  .qa .chev{transition:transform .3s;color:var(--vio);flex:0 0 auto;}
+  .qa.open .chev{transform:rotate(180deg);}
+
+  .cta{position:relative;text-align:center;padding:104px 0;background:radial-gradient(120% 120% at 50% 0%, #3A3070 0%, #211B40 50%, #171229 100%);color:#fff;overflow:hidden;}
+  .cta h2{font-size:clamp(32px,5vw,58px);max-width:18ch;margin:0 auto;}
+  .cta .price{margin-top:16px;color:rgba(255,255,255,.72);font-size:15px;}
+  .cta .price b{color:#fff;font-weight:800;}
+  .cta .buy{margin-top:28px;}
+  footer{padding:44px 0 60px;border-top:1px solid var(--border-subtle);}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center;}
+  footer .legal{font-size:12.5px;line-height:1.6;color:var(--text-subtle);max-width:64ch;}
+  footer a{color:var(--text-muted);text-decoration:underline;}
+
+  /* FAQ tip card */
+  .tip{margin-top:22px;background:var(--accent-50);border:1px solid var(--accent-200);border-radius:16px;padding:20px 22px;max-width:340px;}
+  .tip .tiph{display:flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:800;font-size:14px;color:var(--vio7);margin-bottom:9px;}
+  .tip .tiph .lucide{width:17px;height:17px;color:var(--vio);}
+  .tip p{font-size:14px;line-height:1.6;color:var(--text-muted);margin:0;}
+
+  /* section dividers: hairline between stacked sections */
+  section.band,.idblock,.midcta,.reviews,.faq{border-top:1px solid var(--border-subtle);}
+
+  /* mid-page CTA band + in-section buttons */
+  .midcta{padding:34px 0;}
+  .midcta .inner{background:linear-gradient(120deg,var(--accent-50),var(--accent-100));border:1px solid var(--accent-200);border-radius:20px;padding:28px 36px;display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap;}
+  .midcta .t{font-family:var(--font-display);font-weight:800;font-size:23px;letter-spacing:-0.02em;color:var(--text-strong);}
+  .midcta .t span{display:block;font-family:var(--font-sans);font-weight:500;font-size:14.5px;color:var(--text-muted);margin-top:5px;letter-spacing:0;}
+  .sectioncta{margin-top:24px;}
+  .idcard .sectioncta .btn-light{background:#fff;color:var(--vio7);}
+  .idcard .sectioncta .btn-light:hover{background:var(--accent-50);}
+
+  .reveal.in{animation:revealUp .8s cubic-bezier(.2,0,0,1) both;}
+  @keyframes revealUp{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:none;}}
+  @media (prefers-reduced-motion: reduce){ .reveal.in{animation:none;} }
+
+  @media (max-width:900px){
+    .split,.faq .grid,.idcard{grid-template-columns:1fr;gap:34px;}
+    .split.flip .copy,.split.flip .art{order:0;}
+    .tracker .cols,.pgrid{grid-template-columns:1fr;}
+    .tracker .thead{flex-wrap:wrap;}
+    .tracker .thead .meta{order:3;flex-basis:100%;margin-left:19px;margin-top:3px;}
+    .rwrap,.cgrid{grid-template-columns:1fr;}
+    .bcol{border-right:none;border-bottom:1px solid var(--border-subtle);padding:15px 18px;display:grid;grid-template-columns:1fr auto;grid-template-areas:'bn chip' 'by by' 'bar bar' 'days days';align-items:center;gap:5px 12px;}
+    .bcol .bn{grid-area:bn;font-size:16px;}
+    .bcol .chip{grid-area:chip;justify-self:end;margin-top:0;}
+    .bcol .by{grid-area:by;margin-top:7px;}
+    .bcol .bar{grid-area:bar;margin-top:7px;}
+    .bcol .days{grid-area:days;margin-top:5px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><svg class="shield" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 3.5 L40 9 V23.5 C40 33.8 33.2 40.8 24 44 C14.8 40.8 8 33.8 8 23.5 V9 Z" fill="#574A82"/><path d="M16.5 24 l5 5 l10 -12.5" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Owedify <small>· Credit disputes</small></a>
+    <a class="btn btn-accent" href="https://owedify.lemonsqueezy.com/checkout/buy/3df9c45f-3400-4598-8562-1c1d90ffe737">Get the kit · $29</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow">Credit Dispute Kit</div>
+    <h1 class="disp">Dispute all three bureaus the right way, in one evening.</h1>
+    <p class="sub">About 1 in 5 people find an error on their credit report that gets erased after they dispute it.</p>
+    <div class="facts">
+      <span><i class="lucide" data-lucide="badge-check"></i> Free to file</span>
+      <span><i class="lucide" data-lucide="clock"></i> The bureau gets 30 days</span>
+      <span><i class="lucide" data-lucide="shield-check"></i> No repair company needed</span>
+    </div>
+    <div class="buy">
+      <a class="btn btn-accent btn-lg" href="https://owedify.lemonsqueezy.com/checkout/buy/3df9c45f-3400-4598-8562-1c1d90ffe737">Get the kit</a>
+      <div class="price"><b>$29.</b> One time, yours forever.</div>
+    </div>
+
+    <div class="tracker reveal">
+      <div class="thead"><span class="dot"></span><h4>Your dispute, tracked at all three bureaus</h4><span class="meta">Late mark, paid on time</span></div>
+      <div class="cols">
+        <div class="bcol"><div class="bn">Experian</div><span class="chip sent">Letter sent</span><div class="by">Respond by <b>Jul 11</b></div><div class="bar"><i style="width:33%"></i></div><div class="days">Day 10 of 30</div></div>
+        <div class="bcol"><div class="bn">Equifax</div><span class="chip review">In review</span><div class="by">Respond by <b>Jul 9</b></div><div class="bar"><i style="width:40%"></i></div><div class="days">Day 12 of 30</div></div>
+        <div class="bcol"><div class="bn">TransUnion</div><span class="chip fixed">Corrected</span><div class="by">Closed <b>Jun 28</b></div><div class="bar"><i style="width:100%;background:#3E9B6B"></i></div><div class="days">Fixed in 16 days</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="band">
+  <div class="wrap">
+    <div class="split">
+      <div class="copy reveal">
+        <div class="eyebrow">Find every error</div>
+        <h2 class="disp">Catch the mistakes most people scroll right past.</h2>
+        <p class="lede">The kit walks you through pulling your three free reports and checking them line by line.</p>
+        <p class="detail">It points you to the accounts, balances, and dates that are most often wrong, including the small ones that hold your score down. You mark what does not look right and it carries straight into your dispute.</p>
+        <div class="note"><i class="lucide" data-lucide="phone"></i><span>Not sure if something counts as an error? The kit shows you how to call the bureau and ask before you dispute.</span></div>
+      </div>
+      <div class="art reveal">
+        <div class="scan">
+          <h5><i class="lucide" data-lucide="search"></i> Found on your report</h5>
+          <div class="srow"><div><div class="nm">Capital One card</div><div class="mt">Opened 2019 · reported by you</div></div><span class="tag ok">Looks right</span></div>
+          <div class="srow flag"><div><div class="nm">Late payment, March</div><div class="mt">You paid this on time</div></div><span class="tag bad">Dispute</span></div>
+          <div class="srow"><div><div class="nm">Auto loan balance</div><div class="mt">Shows $0 · paid off</div></div><span class="tag ok">Looks right</span></div>
+          <div class="srow flag"><div><div class="nm">Account in collections</div><div class="mt">You do not recognize this</div></div><span class="tag bad">Dispute</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band tint">
+  <div class="wrap">
+    <div class="split flip">
+      <div class="copy reveal">
+        <div class="eyebrow">Specific letters, not templates</div>
+        <h2 class="disp">A letter written from your answers.</h2>
+        <p class="lede">Mass-produced dispute letters get dismissed. Yours will not read like one.</p>
+        <p class="detail">You answer questions about your dispute, and the kit drafts a specific letter that cites the right consumer law and asks for exactly what you need. Read it, change anything, then copy, print, or save. The letter is yours.</p>
+        <div class="lmenu">
+          <div class="lpill"><i class="lucide" data-lucide="file-text"></i> Reinvestigation</div>
+          <div class="lpill"><i class="lucide" data-lucide="heart-handshake"></i> Goodwill request</div>
+          <div class="lpill"><i class="lucide" data-lucide="rotate-ccw"></i> Reinserted item</div>
+          <div class="lpill"><i class="lucide" data-lucide="message-square-quote"></i> Consumer statement</div>
+        </div>
+      </div>
+      <div class="art reveal">
+        <div class="device-phone"><iframe src="credit-phone-demo.html" title="Credit dispute, app demo" scrolling="no"></iframe></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="proc">
+  <div class="wrap">
+    <div class="head reveal"><div class="eyebrow">How it works</div><h2 class="disp">Four steps, simple.</h2></div>
+    <div class="pgrid">
+      <div class="pstep reveal"><div class="n">Step 1</div><h3>Pull your reports</h3><p>Get all three free reports and check them with the kit's guide.</p></div>
+      <div class="pstep reveal"><div class="n">Step 2</div><h3>Write the letters</h3><p>The app helps draft a specific dispute for each error, from your own answers.</p></div>
+      <div class="pstep reveal"><div class="n">Step 3</div><h3>Track 30 days</h3><p>Each bureau has 30 days to respond. The kit will help you keep track.</p></div>
+      <div class="pstep reveal"><div class="n">Step 4</div><h3>Fixed or escalate</h3><p>If a bureau will not correct a real error, the kit shows you how to escalate.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="idblock">
+  <div class="wrap">
+    <div class="idcard reveal">
+      <div>
+        <div class="eyebrow">If it is identity theft</div>
+        <h2>Fraud can come off in days, not months.</h2>
+        <p>When an account was opened in your name without your permission, there is a faster federal block process. The kit walks you through it step by step, so the fraudulent account is removed quickly instead of dragging on.</p>
+        <div class="sectioncta"><a class="btn btn-light btn-lg" href="https://owedify.lemonsqueezy.com/checkout/buy/3df9c45f-3400-4598-8562-1c1d90ffe737">Get the kit · $29</a></div>
+      </div>
+      <div class="big"><div class="num">4&nbsp;days</div><div class="cap">A federal block can take, once filed correctly, far faster than a standard dispute.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="compare">
+  <div class="wrap">
+    <div class="head reveal"><div class="eyebrow">What it costs</div><h2 class="disp">You do not need to pay anyone monthly.</h2><p class="sub">The dispute is free to file. A repair company charges you every month to send the same kinds of letters you can send yourself.</p></div>
+    <div class="cgrid">
+      <div class="ccard muted reveal">
+        <div class="ct">A credit repair company</div>
+        <div class="cp">$50 to $150 <small>/ month</small></div>
+        <ul>
+          <li><i class="lucide" data-lucide="x"></i> Keeps billing you every month while the letters go out</li>
+          <li><i class="lucide" data-lucide="x"></i> You hand over control of your own disputes</li>
+          <li><i class="lucide" data-lucide="x"></i> Often hundreds of dollars before anything is fixed</li>
+        </ul>
+      </div>
+      <div class="ccard hot reveal">
+        <div class="ct">Owedify Credit Dispute Kit</div>
+        <div class="cp">$29 <small>once, yours forever</small></div>
+        <ul>
+          <li><i class="lucide" data-lucide="check"></i> One payment, then it is yours on every device</li>
+          <li><i class="lucide" data-lucide="check"></i> You send the letters and stay in control</li>
+          <li><i class="lucide" data-lucide="check"></i> Reuse it for every error, for as long as you need</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="midcta">
+  <div class="wrap">
+    <div class="inner reveal">
+      <div class="t">Ready to start your dispute? <span>$29, one time. Yours forever, on every device.</span></div>
+      <a class="btn btn-accent btn-lg" href="https://owedify.lemonsqueezy.com/checkout/buy/3df9c45f-3400-4598-8562-1c1d90ffe737">Get the kit</a>
+    </div>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="wrap">
+    <div class="head reveal"><div class="eyebrow">From people who used it</div><h2 class="disp">It made a confusing thing simple.</h2></div>
+    <!-- REVIEW CARDS: authentic style, swap real reviews in place (keep structure) -->
+    <div class="rwrap">
+      <div class="rlead reveal" data-review="1">
+        <div class="stars" aria-label="5 out of 5">★★★★★</div>
+        <div class="q" style="font-size: 25px">I had different errors across the bureaus and kept losing track of my progress. Seeing all the deadlines and to-dos in the app is what finally pushed me. My credit score jumped 40pts so excited! Thank you Owedify!</div>
+        <div class="by"><div class="nm">Priya N.</div><div class="lc">Raleigh, NC</div></div>
+      </div>
+      <div class="rcol">
+        <div class="rcard reveal" data-review="2"><div class="stars" aria-label="5 out of 5">★★★★★</div><div class="q">The letters provided did not read like a template at all and all of the steps were so clear and intentional. It organized the exact account, which laws apply, and the late mark on my report was gone in under a month.</div><div class="by"><div class="nm">Devon W.</div><div class="lc">Mesa, AZ</div></div></div>
+        <div class="rcard reveal" data-review="3"><div class="stars" aria-label="5 out of 5">★★★★★</div><div class="q">An account I never opened was on my report, I was so shocked when I realized. This walked me through the fraud process and it came off fast. Will definitely look into your other products!</div><div class="by"><div class="nm">Carla S.</div><div class="lc">Toledo, OH</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="privacy">
+  <div class="wrap">
+    <span><i class="lucide" data-lucide="wifi-off"></i> Works offline</span>
+    <span><i class="lucide" data-lucide="user-x"></i> No account</span>
+    <span><i class="lucide" data-lucide="repeat"></i> No subscription</span>
+    <span><i class="lucide" data-lucide="lock"></i> Nothing you type is ever uploaded</span>
+  </div>
+</div>
+
+<section class="faq">
+  <div class="wrap">
+    <div class="grid">
+      <div><div class="eyebrow">Good to know</div><h2 class="disp reveal">How the kit works.</h2>
+        <div class="tip reveal"><div class="tiph"><i class="lucide" data-lucide="lightbulb"></i> Tip from the kit</div><p>Send each dispute by certified mail with return receipt. The bureau's 30-day window starts the day they receive it, and the receipt is your proof of that date. The kit reminds you to save it.</p></div>
+      </div>
+      <div class="list reveal">
+        <div class="qa"><button type="button"><span>What exactly do I get?</span><i class="lucide chev" data-lucide="chevron-down"></i></button><div class="a"><p>A ZIP file with the kit, an app that opens in any browser on your phone or computer, and a one page Start Here guide. It downloads instantly after purchase.</p></div></div>
+        <div class="qa"><button type="button"><span>Do I need internet or an account?</span><i class="lucide chev" data-lucide="chevron-down"></i></button><div class="a"><p>No. After it loads once, the kit works fully offline. There is no account and no sign up. Everything you type saves on your own device only.</p></div></div>
+        <div class="qa"><button type="button"><span>What devices does it run on?</span><i class="lucide chev" data-lucide="chevron-down"></i></button><div class="a"><p>Any modern browser, on a phone, tablet, or computer. You can add it to your phone's home screen and it opens like a normal app.</p></div></div>
+        <div class="qa"><button type="button"><span>How do I open it after I buy?</span><i class="lucide chev" data-lucide="chevron-down"></i></button><div class="a"><p>Unzip the download, open the kit in any browser, and add it to your home screen. The Start Here guide walks you through it in about 30 seconds.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2 class="disp reveal">Start your dispute tonight.</h2>
+    <div class="price reveal"><b>$29.</b> One time purchase, yours forever.</div>
+    <div class="buy reveal"><a class="btn btn-light btn-lg" href="https://owedify.lemonsqueezy.com/checkout/buy/3df9c45f-3400-4598-8562-1c1d90ffe737">Get the kit</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top"><svg class="shield" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 3.5 L40 9 V23.5 C40 33.8 33.2 40.8 24 44 C14.8 40.8 8 33.8 8 23.5 V9 Z" fill="#574A82"/><path d="M16.5 24 l5 5 l10 -12.5" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Owedify</a>
+    <div class="legal">Owedify is an educational self help tool that helps you write and track your own disputes. It is not legal or financial advice, and is not affiliated with any credit bureau or government agency. · <a href="https://owedify.com/#kits">Browse all kits</a></div>
+  </div>
+</footer>
+
+<script src="/lucide.min.js"></script>
+<script>
+  const io = new IntersectionObserver((ents) => {
+    ents.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach((el, i) => { el.style.animationDelay = (i % 3 * 80) + 'ms'; io.observe(el); });
+  document.querySelectorAll('.qa button').forEach((b) => {
+    b.addEventListener('click', () => { const qa = b.parentElement, a = qa.querySelector('.a'); const open = qa.classList.toggle('open'); a.style.maxHeight = open ? a.scrollHeight + 'px' : '0'; });
+  });
+  function icons(){ if (window.lucide) window.lucide.createIcons(); }
+  icons(); setInterval(icons, 800);
+</script>
+  <script src="/owedify-consent-and-popup.js" defer></script>
+  <script src="/owedify-accessibility.js" defer></script>
+</body>
+</html>

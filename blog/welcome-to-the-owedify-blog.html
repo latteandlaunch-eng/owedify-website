@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="p:domain_verify" content="6a511fc13104c3bea9ccd2ef9c337af4"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>Welcome to the Owedify blog</title>
+<meta name="description" content="A short note on what the Owedify blog is for: plain guides that help you write your own letters to dispute bills, appeal denied claims, and fix credit report errors.">
+<link rel="canonical" href="https://owedify.com/blog/welcome-to-the-owedify-blog.html">
+<link rel="icon" href="/assets/logo/owedify-favicon.svg">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Welcome to the Owedify blog">
+<meta property="og:description" content="Plain guides that help you write your own letters to dispute bills, appeal denied claims, and fix credit report errors.">
+<meta property="og:url" content="https://owedify.com/blog/welcome-to-the-owedify-blog.html">
+<meta property="og:image" content="https://owedify.com/assets/logo/owedify-mark.svg">
+<meta property="og:site_name" content="Owedify">
+
+<!-- Twitter card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Welcome to the Owedify blog">
+<meta name="twitter:description" content="Plain guides that help you write your own letters to dispute bills, appeal denied claims, and fix credit report errors.">
+<meta name="twitter:image" content="https://owedify.com/assets/logo/owedify-mark.svg">
+
+<!-- Pinterest Rich Pin (article) -->
+<meta property="article:published_time" content="2026-06-22T09:00:00Z">
+<meta property="article:author" content="Owedify">
+
+<link rel="stylesheet" href="/tokens/fonts.css">
+<style>
+:root {
+  --navy: #22384F;
+  --navy-8: #1B2A3A;
+  --navy-9: #14222F;
+  --teal: #3C7E72;
+  --teal-7: #2E6358;
+  --teal-3: #7FB3A8;
+  --teal-1: #DCEDE9;
+  --teal-2: #B6D6CF;
+  --cl:  #F8FAFC;
+  --c2:  #E9EDF2;
+  --c3:  #DBE2EA;
+  --s4:  #94A3B2;
+  --s5:  #6B7B8A;
+  --s7:  #36495A;
+  --white: #FFFFFF;
+  --disp: 'Schibsted Grotesk', sans-serif;
+  --body: 'Hanken Grotesk', sans-serif;
+  --page-max: 1180px;
+  --pad: clamp(20px, 5vw, 32px);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: var(--body); color: var(--s7); background: #fff; -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+svg { display: block; }
+
+.wrap { max-width: var(--page-max); margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad); }
+.eyebrow { font-family: var(--body); font-weight: 700; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--teal-7); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--body); font-weight: 700; font-size: 16px; padding: 15px 28px; border-radius: 11px; border: none; cursor: pointer; white-space: nowrap; text-decoration: none; min-height: 52px; transition: opacity .15s; }
+.btn:active { opacity: .88; transform: scale(.98); }
+.btn-teal { background: var(--teal); color: #fff; }
+.btn-sm { font-size: 14px; padding: 12px 20px; min-height: 44px; }
+
+/* ---- HEADER ---- */
+header { position: sticky; top: 0; z-index: 90; background: rgba(20,34,47,.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,.07); transition: background .3s, border-color .3s; }
+header.scrolled { background: rgba(255,255,255,.95); border-bottom-color: var(--c3); }
+.nav-wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { display: flex; align-items: center; gap: 9px; font-family: var(--disp); font-weight: 800; font-size: 20px; letter-spacing: -.03em; color: #fff; transition: color .3s; }
+header.scrolled .logo { color: var(--navy); }
+.nav-links { display: flex; align-items: center; gap: 26px; }
+.nav-links a { font-weight: 600; font-size: 14px; color: rgba(255,255,255,.74); transition: color .2s; }
+header.scrolled .nav-links a { color: var(--s5); }
+.nav-links a:hover { color: #fff; }
+header.scrolled .nav-links a:hover { color: var(--navy-8); }
+.nav-cta { display: flex; }
+.burger { display: none; width: 44px; height: 44px; border: none; background: none; cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 5px; flex-shrink: 0; }
+.burger span { width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: .25s; display: block; }
+header.scrolled .burger span { background: var(--navy-8); }
+.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--navy-8); border-bottom: 1px solid rgba(255,255,255,.08); padding: 16px 0 20px; z-index: 89; transform: translateY(-8px); opacity: 0; transition: transform .25s, opacity .25s; pointer-events: none; }
+.mobile-menu.open { display: block; transform: translateY(0); opacity: 1; pointer-events: auto; }
+.mobile-menu a { display: block; padding: 14px var(--pad); font-weight: 600; font-size: 17px; color: #fff; border-top: 1px solid rgba(255,255,255,.07); }
+.mobile-menu .m-cta { margin: 14px var(--pad) 0; display: flex; }
+.mobile-menu .m-cta .btn { width: 100%; }
+@media (max-width: 860px) { .nav-links, .nav-cta { display: none; } .burger { display: flex; } }
+
+/* ---- ARTICLE ---- */
+.article-hero { background: var(--navy-8); padding: 72px 0 56px; position: relative; overflow: hidden; }
+.article-hero-glow { position: absolute; top: -25%; right: -8%; width: 480px; height: 480px; border-radius: 50%; background: radial-gradient(circle, rgba(60,126,114,.15) 0%, transparent 65%); pointer-events: none; }
+.article-hero .wrap { position: relative; z-index: 2; max-width: 760px; }
+.article-back { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--teal-3); margin-bottom: 22px; }
+.article-back:hover { color: #fff; }
+.article-meta { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; color: var(--teal-3); margin-bottom: 14px; }
+.article-hero h1 { font-family: var(--disp); font-weight: 900; font-size: clamp(32px, 5vw, 56px); letter-spacing: -.045em; line-height: 1.05; color: #fff; }
+
+.article-body { background: #fff; padding: 64px 0 88px; }
+.article-body .wrap { max-width: 720px; }
+.article-body p { font-size: 17px; line-height: 1.75; color: var(--s7); margin-bottom: 22px; }
+.article-body h2 { font-family: var(--disp); font-weight: 900; font-size: clamp(24px, 3vw, 32px); letter-spacing: -.03em; line-height: 1.12; color: var(--navy-8); margin: 40px 0 16px; }
+.article-body ul { margin: 0 0 22px 0; padding-left: 22px; }
+.article-body li { font-size: 17px; line-height: 1.7; color: var(--s7); margin-bottom: 10px; }
+.article-body strong { color: var(--navy-8); font-weight: 700; }
+.article-cta { margin-top: 44px; padding: 32px; background: var(--cl); border: 1.5px solid var(--c3); border-radius: 22px; }
+.article-cta h3 { font-family: var(--disp); font-weight: 800; font-size: 21px; color: var(--navy-8); letter-spacing: -.02em; margin-bottom: 8px; }
+.article-cta p { font-size: 15px; color: var(--s5); margin-bottom: 18px; }
+
+/* ---- FOOTER ---- */
+footer { background: #fff; border-top: 1px solid var(--c3); padding: 40px 0; }
+.footer-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--c2); }
+.footer-logo { display: flex; align-items: center; gap: 8px; font-family: var(--disp); font-weight: 800; font-size: 18px; color: var(--navy); letter-spacing: -.03em; }
+.footer-links { display: flex; gap: 22px; flex-wrap: wrap; }
+.footer-links a { font-weight: 600; font-size: 13.5px; color: var(--s5); }
+.footer-links a:hover { color: var(--navy-8); }
+.footer-dis { font-size: 12px; color: var(--s4); line-height: 1.7; max-width: 660px; }
+@media (max-width: 560px) { .footer-top { flex-direction: column; align-items: flex-start; } }
+</style>
+<style>@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}</style>
+</head>
+<body>
+
+<!-- ===================== HEADER ===================== -->
+<header id="site-header">
+  <div class="wrap nav-wrap">
+    <a href="/" class="logo">
+      <svg width="26" height="26" viewBox="0 0 48 48" fill="none">
+        <path d="M24 3.5L40 9V23.5C40 33.8 33.2 40.8 24 44C14.8 40.8 8 33.8 8 23.5V9Z" fill="#22384F"/>
+        <path d="M16.5 24l5 5L31.5 16.5" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Owedify
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="/index.html#how">How it works</a>
+      <a href="/index.html#kits">The kits</a>
+      <a href="/About.html">About</a>
+      <a href="/blog/">Blog</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/index.html#kits" class="btn btn-teal btn-sm">Find your kit</a>
+    </div>
+    <button class="burger" id="burger-btn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+  <a href="/index.html#how">How it works</a>
+  <a href="/index.html#kits">The kits</a>
+  <a href="/About.html">About</a>
+  <a href="/blog/">Blog</a>
+  <div class="m-cta">
+    <a href="/index.html#kits" class="btn btn-teal">Find your kit</a>
+  </div>
+</div>
+
+<!-- ===================== ARTICLE HERO ===================== -->
+<article>
+<section class="article-hero">
+  <div class="article-hero-glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <a href="/blog/" class="article-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      All posts
+    </a>
+    <div class="article-meta">June 22, 2026 · Owedify</div>
+    <h1>Welcome to the Owedify blog</h1>
+  </div>
+</section>
+
+<!-- ===================== ARTICLE BODY ===================== -->
+<section class="article-body">
+  <div class="wrap">
+    <p>If you have ever opened a bill that looked wrong, or a letter that said your claim was denied, you know the feeling: you are fairly sure you have a case, but you have no idea what to do next. This blog is here for that moment.</p>
+
+    <p>Owedify makes do-it-yourself kits that help you write your own letter to dispute a charge or appeal a decision. The kits do the heavy lifting on structure and wording. This blog covers everything around them: the plain background, the deadlines, and the small steps that are easy to miss.</p>
+
+    <h2>What you will find here</h2>
+    <p>We are going to publish short, practical guides on three areas where people lose money simply because the process feels confusing:</p>
+    <ul>
+      <li><strong>Medical bills.</strong> How to read an itemized bill, spot a charge that looks off, and ask the billing office to correct it.</li>
+      <li><strong>Denied claims.</strong> What an appeal actually is, where to send it, and how to find the deadline printed on your own notice.</li>
+      <li><strong>Credit report errors.</strong> How to request your reports, identify an item worth disputing, and write to each bureau (the companies that hold your credit file).</li>
+    </ul>
+
+    <h2>How we write</h2>
+    <p>Every guide is meant to be read once, on a phone, while you are stressed. We use plain words, we name the deadline and the cost, and we explain any term the first time it appears. You stay in control the whole way. Owedify never sends anything for you. You write the letter, you review it, and you decide when to send it.</p>
+
+    <p>That is the whole idea. More guides are on the way. If there is a topic you want us to cover, write to us at hello@owedify.com.</p>
+
+    <div class="article-cta">
+      <h3>Ready to start your own dispute?</h3>
+      <p>Each Owedify kit walks you through one specific situation, from the first question to a finished letter you send yourself.</p>
+      <a href="/index.html#kits" class="btn btn-teal btn-sm">Browse the kits</a>
+    </div>
+  </div>
+</section>
+</article>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <a href="/" class="footer-logo">
+        <svg width="22" height="22" viewBox="0 0 48 48" fill="none">
+          <path d="M24 3.5L40 9V23.5C40 33.8 33.2 40.8 24 44C14.8 40.8 8 33.8 8 23.5V9Z" fill="#22384F"/>
+          <path d="M16.5 24l5 5L31.5 16.5" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Owedify
+      </a>
+      <div class="footer-links">
+        <a href="/blog/">Blog</a>
+        <a href="/Policy.html">Privacy</a>
+        <a href="/Terms.html">Terms</a>
+        <a href="/Refunds.html">Refunds</a>
+        <a href="/Accessibility.html">Accessibility</a>
+        <a href="mailto:hello@owedify.com">Contact</a>
+      </div>
+    </div>
+    <p class="footer-dis">Owedify provides educational self-help tools and templates. Not legal, medical, or financial advice. Always confirm deadlines from your own notice. Results vary by case.</p>
+  </div>
+</footer>
+
+<script>
+/* Header scroll state */
+var header = document.getElementById('site-header');
+window.addEventListener('scroll', function() {
+  header.classList.toggle('scrolled', window.scrollY > 56);
+}, { passive: true });
+
+/* Mobile menu */
+var burger = document.getElementById('burger-btn');
+var mobileMenu = document.getElementById('mobile-menu');
+burger.addEventListener('click', function() {
+  var open = mobileMenu.classList.toggle('open');
+  burger.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', open);
+});
+mobileMenu.querySelectorAll('a').forEach(function(a) {
+  a.addEventListener('click', function() {
+    mobileMenu.classList.remove('open');
+    burger.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+  });
+});
+</script>
+<script src="/owedify-consent-and-popup.js" defer></script>
+<script src="/owedify-accessibility.js" defer></script>
+</body>
+</html>

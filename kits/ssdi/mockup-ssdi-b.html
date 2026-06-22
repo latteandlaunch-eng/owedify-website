@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Owedify · SSDI mockup B</title>
+<style>
+  :root{ --accent:#3E6E9C; --accent7:#335B82; --accent50:#EEF3F8; --accent100:#DCE7F1; --ink:#1B2A3A; }
+  html,body{margin:0;background:transparent;font-family:'Hanken Grotesk',system-ui,sans-serif;}
+  .scaler{width:100%;overflow:hidden;}
+  .stage{width:1024px;transform-origin:top left;}
+  .panel{padding:20px 20px 8px;}
+  .devarea{position:relative;width:1024px;height:524px;}
+  .frame{position:absolute;}
+  .frame .vp{position:relative;overflow:hidden;background:#fff;}
+  .frame iframe{position:absolute;top:0;left:0;border:0;transform-origin:top left;}
+  /* app phone, left of center */
+  .phone-app{left:232px;bottom:8px;z-index:2;}
+  .phone-app .lid{background:#0E141C;border-radius:30px;padding:2.5px;box-shadow:0 40px 72px -30px rgba(20,32,44,.5);}
+  .phone-app .vp{width:236px;height:511px;border-radius:27.5px;}
+  .phone-app iframe{width:390px;height:844px;transform:scale(0.6051);}
+  /* ladder, right of center, vertically centered */
+  .ladder{position:absolute;left:540px;top:34px;width:300px;height:456px;display:flex;flex-direction:column-reverse;justify-content:space-between;}
+  .ladder .rail{position:absolute;left:24px;top:24px;bottom:24px;width:2px;background:var(--accent100);z-index:0;}
+  .rung{position:relative;display:flex;align-items:center;gap:16px;z-index:1;}
+  .rung .dot{width:50px;height:50px;border-radius:14px;flex:0 0 auto;background:#fff;border:1.5px solid var(--accent100);color:var(--accent7);display:flex;align-items:center;justify-content:center;font-family:'Schibsted Grotesk',sans-serif;font-weight:800;font-size:19px;}
+  .rung .lab b{display:block;font-family:'Schibsted Grotesk',sans-serif;font-weight:800;font-size:17px;letter-spacing:-0.01em;color:var(--ink);}
+  .rung .lab span{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#7A8896;}
+  .rung.key .dot{width:56px;height:56px;background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 16px 28px -12px rgba(62,110,156,.6);}
+  .rung.key{margin-left:-3px;}
+  .rung.key .lab b{font-size:18px;}
+  .rung.key .lab .win{color:var(--accent7);font-weight:700;font-family:'Hanken Grotesk',sans-serif;}
+  .strip{display:flex;align-items:center;justify-content:center;margin-top:24px;}
+  .strip span{display:inline-flex;align-items:center;gap:9px;font-size:15.5px;font-weight:600;color:#26303A;padding:0 22px;}
+  .strip span svg{width:18px;height:18px;color:var(--accent);}
+  .strip i.sep{width:1px;height:16px;background:#CBD4DC;}
+</style>
+</head>
+<body>
+  <div class="scaler" id="scaler">
+    <div class="stage" id="stage">
+      <div class="panel">
+        <div class="devarea">
+          <div class="frame phone-app"><div class="lid"><div class="vp"><iframe src="ssdi-phone-ad.html" title="Owedify SSDI app" scrolling="no"></iframe></div></div></div>
+          <div class="ladder">
+            <div class="rail"></div>
+            <div class="rung"><div class="dot">1</div><div class="lab"><b>Reconsideration</b><span>SSA-561</span></div></div>
+            <div class="rung key"><div class="dot">2</div><div class="lab"><b>Hearing before a judge</b><span class="win">where most people are approved</span></div></div>
+            <div class="rung"><div class="dot">3</div><div class="lab"><b>Appeals Council</b><span>HA-520</span></div></div>
+            <div class="rung"><div class="dot">4</div><div class="lab"><b>Federal court</b><span>the final level</span></div></div>
+          </div>
+        </div>
+        <div class="strip">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg> The live app</span>
+          <i class="sep"></i>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10M6 20V4M18 20v-6"/></svg> Four levels of appeal</span>
+        </div>
+      </div>
+    </div>
+  </div>
+<script>
+  function fit(){var s=document.getElementById('scaler'),st=document.getElementById('stage');var sc=s.clientWidth/1024;st.style.transform='scale('+sc+')';s.style.height=(st.offsetHeight*sc)+'px';}
+  fit();window.addEventListener('resize',fit);setTimeout(fit,400);
+</script>
+</body>
+</html>

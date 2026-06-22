@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Owedify · Debt app showcase</title>
+<style>
+  :root{ --accent:#8A5A74; --accent7:#6E4A5C; --accent50:#F6EEF2; --accent100:#EADCE3; --ink:#1B2A3A; }
+  html,body{margin:0;background:transparent;font-family:'Hanken Grotesk',system-ui,sans-serif;}
+  .scaler{width:100%;overflow:hidden;}
+  .stage{width:1024px;transform-origin:top left;}
+  .panel{padding:20px 20px 8px;}
+  .devarea{position:relative;width:1024px;height:524px;}
+  .frame{position:absolute;}
+  .frame .vp{position:relative;overflow:hidden;background:#fff;}
+  .frame iframe{position:absolute;top:0;left:0;border:0;}
+  /* app phone, left of center */
+  .phone-app{left:214px;bottom:8px;z-index:2;}
+  .phone-app .lid{background:#0E141C;border-radius:30px;padding:2.5px;box-shadow:0 40px 72px -30px rgba(20,32,44,.5);}
+  .phone-app .vp{width:236px;height:511px;border-radius:27.5px;background:#1B2A3A;}
+  .phone-app iframe{width:236px;height:511px;}
+
+  /* the proof graphic, right of center */
+  .proof{position:absolute;left:548px;top:50px;width:344px;}
+  .proof .eb{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#A398A0;}
+  .proof h3{font-family:'Schibsted Grotesk',sans-serif;font-weight:800;font-size:27px;letter-spacing:-0.02em;line-height:1.08;color:var(--ink);margin:12px 0 0;}
+  .proof .steps{margin-top:24px;display:flex;flex-direction:column;align-items:center;gap:10px;}
+  .proof .scard{width:100%;background:#fff;border:1px solid var(--accent100);border-radius:14px;padding:16px 18px;display:flex;gap:13px;align-items:flex-start;box-shadow:0 18px 34px -24px rgba(20,32,44,.25);}
+  .proof .scard .ic{width:36px;height:36px;border-radius:10px;background:var(--accent50);color:var(--accent);display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+  .proof .scard .ic svg{width:19px;height:19px;}
+  .proof .scard b{display:block;font-family:'Schibsted Grotesk',sans-serif;font-weight:800;font-size:16px;color:var(--ink);letter-spacing:-0.01em;}
+  .proof .scard span{display:block;font-size:13.5px;line-height:1.5;color:#5C6670;margin-top:3px;}
+  .proof .scard.lead{background:var(--accent);border-color:var(--accent);}
+  .proof .scard.lead .ic{background:rgba(255,255,255,.2);color:#fff;}
+  .proof .scard.lead b{color:#fff;}
+  .proof .scard.lead span{color:rgba(255,255,255,.88);}
+  .proof .down{color:var(--accent);display:flex;align-items:center;justify-content:center;}
+  .proof .down svg{width:22px;height:22px;}
+  .proof .note{margin-top:18px;display:flex;gap:10px;align-items:flex-start;background:var(--accent50);border:1px solid var(--accent100);border-radius:14px;padding:14px 16px;}
+  .proof .note svg{width:17px;height:17px;color:var(--accent);flex:0 0 auto;margin-top:1px;}
+  .proof .note span{font-size:13.5px;line-height:1.5;color:var(--accent7);font-weight:600;}
+
+  .strip{display:flex;align-items:center;justify-content:center;margin-top:24px;}
+  .strip span{display:inline-flex;align-items:center;gap:9px;font-size:15.5px;font-weight:600;color:#26303A;padding:0 22px;}
+  .strip span svg{width:18px;height:18px;color:var(--accent);}
+  .strip i.sep{width:1px;height:16px;background:#D6CBD1;}
+</style>
+</head>
+<body>
+  <div class="scaler" id="scaler">
+    <div class="stage" id="stage">
+      <div class="panel">
+        <div class="devarea">
+          <div class="frame phone-app"><div class="lid"><div class="vp"><iframe src="debt-phone-ad.html" title="Owedify Debt app" scrolling="no"></iframe></div></div></div>
+          <div class="proof">
+            <div class="eb">Your right under the law</div>
+            <h3>Make them prove it before you pay.</h3>
+            <div class="steps">
+              <div class="scard lead">
+                <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H5.2L4 17.2z"/><path d="M8 9h8M8 12h5"/></svg></span>
+                <div><b>You send one letter, within 30 days</b><span>The kit drafts a validation letter from your answers. You print or email it and send it yourself.</span></div>
+              </div>
+              <div class="down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div>
+              <div class="scard">
+                <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="16" rx="2"/><path d="M9 9h6M9 13h4"/></svg></span>
+                <div><b>Collection pauses</b><span>Until the collector proves the debt is valid, they cannot keep collecting on it.</span></div>
+              </div>
+            </div>
+            <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><span>The kit also checks if the debt is too old to sue over, and warns you before a small payment restarts that clock.</span></div>
+          </div>
+        </div>
+        <div class="strip">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg> The kit on your phone</span>
+          <i class="sep"></i>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Demand proof before you pay</span>
+        </div>
+      </div>
+    </div>
+  </div>
+<script>
+  var SCALER=document.getElementById('scaler'), STAGE=document.getElementById('stage');
+  function fit(){var sc=SCALER.clientWidth/1024;STAGE.style.transform='scale('+sc+')';SCALER.style.height=(STAGE.offsetHeight*sc)+'px';}
+  fit();window.addEventListener('resize',fit);setTimeout(fit,400);
+</script>
+</body>
+</html>

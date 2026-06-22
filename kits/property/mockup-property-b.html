@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Owedify · Property mockup B</title>
+<style>
+  :root{ --accent:#847058; --accent7:#6A5945; --accent50:#F6F2EB; --accent100:#ECE6DC; --accent200:#DCD0BE; --ink:#1F2A35; }
+  html,body{margin:0;background:transparent;font-family:'Hanken Grotesk',system-ui,sans-serif;}
+  .scaler{width:100%;overflow:hidden;}
+  .stage{width:1024px;transform-origin:top left;}
+  .panel{padding:20px 20px 8px;}
+  .devarea{position:relative;width:1024px;height:524px;}
+  .frame{position:absolute;}
+  .frame .vp{position:relative;overflow:hidden;background:#fff;}
+  .frame iframe{position:absolute;top:0;left:0;border:0;transform-origin:top left;}
+  /* app phone, comps, BEHIND, straight, peeking to the LEFT */
+  .phone-app{left:150px;bottom:48px;z-index:1;}
+  .phone-app .lid{background:#0E141C;border-radius:28px;padding:2.5px;box-shadow:0 30px 54px -28px rgba(31,42,53,.42);}
+  .phone-app .vp{width:212px;height:459px;border-radius:25.5px;}
+  .phone-app iframe{width:390px;height:844px;transform:scale(0.5436);}
+  /* ad phone (the video), FRONT, prominent, straight */
+  .phone-ad{left:250px;bottom:6px;z-index:3;}
+  .phone-ad .lid{background:#0E141C;border-radius:30px;padding:2.5px;box-shadow:0 40px 74px -30px rgba(31,42,53,.5);}
+  .phone-ad .vp{width:240px;height:520px;border-radius:27.5px;background:#1B2A3A;}
+  .phone-ad iframe{width:240px;height:520px;}
+  /* the gap card, right of center, vertically centered */
+  .gap{position:absolute;left:560px;top:120px;width:300px;z-index:2;background:#fff;border:1px solid #E8E2D6;border-radius:20px;box-shadow:0 34px 70px -34px rgba(31,42,53,.4);padding:28px 28px 26px;}
+  .gap .gl{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#9A9082;margin-bottom:18px;}
+  .gap .line{display:flex;align-items:center;justify-content:space-between;}
+  .gap .line .k{font-size:14px;color:#7C7468;}
+  .gap .line .v{font-family:'Schibsted Grotesk',sans-serif;font-weight:800;font-size:26px;letter-spacing:-0.02em;}
+  .gap .line.you .v{color:var(--ink);}
+  .gap .line.comp .v{color:var(--accent7);}
+  .gap .arrow{display:flex;justify-content:center;margin:11px 0;}
+  .gap .arrow svg{width:22px;height:22px;color:var(--accent200);}
+  .gap .badge{margin-top:20px;text-align:center;background:var(--accent);color:#fff;border-radius:13px;padding:14px;font-family:'Schibsted Grotesk',sans-serif;font-weight:800;font-size:19px;letter-spacing:-0.01em;}
+  .gap .badge small{display:block;font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:12px;opacity:.82;margin-top:3px;letter-spacing:0;}
+  .strip{display:flex;align-items:center;justify-content:center;margin-top:24px;}
+  .strip span{display:inline-flex;align-items:center;gap:9px;font-size:15.5px;font-weight:600;color:#26303A;padding:0 22px;}
+  .strip span svg{width:18px;height:18px;color:var(--accent);}
+  .strip i.sep{width:1px;height:16px;background:#D6CDBE;}
+</style>
+</head>
+<body>
+  <div class="scaler" id="scaler">
+    <div class="stage" id="stage">
+      <div class="panel">
+        <div class="devarea">
+          <div class="frame phone-ad"><div class="lid"><div class="vp"><iframe src="property-phone-ad.html" title="Owedify Property ad" scrolling="no"></iframe></div></div></div>
+          <div class="frame phone-app"><div class="lid"><div class="vp"><iframe src="property-phone-ad.html" title="Owedify Property comparables" scrolling="no"></iframe></div></div></div>
+          <div class="gap">
+            <div class="gl">Your value vs the block</div>
+            <div class="line you"><span class="k">Your assessment</span><span class="v">$340,000</span></div>
+            <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></div>
+            <div class="line comp"><span class="k">Comparable value</span><span class="v">$298,000</span></div>
+            <div class="badge">$42,000 over value<small>the basis of your appeal</small></div>
+          </div>
+        </div>
+        <div class="strip">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg> The kit on your phone</span>
+          <i class="sep"></i>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg> The gap it finds</span>
+        </div>
+      </div>
+    </div>
+  </div>
+<script>
+  function fit(){var s=document.getElementById('scaler'),st=document.getElementById('stage');var sc=s.clientWidth/1024;st.style.transform='scale('+sc+')';s.style.height=(st.offsetHeight*sc)+'px';}
+  fit();window.addEventListener('resize',fit);setTimeout(fit,400);
+</script>
+</body>
+</html>

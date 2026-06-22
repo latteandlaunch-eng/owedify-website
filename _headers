@@ -1,0 +1,7 @@
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://connect.facebook.net https://s.pinimg.com https://analytics.tiktok.com https://app.lemonsqueezy.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.facebook.com https://*.pinimg.com https://ct.pinterest.com https://www.google-analytics.com https://www.googletagmanager.com https://analytics.tiktok.com; font-src 'self' data:; connect-src 'self' https://assets.mailerlite.com https://www.google-analytics.com https://*.facebook.com https://ct.pinterest.com https://analytics.tiktok.com; frame-src 'self' https://*.lemonsqueezy.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://*.lemonsqueezy.com https://assets.mailerlite.com

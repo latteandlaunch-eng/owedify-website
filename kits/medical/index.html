@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en" data-kit="medical">
+<head>
+<meta name="p:domain_verify" content="6a511fc13104c3bea9ccd2ef9c337af4"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Medical Bill Appeal Kit · Owedify</title>
+<link rel="stylesheet" href="/styles.css">
+<style>
+  :root{ --teal:var(--accent-600); --ink:#172430; --paper:#FFFFFF; --soft:#F6F8FA; }
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  body{background:var(--paper);color:var(--text-body);font-family:var(--font-sans);font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  ::selection{background:var(--accent-200);}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+  h1,h2,h3{color:var(--text-strong);}
+  .disp{font-family:var(--font-display);font-weight:800;letter-spacing:-0.022em;line-height:1.1;text-wrap:balance;}
+  .eyebrow{font-family:var(--font-mono);font-weight:500;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);}
+  p{margin:0;}
+
+  .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--border-subtle);}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:24px;}
+  .brand{display:flex;align-items:center;gap:9px;font-family:var(--font-display);font-weight:800;font-size:17px;letter-spacing:-0.02em;color:var(--ink);}
+  .brand small{font-weight:500;font-size:12.5px;color:var(--text-muted);font-family:var(--font-sans);}
+  .brand .shield{width:23px;height:23px;}
+  .nav .links{display:flex;gap:26px;align-items:center;margin-left:auto;}
+  .nav .links a{font-size:14px;font-weight:600;color:var(--text-muted);transition:color .15s;}
+  .nav .links a:hover{color:var(--text-strong);}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:none;cursor:pointer;font-family:var(--font-sans);font-weight:700;border-radius:10px;white-space:nowrap;transition:transform .12s cubic-bezier(.2,0,0,1),background .15s;}
+  .btn:active{transform:scale(.97);}
+  .btn-accent{background:var(--teal);color:#fff;font-size:14.5px;padding:11px 19px;box-shadow:0 1px 2px rgba(23,36,48,.16);}
+  .btn-accent:hover{background:var(--accent-700);}
+  .btn-lg{font-size:16px;padding:15px 28px;border-radius:12px;}
+
+  .device-phone{position:relative;background:#0B131B;border-radius:38px;padding:8px;box-shadow:0 30px 64px -32px rgba(20,32,44,.5),0 0 0 1px rgba(0,0,0,.05);}
+  .device-phone .app-slot,.device-phone .app-viewport{border-radius:30px;overflow:hidden;display:block;}
+
+  /* hero */
+  .hero{padding:56px 0 70px;border-bottom:1px solid var(--border-subtle);}
+  .hero .grid{display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:center;}
+  .hero h1{font-size:clamp(36px,4.4vw,52px);margin:14px 0 0;}
+  .hero .deck{font-size:18.5px;line-height:1.6;color:var(--text-muted);margin:20px 0 0;max-width:60ch;}
+  .hero ul{list-style:none;margin:24px 0 0;padding:0;display:flex;flex-direction:column;gap:11px;}
+  .hero li{display:flex;gap:11px;align-items:flex-start;font-size:15.5px;line-height:1.45;color:var(--text-body);}
+  .hero li .ck{width:21px;height:21px;border-radius:50%;background:var(--accent-50);color:var(--accent-700);display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:1px;}
+  .hero li .ck .lucide{width:13px;height:13px;}
+  .hero .buy{display:flex;align-items:center;gap:18px;margin-top:30px;flex-wrap:wrap;}
+  .hero .price{font-size:14.5px;color:var(--text-muted);}
+  .hero .price b{color:var(--text-strong);font-weight:800;font-family:var(--font-display);font-size:16px;}
+  .hero .art{display:flex;justify-content:center;}
+  .hero .phonescreen{width:238px;max-width:100%;aspect-ratio:380/800;border-radius:30px;overflow:hidden;background:#F8FAFC;display:block;}
+  .hero .phonescreen iframe{width:100%;height:100%;border:0;display:block;}
+
+  /* situational band */
+  .who{background:var(--soft);border-bottom:1px solid var(--border-subtle);padding:64px 0;}
+  .who .head{max-width:60ch;margin-bottom:34px;}
+  .who h2{font-size:clamp(24px,2.8vw,30px);}
+  .who .head p{font-size:17px;line-height:1.6;color:var(--text-muted);margin-top:12px;}
+  .who .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .wcard{background:#fff;border:1px solid var(--border-subtle);border-radius:14px;padding:22px;}
+  .wcard .ic{width:40px;height:40px;border-radius:10px;background:var(--accent-50);display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+  .wcard .ic .lucide{width:21px;height:21px;color:var(--teal);}
+  .wcard h3{font-family:var(--font-display);font-weight:700;font-size:17px;letter-spacing:-0.01em;margin:0 0 6px;}
+  .wcard p{font-size:14.5px;line-height:1.55;color:var(--text-muted);}
+
+  /* feature sections */
+  .feat{padding:84px 0;border-bottom:1px solid var(--border-subtle);}
+  .feat .grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .feat .grid.flip .copy{order:2;}
+  .feat h2{font-size:clamp(25px,3vw,33px);margin:12px 0 0;}
+  .feat .deck{font-size:18px;line-height:1.5;color:var(--text-strong);font-weight:600;margin:14px 0 0;}
+  .feat .copy p.body{font-size:16px;line-height:1.68;color:var(--text-muted);margin:14px 0 0;max-width:50ch;}
+  .feat .copy p.body + p.body{margin-top:13px;}
+  .feat .art{display:flex;justify-content:center;}
+
+  /* recreated UI: deadline result */
+  .uicard{width:330px;max-width:100%;background:#fff;border:1px solid var(--border-subtle);border-radius:18px;box-shadow:0 22px 50px -30px rgba(20,32,44,.4);padding:22px;}
+  .uicard .ut{font-family:var(--font-display);font-weight:800;font-size:17px;color:var(--text-strong);margin-bottom:14px;}
+  .dboxes{display:flex;gap:8px;margin-bottom:16px;}
+  .dbox{flex:1;text-align:center;border:1.5px solid var(--border);border-radius:10px;padding:10px 4px;}
+  .dbox .v{font-family:var(--font-display);font-weight:800;font-size:20px;color:var(--text-strong);}
+  .dbox .l{font-size:10.5px;color:var(--text-muted);margin-top:3px;}
+  .dnote{display:flex;gap:10px;background:var(--accent-50);border-radius:12px;padding:13px 14px;}
+  .dnote .lucide{width:18px;height:18px;color:var(--accent-700);flex:0 0 auto;margin-top:1px;}
+  .dnote b{color:var(--accent-800);font-weight:700;}
+  .dnote span{font-size:13.5px;line-height:1.5;color:var(--accent-800);}
+  .dbtn{margin-top:14px;display:flex;align-items:center;justify-content:center;gap:8px;border:1.5px solid var(--accent-600);color:var(--accent-800);border-radius:11px;padding:11px;font-weight:700;font-size:14px;}
+  .dbtn .lucide{width:16px;height:16px;}
+
+  /* recreated UI: paper appeal letter */
+  .paper{width:340px;max-width:100%;background:#fff;border:1px solid var(--border);border-top:3px solid var(--ink);border-radius:3px 3px 12px 12px;box-shadow:0 24px 54px -30px rgba(20,32,44,.42);padding:22px 24px;}
+  .paper .ph{font-family:var(--font-display);font-weight:800;font-size:15px;color:var(--text-strong);margin-bottom:14px;}
+  .paper pre{font-family:var(--font-mono);font-size:11.5px;line-height:1.72;color:var(--text-body);white-space:pre-wrap;margin:0;}
+  .paper .pbtns{display:flex;gap:8px;margin-top:16px;}
+  .paper .pbtns span{font-size:12px;font-weight:700;color:var(--text-muted);border:1px solid var(--border);border-radius:8px;padding:7px 12px;display:inline-flex;gap:5px;align-items:center;}
+  .paper .pbtns .lucide{width:13px;height:13px;}
+
+  /* recreated UI: call scripts (teaser, no verbatim copy) */
+  .scriptcard{width:340px;max-width:100%;background:#fff;border:1px solid var(--border-subtle);border-radius:18px;box-shadow:0 22px 50px -30px rgba(20,32,44,.4);padding:22px;}
+  .scriptcard .sh{display:flex;align-items:center;gap:9px;font-family:var(--font-display);font-weight:800;font-size:16px;color:var(--text-strong);margin-bottom:16px;}
+  .scriptcard .sh .ph{width:30px;height:30px;border-radius:9px;background:var(--accent-50);display:flex;align-items:center;justify-content:center;}
+  .scriptcard .sh .ph .lucide{width:16px;height:16px;color:var(--teal);}
+  .scriptcard .srow{display:flex;align-items:center;gap:12px;padding:13px 0;border-top:1px solid var(--border-subtle);}
+  .scriptcard .srow .ic{width:34px;height:34px;border-radius:9px;flex:0 0 auto;background:var(--soft);display:flex;align-items:center;justify-content:center;}
+  .scriptcard .srow .ic .lucide{width:17px;height:17px;color:var(--text-muted);}
+  .scriptcard .srow .nm{font-size:14px;font-weight:700;color:var(--text-strong);}
+  .scriptcard .srow .mt{font-size:12px;color:var(--text-subtle);margin-top:1px;}
+  .scriptcard .srow .chev{margin-left:auto;color:var(--text-subtle);}
+  .scriptcard .sfoot{display:flex;align-items:center;gap:7px;margin-top:14px;font-size:12px;color:var(--text-subtle);}
+  .scriptcard .sfoot .lucide{width:13px;height:13px;color:var(--teal);}
+
+  /* before / after band */
+  .ba-sec{padding:84px 0;border-bottom:1px solid var(--border-subtle);}
+  .ba-sec .head{max-width:58ch;margin-bottom:36px;}
+  .ba-sec h2{font-size:clamp(25px,3vw,33px);margin-top:12px;}
+  .ba-sec .deck{font-size:18px;font-weight:600;color:var(--text-strong);margin:14px 0 0;}
+  .ba-sec .head p.body{font-size:16px;line-height:1.66;color:var(--text-muted);margin-top:12px;max-width:62ch;}
+  .ba{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  .bacol{background:#fff;border:1px solid var(--border-subtle);border-radius:16px;padding:24px;}
+  .bacol.after{border-color:var(--accent-200);background:var(--accent-50);}
+  .bahd{display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-subtle);margin-bottom:14px;}
+  .bahd .lucide{width:15px;height:15px;}
+  .bacol.after .bahd{color:var(--accent-700);}
+  .bli{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:14.5px;padding:11px 0;border-top:1px solid var(--border-subtle);color:var(--text-body);}
+  .bli:first-of-type{border-top:none;}
+  .bli .amt{font-family:var(--font-mono);color:var(--text-muted);font-size:13.5px;}
+  .bli.flag{color:var(--text-strong);font-weight:600;}
+  .btag{display:inline-flex;align-items:center;font-size:11px;font-weight:700;color:#fff;background:var(--accent-600);border-radius:6px;padding:3px 8px;}
+  .banote{margin-top:14px;padding-top:14px;border-top:1px solid var(--accent-200);font-size:14px;font-weight:700;color:var(--accent-800);display:flex;align-items:center;gap:8px;}
+  .banote .lucide{width:16px;height:16px;}
+
+  /* recreated UI: tracker timeline */
+  .tlcard{width:340px;max-width:100%;background:#fff;border:1px solid var(--border-subtle);border-radius:18px;box-shadow:0 22px 50px -30px rgba(20,32,44,.4);padding:24px;}
+  .tlcard .th{font-family:var(--font-display);font-weight:800;font-size:16px;color:var(--text-strong);margin-bottom:18px;}
+  .trow{display:flex;align-items:stretch;gap:14px;}
+  .trow .dotline{display:flex;flex-direction:column;align-items:center;}
+  .trow .d{width:18px;height:18px;border-radius:50%;background:var(--cloud-300);display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+  .trow.done .d{background:var(--accent-600);}
+  .trow.now .d{background:var(--gold-600);}
+  .trow .d .lucide{width:11px;height:11px;color:#fff;}
+  .trow .line{width:2px;flex:1;min-height:16px;background:var(--cloud-200);}
+  .trow .tt{display:flex;justify-content:space-between;align-items:flex-start;flex:1;gap:10px;padding-bottom:16px;}
+  .trow .tt b{font-size:14.5px;font-weight:700;color:var(--text-strong);}
+  .trow .tt span{font-size:12.5px;color:var(--text-muted);}
+  .trow.todo .tt b{color:var(--text-muted);font-weight:600;}
+
+  /* stats band */
+  .stats{border-bottom:1px solid var(--border-subtle);background:#fff;}
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;padding:38px 32px;}
+  .stat .n{font-family:var(--font-display);font-weight:800;font-size:34px;letter-spacing:-0.025em;color:var(--text-strong);line-height:1;}
+  .stat .n span{color:var(--teal);font-size:24px;}
+  .stat p{font-size:13.5px;line-height:1.5;color:var(--text-muted);margin-top:8px;}
+
+  /* why owedify */
+  .why{padding:84px 0;border-bottom:1px solid var(--border-subtle);background:var(--soft);}
+  .why .head{max-width:56ch;margin-bottom:34px;}
+  .why h2{font-size:clamp(25px,3vw,33px);}
+  .why .head p{font-size:17px;line-height:1.6;color:var(--text-muted);margin-top:12px;}
+  .why .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+  .wytile{background:#fff;border:1px solid var(--border-subtle);border-radius:14px;padding:24px;display:flex;gap:16px;align-items:flex-start;}
+  .wytile .ic{width:42px;height:42px;border-radius:11px;background:var(--accent-50);display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+  .wytile .ic .lucide{width:21px;height:21px;color:var(--teal);}
+  .wytile h3{font-family:var(--font-display);font-weight:700;font-size:18px;letter-spacing:-0.01em;margin:0 0 6px;}
+  .wytile p{font-size:14.5px;line-height:1.58;color:var(--text-muted);}
+
+  /* what you get */
+  .get{padding:84px 0;border-bottom:1px solid var(--border-subtle);}
+  .get .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:54px;align-items:center;}
+  .get h2{font-size:clamp(25px,3vw,33px);}
+  .get .deck{font-size:17px;line-height:1.6;color:var(--text-muted);margin:14px 0 0;max-width:42ch;}
+  .glist{display:grid;grid-template-columns:1fr 1fr;gap:16px 26px;}
+  .gitem{display:flex;gap:12px;align-items:flex-start;}
+  .gitem>div{display:flex;flex-direction:column;min-width:0;}
+  .gitem .ic{width:38px;height:38px;border-radius:10px;background:var(--soft);display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+  .gitem .ic .lucide{width:19px;height:19px;color:var(--teal);}
+  .gitem b{display:block;font-size:15px;color:var(--text-strong);font-weight:700;line-height:1.3;}
+  .gitem span{font-size:13.5px;line-height:1.5;color:var(--text-muted);}
+
+  /* reviews (no avatars) */
+  .reviews{padding:84px 0;border-bottom:1px solid var(--border-subtle);}
+  .reviews .head{margin-bottom:34px;}
+  .reviews h2{font-size:clamp(24px,2.8vw,30px);margin-top:10px;}
+  .rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .rcard{background:#fff;border:1px solid var(--border-subtle);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px;}
+  .rcard .stars{color:var(--teal);font-size:14px;letter-spacing:2px;}
+  .rcard .q{font-size:15px;line-height:1.58;color:var(--text-body);}
+  .rcard .who{margin-top:auto;padding:14px 0 0;border-top:1px solid var(--border-subtle);border-bottom:none;background:transparent;}
+  .rcard .nm{font-weight:700;font-size:14px;color:var(--text-strong);margin-top:12px;}
+  .rcard .lc{font-size:12.5px;color:var(--text-subtle);margin-top:2px;}
+
+  /* faq */
+  .faq{padding:84px 0;border-bottom:1px solid var(--border-subtle);}
+  .faq .grid{display:grid;grid-template-columns:.65fr 1.35fr;gap:48px;align-items:center;}
+  .tip{margin-top:22px;background:var(--accent-50);border:1px solid var(--accent-200);border-radius:16px;padding:20px 22px;max-width:340px;}
+  .tip .tiph{display:flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:800;font-size:14px;color:var(--accent-700);margin-bottom:9px;}
+  .tip .tiph .lucide{width:17px;height:17px;color:var(--teal);}
+  .tip p{font-size:14px;line-height:1.6;color:var(--text-muted);margin:0;}
+  .faq h2{font-size:clamp(24px,2.8vw,30px);margin-top:10px;}
+  .faq .faqp{font-size:15px;line-height:1.62;color:var(--text-muted);margin-top:14px;max-width:34ch;}
+  .faq .list{border-top:1px solid var(--border-subtle);}
+  .qa{border-bottom:1px solid var(--border-subtle);}
+  .qa button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;text-align:left;background:none;border:none;cursor:pointer;padding:20px 2px;font-family:var(--font-display);font-weight:700;font-size:17px;color:var(--text-strong);}
+  .qa .a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+  .qa .a p{margin:0 2px 20px;font-size:15px;line-height:1.62;color:var(--text-muted);max-width:64ch;}
+  .qa .chev{transition:transform .3s;color:var(--teal);flex:0 0 auto;}
+  .qa.open .chev{transform:rotate(180deg);}
+
+  .cta{text-align:center;padding:92px 0;background:var(--ink);color:#fff;}
+  .cta h2{font-size:clamp(28px,3.6vw,42px);max-width:20ch;margin:0 auto;color:#fff;}
+  .cta .deck{font-size:17px;color:rgba(255,255,255,.72);margin:16px auto 0;max-width:46ch;line-height:1.55;}
+  .cta .price{margin-top:18px;color:rgba(255,255,255,.6);font-size:14.5px;}
+  .cta .price b{color:#fff;font-weight:800;}
+  .cta .buy{margin-top:26px;}
+  footer{padding:40px 0 56px;}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center;}
+  footer .legal{font-size:12.5px;line-height:1.6;color:var(--text-subtle);max-width:64ch;}
+  footer a{color:var(--text-muted);text-decoration:underline;}
+
+  /* inline CTA band */
+  .ctaband{padding:54px 0;border-bottom:1px solid var(--border-subtle);}
+  .ctaband .inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;background:var(--soft);border:1px solid var(--border-subtle);border-radius:18px;padding:26px 30px;}
+  .ctaband .t{font-family:var(--font-display);font-weight:800;font-size:clamp(19px,2.2vw,24px);letter-spacing:-0.02em;color:var(--text-strong);}
+  .ctaband .s{font-size:14px;color:var(--text-muted);margin-top:4px;}
+  .ctaband .act{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  .ctaband .act .price{font-size:13.5px;color:var(--text-muted);}
+  .ctaband .act .price b{color:var(--text-strong);font-weight:800;}
+
+  /* opt-in / lead capture */
+  .optin{padding:72px 0;border-bottom:1px solid var(--border-subtle);background:var(--soft);}
+  .optin-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;background:#fff;border:1px solid var(--border-subtle);border-radius:20px;padding:40px 44px;box-shadow:0 22px 50px -34px rgba(20,32,44,.4);}
+  .optin-copy h2{font-size:clamp(23px,2.6vw,30px);margin:12px 0 0;}
+  .optin-copy p{font-size:15.5px;line-height:1.6;color:var(--text-muted);margin-top:12px;max-width:46ch;}
+  .optin-form{display:flex;flex-direction:column;gap:12px;}
+  .optin-form input{width:100%;box-sizing:border-box;background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:15px 16px;font-family:var(--font-sans);font-size:15.5px;color:var(--text-strong);outline:none;transition:border-color .15s;}
+  .optin-form input:focus{border-color:var(--accent-600);}
+  .optin-form input::placeholder{color:var(--text-subtle);}
+  .optin-form .btn{width:100%;}
+  .optin-fine{font-size:12.5px;color:var(--text-subtle);line-height:1.5;}
+  .optin-done{display:none;align-items:center;gap:10px;background:var(--accent-50);border:1px solid var(--accent-200);border-radius:12px;padding:16px 18px;font-size:14.5px;font-weight:600;color:var(--accent-800);}
+  .optin-done .lucide{width:18px;height:18px;color:var(--accent-700);flex:0 0 auto;}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+  @media (max-width:880px){ .optin-inner{grid-template-columns:1fr;gap:24px;padding:30px 26px;} }
+
+  .reveal.in{animation:revealUp .7s cubic-bezier(.2,0,0,1) both;}
+  @keyframes revealUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:none;}}
+  @media (prefers-reduced-motion: reduce){ .reveal.in{animation:none;} }
+
+  @media (max-width:880px){
+    .nav .links{display:none;}
+    .hero .grid,.feat .grid,.get .grid,.faq .grid{grid-template-columns:1fr;gap:36px;}
+    .feat .grid.flip .copy{order:0;}
+    .who .grid,.rgrid,.glist,.ba{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><svg class="shield" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 3.5 L40 9 V23.5 C40 33.8 33.2 40.8 24 44 C14.8 40.8 8 33.8 8 23.5 V9 Z" fill="#3C7E72"/><path d="M16.5 24 l5 5 l10 -12.5" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Owedify <small>· Medical bills</small></a>
+    <div class="links">
+      <a href="#how">How it works</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a class="btn btn-accent" href="https://owedify.lemonsqueezy.com/checkout/buy/fc81d075-bb87-45b8-95aa-8c2ca024f0f8">Get the kit · $29</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="grid">
+      <div class="copy">
+        <div class="eyebrow">Medical Bill Appeal Kit</div>
+        <h1 class="disp">Unexpected medical bill? Fight back.</h1>
+        <p class="deck">Hospital bills and insurance denials are incorrect more often than people realize. Owedify is an interactive kit that does the hard parts with you, from your phone, at your kitchen table.</p>
+        <ul>
+          <li><span class="ck"><i class="lucide" data-lucide="check"></i></span> Calculates your appeal deadline from the date on your notice and adds it to your calendar</li>
+          <li><span class="ck"><i class="lucide" data-lucide="check"></i></span> Drafts your dispute, appeal, and negotiation letters from a few answers</li>
+          <li><span class="ck"><i class="lucide" data-lucide="check"></i></span> Gives you word-for-word scripts and keeps every call and document in one place</li>
+        </ul>
+        <div class="buy">
+          <a class="btn btn-accent btn-lg" href="https://owedify.lemonsqueezy.com/checkout/buy/fc81d075-bb87-45b8-95aa-8c2ca024f0f8">Get the kit</a>
+          <div class="price"><b>$29.</b> One time purchase, yours forever.</div>
+        </div>
+      </div>
+      <div class="art">
+        <div class="device-phone"><div class="phonescreen"><iframe src="medical-phone-demo.html" title="Owedify Medical Bill Appeal Kit, app demo" scrolling="no"></iframe></div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="stats">
+  <div class="wrap">
+    <div class="stat"><div class="n">180 <span>days</span></div><p>The usual federal window to appeal a denial. Most people never use it.</p></div>
+    <div class="stat"><div class="n">5 <span>steps</span></div><p>From a confusing bill to a filed, tracked appeal.</p></div>
+    <div class="stat"><div class="n">100% <span>private</span></div><p>No account and no cloud. Nothing you type is ever uploaded.</p></div>
+    <div class="stat"><div class="n">$29</div><p>One time. No subscription and no account, yours forever.</p></div>
+  </div>
+</section>
+
+<section class="who">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Where most people are</div>
+      <h2 class="disp">If any of this sounds familiar, this kit is for you.</h2>
+      <p>You do not need to understand insurance law or hire anyone. You need the right steps, in the right order, before time runs out. </p>
+    </div>
+    <div class="grid">
+      <div class="wcard"><div class="ic"><i class="lucide" data-lucide="receipt-text"></i></div><h3>Your bill looks too high</h3><p>A hospital or provider bill was sent with a price that does not match what you expected, or what your insurer said you would owe.</p></div>
+      <div class="wcard"><div class="ic"><i class="lucide" data-lucide="file-x-2"></i></div><h3>You received a denial</h3><p>Your insurer denied a claim, called care "not medically necessary," or paid far less than it should have, and gave you a short window to respond.</p></div>
+      <div class="wcard"><div class="ic"><i class="lucide" data-lucide="hourglass"></i></div><h3>You are about to just pay it</h3><p>The amount is confusing and the deadline feels close, so paying it seems easier than fighting, which is exactly what they expect.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="ctaband">
+  <div class="wrap">
+    <div class="inner">
+      <div><div class="t">Ready to fight your bill?</div><div class="s">Everything you need in one download. Start in under a minute.</div></div>
+      <div class="act"><a class="btn btn-accent btn-lg" href="https://owedify.lemonsqueezy.com/checkout/buy/fc81d075-bb87-45b8-95aa-8c2ca024f0f8">Get the kit</a><div class="price"><b>$29.</b> One time, yours forever.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="feat" id="how">
+  <div class="wrap">
+    <div class="grid">
+      <div class="copy">
+        <div class="eyebrow">Step one · the deadline</div>
+        <h2 class="disp">Your appeal deadline, calculated to the day.</h2>
+        <p class="deck">Miss it and you can lose the right to appeal at all.</p>
+        <p class="body">Most plans give you up to 180 days to file a first appeal, but the date that governs your case is the one printed on your own denial notice. You enter that date, and the kit works out exactly how many days you have left and adds the due date to your phone's calendar with a reminder.</p>
+        <p class="body">Everything runs on your own device, so the reminder comes from your calendar, not from us. </p>
+      </div>
+      <div class="art">
+        <div class="uicard">
+          <div class="ut">Find your deadline</div>
+          <div class="dboxes">
+            <div class="dbox"><div class="v">03</div><div class="l">Month</div></div>
+            <div class="dbox"><div class="v">20</div><div class="l">Day</div></div>
+            <div class="dbox"><div class="v">2026</div><div class="l">Year</div></div>
+          </div>
+          <div class="dnote"><i class="lucide" data-lucide="calendar-check"></i><span><b>Your appeal must arrive by Sep 16, 2026.</b> That is 97 days from today. Add it to your calendar so your phone reminds you.</span></div>
+          <div class="dbtn"><i class="lucide" data-lucide="calendar-plus"></i> Add this deadline to my calendar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feat">
+  <div class="wrap">
+    <div class="grid flip">
+      <div class="copy">
+        <div class="eyebrow">Step two · the letters</div>
+        <h2 class="disp">A complete appeal letter, written from your answers.</h2>
+        <p class="deck">No blank page, no legal jargon to figure out.</p>
+        <p class="body">Answer a short set of questions: what was denied, why you believe it was wrong, and the amount, and the kit drafts your dispute, appeal, and negotiation letters in firm, specific language. It cites the rule that fits your situation, like the No Surprises Act for an out-of-network emergency bill, so your letter reads like it came from someone who knows the process.</p>
+        <p class="body">Every letter is yours to read, edit, copy, save, or print, and you send it yourself. </p>
+      </div>
+      <div class="art">
+        <div class="paper">
+          <div class="ph">Your appeal letter</div>
+          <pre>Maria Alvarez
+Jun 11, 2026
+
+Blue Shield PPO, Appeals Department
+
+Re: Appeal of denied claim
+Claim #: CLM-8841276
+Amount in dispute: $2,340
+
+To the Appeals Department:
+
+I am formally appealing the denial of the
+claim above. I am disputing an out-of-
+network charge protected under the federal
+No Surprises Act...</pre>
+          <div class="pbtns"><span><i class="lucide" data-lucide="copy"></i> Copy</span><span><i class="lucide" data-lucide="printer"></i> Print</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feat">
+  <div class="wrap">
+    <div class="grid">
+      <div class="copy">
+        <div class="eyebrow">Phone scripts included</div>
+        <h2 class="disp">Know exactly what to say before you call.</h2>
+        <p class="deck">A call with billing or insurance is where
+most mess up.</p>
+        <p class="body">The kit hands you word-for-word scripts for the billing department and for your insurer: what to ask for, how to request a fully itemized bill, and the things you should never agree to pay on the spot. You go in prepared instead of improvising.</p>
+        <p class="body">You note each call as you make it, the name, the date, and the reference number, and the kit keeps them together in one place. It builds into a clean, printable record you can hand to an outside review or your state insurance department if you escalate.</p>
+      </div>
+      <div class="art">
+        <div class="scriptcard">
+          <div class="sh"><span class="ph"><i class="lucide" data-lucide="phone"></i></span> Your call scripts</div>
+          <div class="srow"><span class="ic"><i class="lucide" data-lucide="receipt-text"></i></span><div><div class="nm">Provider billing department</div><div class="mt">Itemized bill &middot; charge review</div></div><i class="lucide chev" data-lucide="chevron-right"></i></div>
+          <div class="srow"><span class="ic"><i class="lucide" data-lucide="shield"></i></span><div><div class="nm">Your insurance company</div><div class="mt">Denial reason &middot; appeal request</div></div><i class="lucide chev" data-lucide="chevron-right"></i></div>
+          <div class="srow"><span class="ic"><i class="lucide" data-lucide="list-checks"></i></span><div><div class="nm">What not to agree to</div><div class="mt">Hold your ground on the call</div></div><i class="lucide chev" data-lucide="chevron-right"></i></div>
+          <div class="sfoot"><i class="lucide" data-lucide="check"></i> Word-for-word, ready to read aloud</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ba-sec">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Before you pay</div>
+      <h2 class="disp">Catch the errors you were never meant to notice.</h2>
+      <p class="deck">Most itemized bills have at least one.</p>
+      <p class="body">A guided review shows you how to read a hospital statement line by line and flags the most common and most expensive mistakes. Finding a single error is often the difference between paying a bill in full and cutting it down.</p>
+    </div>
+    <div class="ba">
+      <div class="bacol before">
+        <div class="bahd"><i class="lucide" data-lucide="file-text"></i> The bill as it arrives</div>
+        <div class="bli">Emergency facility fee <span class="amt">$1,240</span></div>
+        <div class="bli">Out-of-network physician <span class="amt">$680</span></div>
+        <div class="bli">Room supplies <span class="amt">$300</span></div>
+        <div class="bli">Room supplies <span class="amt">$120</span></div>
+        <div class="bli">Total <span class="amt">$2,340</span></div>
+      </div>
+      <div class="bacol after">
+        <div class="bahd"><i class="lucide" data-lucide="search-check"></i> After your review</div>
+        <div class="bli">Emergency facility fee <span class="amt">$1,240</span></div>
+        <div class="bli flag">Out-of-network physician <span class="btag">No Surprises Act</span></div>
+        <div class="bli">Room supplies <span class="amt">$300</span></div>
+        <div class="bli flag">Room supplies <span class="btag">Duplicate charge</span></div>
+        <div class="banote"><i class="lucide" data-lucide="flag"></i> Two line items to dispute before you pay</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feat">
+  <div class="wrap">
+    <div class="grid flip">
+      <div class="copy">
+        <div class="eyebrow">Until it is resolved</div>
+        <h2 class="disp">We keep your entire case on one screen.</h2>
+        <p class="deck">So nothing slips while you wait for an answer.</p>
+        <p class="body">The tracker shows you which step you are on and exactly what to do next. You answer each step yourself and tap to add the reminders to your own calendar, you stay in control of every date.</p>
+        <p class="body">There is no account and no cloud. Your information stays on your device and is never uploaded, so the only person who ever sees your case is you.</p>
+      </div>
+      <div class="art">
+        <div class="tlcard">
+          <div class="th">Track your appeal</div>
+          <div class="trow done"><div class="dotline"><span class="d"><i class="lucide" data-lucide="check"></i></span><span class="line"></span></div><div class="tt"><b>Denial received</b><span>Mar 20, 2026</span></div></div>
+          <div class="trow done"><div class="dotline"><span class="d"><i class="lucide" data-lucide="check"></i></span><span class="line"></span></div><div class="tt"><b>Appeal letter drafted</b><span>Done</span></div></div>
+          <div class="trow now"><div class="dotline"><span class="d"></span><span class="line"></span></div><div class="tt"><b>Appeal sent</b><span>Do next</span></div></div>
+          <div class="trow todo"><div class="dotline"><span class="d"></span></div><div class="tt"><b>Insurer decision</b><span>Pending</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ctaband">
+  <div class="wrap">
+    <div class="inner">
+      <div><div class="t">Catch what you were never meant to see.</div><div class="s">The deadline, the letters, the scripts, and the bill review, all in the kit.</div></div>
+      <div class="act"><a class="btn btn-accent btn-lg" href="https://owedify.lemonsqueezy.com/checkout/buy/fc81d075-bb87-45b8-95aa-8c2ca024f0f8">Get the kit</a><div class="price"><b>$29.</b> One time, yours forever.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Why Owedify</div>
+      <h2 class="disp">Built to do the parts people get stuck on.</h2>
+      <p>Plenty of "kits" are a folder of templates you still have to figure out. This one does the work that genuinely guides you: the dates, the wording, and knowing the next step.</p>
+    </div>
+    <div class="grid">
+      <div class="wytile"><span class="ic"><i class="lucide" data-lucide="app-window"></i></span><div><h3>A real app, not a PDF</h3><p>It calculates, drafts, and tracks. A static template cannot do any of that, and that is exactly where most people give up.</p></div></div>
+      <div class="wytile"><span class="ic"><i class="lucide" data-lucide="calculator"></i></span><div><h3>It does the math and the writing</h3><p>You are never left guessing a deadline or staring at a blank page. The kit produces the date and the letter from your answers.</p></div></div>
+      <div class="wytile"><span class="ic"><i class="lucide" data-lucide="shield-check"></i></span><div><h3>Completely private</h3><p>No account and no cloud. Your medical details never leave your device, and nothing is ever sold or shared.</p></div></div>
+      <div class="wytile"><span class="ic"><i class="lucide" data-lucide="badge-dollar-sign"></i></span><div><h3>One price, not a percentage</h3><p>No subscription and no cut of what you save. You pay $29 once and keep the kit for every bill that follows.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="get">
+  <div class="wrap">
+    <div class="grid">
+      <div class="copy reveal">
+        <div class="eyebrow">What you get</div>
+        <h2 class="disp">One download. Yours for $29.</h2>
+        <p class="deck">No subscription and no account. Buy it once, keep it forever, and use it for this bill and the next one.</p>
+      </div>
+      <div class="glist reveal">
+        <div class="gitem"><span class="ic"><i class="lucide" data-lucide="app-window"></i></span><div><b>The full app</b><span>Opens in any browser on your phone, tablet, or computer.</span></div></div>
+        <div class="gitem"><span class="ic"><i class="lucide" data-lucide="file-text"></i></span><div><b>A one-page Start Here guide</b><span>So you know exactly where to begin.</span></div></div>
+        <div class="gitem"><span class="ic"><i class="lucide" data-lucide="wifi-off"></i></span><div><b>Works fully offline</b><span>After it loads once, no internet needed.</span></div></div>
+        <div class="gitem"><span class="ic"><i class="lucide" data-lucide="lock"></i></span><div><b>Nothing is ever uploaded</b><span>Everything you type stays on your device.</span></div></div>
+        <div class="gitem"><span class="ic"><i class="lucide" data-lucide="smartphone"></i></span><div><b>Add it to your home screen</b><span>It opens and behaves like a normal app.</span></div></div>
+        <div class="gitem"><span class="ic"><i class="lucide" data-lucide="infinity"></i></span><div><b>Yours forever</b><span>One price, no renewals, reuse it any time.</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="head reveal"><div class="eyebrow">From people who used it</div><h2 class="disp">It does the hard part for you.</h2></div>
+    <!-- REVIEW CARDS: authentic style, swap real reviews in place (keep structure) -->
+    <div class="rgrid">
+      <div class="rcard reveal" data-review="1"><div class="stars" aria-label="5 out of 5">★★★★★</div><div class="q">The deadline tracker alone was worth it. I had no idea I only had a set number of days to appeal and the letter it helped me write got my denial reversed.</div><div class="who"><div class="nm">Danielle R.</div><div class="lc">Columbus, OH</div></div></div>
+      <div class="rcard reveal" data-review="2"><div class="stars" aria-label="5 out of 5">★★★★★</div><div class="q">I called billing with the provided scripts open and knew exactly what to ask for. They found a duplicate charge on my account! I would have just paid without thinking before.</div><div class="who"><div class="nm">Marcus T.</div><div class="lc">San Antonio, TX</div></div></div>
+      <div class="rcard reveal" data-review="3"><div class="stars" aria-label="5 out of 5">★★★★★</div><div class="q">Super easy and I love how private everything is. No account, no sign up, everything stayed on my phone. It walked me through everything, which is exactly what I needed. I got my bill lowered!</div><div class="who"><div class="nm">Joanne L.</div><div class="lc">Portland, OR</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="grid">
+      <div><div class="eyebrow">Good to know</div><h2 class="disp">Questions about the app.</h2>
+        <div class="tip"><div class="tiph"><i class="lucide" data-lucide="lightbulb"></i> Tip from the kit</div><p>Ask for an itemized bill before you pay anything. The hospital must provide one on request, and duplicate charges or services you never received are easiest to catch there.</p></div>
+      </div>
+      <div class="list">
+        <div class="qa"><button type="button"><span>What exactly do I get when I buy?</span><i class="lucide chev" data-lucide="chevron-down"></i></button><div class="a"><p>A ZIP file containing the kit, an app that opens in any browser on your phone or computer, and a one-page Start Here PDF. It downloads instantly after purchase, so you can begin within a minute.</p></div></div>
+        <div class="qa"><button type="button"><span>Do I need internet or an account?</span><i class="lucide chev" data-lucide="chevron-down"></i></button><div class="a"><p>No to both. After the kit loads once, it works fully offline. There is no account and no sign up, and everything you type saves on your own device only.</p></div></div>
+        <div class="qa"><button type="button"><span>What devices does it run on?</span><i class="lucide chev" data-lucide="chevron-down"></i></button><div class="a"><p>Any modern browser, on a phone, tablet, or computer. You can add it to your phone's home screen and it opens like a normal app.</p></div></div>
+        <div class="qa"><button type="button"><span>Will my work still be there when I come back?</span><i class="lucide chev" data-lucide="chevron-down"></i></button><div class="a"><p>Yes. Your answers, letters, and dates are saved in the browser on your device. The kit can also save a backup file you keep yourself, so you can move your case to another device any time.</p></div></div>
+        <div class="qa"><button type="button"><span>How do I open it after I buy?</span><i class="lucide chev" data-lucide="chevron-down"></i></button><div class="a"><p>Unzip the download, open the kit in any browser, and add it to your home screen. The Start Here guide walks you through it in about 30 seconds.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2 class="disp">Stop paying medical bills nobody explained.</h2>
+    <p class="deck">Take back control of your bill without the hefty fee of hiring an advocate or lawyer. This kit gives you the steps, the letters, and the deadlines. A guided DIY, for $29.</p>
+    <div class="price"><b>$29.</b> One time purchase, yours forever.</div>
+    <div class="buy"><a class="btn btn-accent btn-lg" href="https://owedify.lemonsqueezy.com/checkout/buy/fc81d075-bb87-45b8-95aa-8c2ca024f0f8">Get the kit</a></div>
+  </div>
+</section>
+
+<section class="optin">
+  <div class="wrap">
+    <div class="optin-inner">
+      <div class="optin-copy">
+        <div class="eyebrow">Free, no purchase needed</div>
+        <h2 class="disp">Not ready yet? Get the free medical bill guide.</h2>
+        <p>The three-sentence script that gets you a fully itemized bill, the six charges to check before you pay, and the questions to ask first. We will email it to you.</p>
+      </div>
+      <div>
+        <form class="optin-form" action="[OPT-IN FORM ACTION]" method="post" novalidate>
+          <label class="sr-only" for="optin-email">Email address</label>
+          <input id="optin-email" type="email" name="email" required placeholder="you@email.com" autocomplete="email">
+          <button class="btn btn-accent btn-lg" type="submit">Email me the free guide</button>
+          <div class="optin-fine">No spam. Unsubscribe anytime. We never sell your information.</div>
+        </form>
+        <div class="optin-done" id="optinDone"><i class="lucide" data-lucide="check-circle-2"></i> Thanks, check your inbox for the free guide.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top"><svg class="shield" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 3.5 L40 9 V23.5 C40 33.8 33.2 40.8 24 44 C14.8 40.8 8 33.8 8 23.5 V9 Z" fill="#3C7E72"/><path d="M16.5 24 l5 5 l10 -12.5" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Owedify</a>
+    <div class="legal">Owedify is an educational self help tool that helps you write and track your own disputes. It is not legal or financial advice, and is not affiliated with any bureau or government agency. · <a href="https://owedify.com/#kits">Browse all kits</a></div>
+  </div>
+</footer>
+
+<script src="/lucide.min.js"></script>
+<script>
+  const io = new IntersectionObserver((ents) => {
+    ents.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  document.querySelectorAll('.qa button').forEach((b) => {
+    b.addEventListener('click', () => { const qa = b.parentElement, a = qa.querySelector('.a'); const open = qa.classList.toggle('open'); a.style.maxHeight = open ? a.scrollHeight + 'px' : '0'; });
+  });
+  const optinForm = document.querySelector('.optin-form');
+  if (optinForm) {
+    optinForm.addEventListener('submit', (e) => {
+      const email = optinForm.querySelector('input[type=email]');
+      if (!email.value || !email.checkValidity()) { email.reportValidity(); e.preventDefault(); return; }
+      /* No email provider wired yet: demo the success state. To collect for real, set the form's
+         action to your provider's form URL (Mailchimp, ConvertKit, etc.) and delete this guard. */
+      if (optinForm.getAttribute('action').charAt(0) === '[') {
+        e.preventDefault();
+        optinForm.style.display = 'none';
+        document.getElementById('optinDone').style.display = 'flex';
+        icons();
+      }
+    });
+  }
+  function icons(){ if (window.lucide) window.lucide.createIcons(); }
+  icons(); setInterval(icons, 800);
+</script>
+  <script src="/owedify-consent-and-popup.js" defer></script>
+  <script src="/owedify-accessibility.js" defer></script>
+</body>
+</html>

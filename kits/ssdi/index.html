@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en" data-kit="disability">
+<head>
+<meta name="p:domain_verify" content="6a511fc13104c3bea9ccd2ef9c337af4"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SSDI Disability Appeal Kit · Owedify</title>
+<link rel="stylesheet" href="/styles.css">
+<style>
+  :root{ --blue:var(--accent-600); --blue7:var(--accent-700); --ink:#1B2A3A; --paper:#FBFCFD; }
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  body{background:var(--paper);color:var(--text-strong);font-family:var(--font-sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  ::selection{background:var(--accent-200);}
+  a{color:inherit;text-decoration:none;}
+  p{margin:0;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 40px;}
+  .disp{font-family:var(--font-display);font-weight:800;letter-spacing:-0.032em;line-height:1.06;text-wrap:balance;}
+  .eyebrow{font-family:var(--font-mono);font-weight:500;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:none;cursor:pointer;font-family:var(--font-sans);font-weight:700;border-radius:11px;white-space:nowrap;transition:transform .12s cubic-bezier(.2,0,0,1),background .15s;}
+  .btn:active{transform:scale(.97);}
+  .btn-accent{background:var(--blue);color:#fff;font-size:15px;padding:13px 22px;}
+  .btn-accent:hover{background:var(--blue7);}
+  .btn-lg{font-size:16px;padding:16px 30px;border-radius:12px;}
+  .nav .btn-accent{font-size:14px;padding:10px 18px;}
+
+  .nav{position:sticky;top:0;z-index:40;background:rgba(251,252,253,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-subtle);}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;}
+  .brand{display:flex;align-items:center;gap:9px;font-family:var(--font-display);font-weight:800;font-size:18px;letter-spacing:-0.02em;color:var(--ink);}
+  .brand small{font-weight:500;font-size:13px;color:var(--text-muted);font-family:var(--font-sans);}
+  .brand .shield{width:24px;height:24px;}
+
+  /* ===== hero: centered header ===== */
+  .hero{padding:78px 0 36px;text-align:center;}
+  .hero h1{font-size:clamp(40px,5.4vw,68px);margin:18px auto 0;max-width:26ch;}
+  .hero .sub{font-size:19px;line-height:1.55;color:var(--text-muted);max-width:60ch;margin:22px auto 0;}
+  .hero .buy{display:inline-flex;align-items:center;gap:18px;margin-top:30px;flex-wrap:wrap;justify-content:center;}
+  .hero .price{font-size:14.5px;color:var(--text-muted);}
+  .hero .price b{color:var(--text-strong);font-weight:800;font-family:var(--font-display);font-size:16px;}
+
+  .showcase-embed{width:100%;max-width:1180px;margin:30px auto 0;padding:0 20px;}
+  .showcase-embed iframe{width:100%;aspect-ratio:1024/608;border:0;display:block;}
+  .devlabels-note{text-align:center;font-size:13.5px;color:var(--text-subtle);margin-top:6px;}
+
+  /* ===== the ladder (signature) ===== */
+  .ladder{padding:96px 0 92px;border-top:1px solid var(--border-subtle);background:#fff;}
+  .ladder .head{max-width:680px;margin:0 0 50px;}
+  .ladder h2{font-size:clamp(30px,4vw,48px);margin-top:12px;}
+  .ladder .head p{font-size:17.5px;line-height:1.55;color:var(--text-muted);margin:16px 0 0;max-width:58ch;}
+  .rungs{position:relative;display:flex;flex-direction:column;gap:14px;}
+  .rung{display:grid;grid-template-columns:54px 1fr;gap:20px;align-items:start;background:var(--paper);border:1px solid var(--border-subtle);border-radius:16px;padding:24px 26px;position:relative;}
+  .rung .num{width:54px;height:54px;border-radius:14px;background:var(--accent-50);color:var(--blue7);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:800;font-size:22px;}
+  .rung .rt{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .rung h3{font-family:var(--font-display);font-weight:800;font-size:21px;letter-spacing:-0.02em;margin:0;color:var(--text-strong);}
+  .rung .form{font-family:var(--font-mono);font-size:11.5px;font-weight:500;color:var(--blue7);background:var(--accent-100);border-radius:999px;padding:4px 11px;letter-spacing:.02em;}
+  .rung p{font-size:15px;line-height:1.56;color:var(--text-muted);margin:9px 0 0;max-width:60ch;}
+  .rung.key{background:linear-gradient(150deg,var(--accent-50),#fff);border-color:var(--accent-300);box-shadow:0 24px 50px -34px rgba(34,42,51,.3);}
+  .rung.key .num{background:var(--blue);color:#fff;}
+  .rung .flag{display:inline-flex;align-items:center;gap:7px;margin-top:14px;font-size:13.5px;font-weight:700;color:var(--blue7);background:#fff;border:1px solid var(--accent-200);border-radius:999px;padding:7px 14px;}
+  .rung .flag .lucide{width:15px;height:15px;color:var(--blue);}
+
+  /* ===== deadline strip ===== */
+  .deadband{padding:72px 0;background:var(--ink);color:#fff;}
+  .deadband .wrap{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center;}
+  .deadband .big{font-family:var(--font-display);font-weight:800;letter-spacing:-0.04em;line-height:.9;font-size:clamp(72px,11vw,150px);color:#fff;}
+  .deadband .big span{display:block;font-size:.22em;letter-spacing:.16em;text-transform:uppercase;font-family:var(--font-mono);font-weight:500;color:var(--accent-200);margin-top:14px;}
+  .deadband h2{font-size:clamp(24px,3vw,34px);color:#fff;margin:0;}
+  .deadband p{font-size:16.5px;line-height:1.6;color:rgba(255,255,255,.74);margin:14px 0 0;max-width:50ch;}
+  .deadband .chk{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-size:14px;font-weight:600;color:#fff;}
+  .deadband .chk .lucide{width:17px;height:17px;color:var(--accent-200);}
+
+  /* ===== ad spotlight ===== */
+  .spot{padding:92px 0;border-top:1px solid var(--border-subtle);background:#fff;}
+  .spot .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center;}
+  .spot .art{display:flex;justify-content:center;}
+  .spot .copy h2{font-size:clamp(28px,3.6vw,42px);margin-top:12px;}
+  .spot .lede{font-size:18px;line-height:1.5;color:var(--text-body);margin:16px 0 0;font-weight:500;max-width:38ch;}
+  .spot p.detail{font-size:15.5px;line-height:1.62;color:var(--text-muted);margin:14px 0 0;max-width:46ch;}
+  .adphone{width:266px;background:#1C2530;border-radius:40px;padding:9px;box-shadow:0 44px 80px -34px rgba(20,32,44,.5);}
+  .adphone .vp{width:248px;height:536px;border-radius:32px;overflow:hidden;background:#1B2A3A;position:relative;}
+  .adphone iframe{position:absolute;top:0;left:0;width:248px;height:536px;border:0;}
+
+  /* ===== evidence feature ===== */
+  .evi{padding:92px 0;border-top:1px solid var(--border-subtle);}
+  .evi .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;}
+  .evi h2{font-size:clamp(28px,3.6vw,42px);margin-top:12px;}
+  .evi .lede{font-size:18px;line-height:1.5;color:var(--text-body);font-weight:500;margin:16px 0 0;max-width:40ch;}
+  .evi p.detail{font-size:15.5px;line-height:1.62;color:var(--text-muted);margin:14px 0 0;max-width:48ch;}
+  .evi .note{display:flex;gap:9px;align-items:flex-start;margin-top:18px;font-size:14px;color:var(--text-muted);max-width:46ch;}
+  .evi .note .lucide{width:16px;height:16px;color:var(--blue);flex:0 0 auto;margin-top:1px;}
+  .evcard{background:#fff;border:1px solid var(--border-subtle);border-radius:18px;box-shadow:0 26px 58px -36px rgba(20,32,44,.42);padding:24px;max-width:400px;}
+  .evcard .eh{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:800;font-size:16px;color:var(--text-strong);margin-bottom:6px;}
+  .evcard .eh .lucide{width:19px;height:19px;color:var(--blue);}
+  .evcard .esub{font-size:13px;color:var(--text-subtle);margin-bottom:16px;}
+  .evrow{display:flex;align-items:center;gap:13px;padding:13px 0;border-top:1px solid var(--border-subtle);}
+  .evrow .ck{width:26px;height:26px;border-radius:8px;background:var(--accent-50);display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+  .evrow .ck .lucide{width:15px;height:15px;color:var(--blue7);}
+  .evrow>div{display:flex;flex-direction:column;gap:2px;min-width:0;}
+  .evrow .nm{font-size:14.5px;font-weight:600;line-height:1.35;color:var(--text-strong);}
+  .evrow .mt{font-size:12.5px;line-height:1.4;color:var(--text-subtle);}
+
+  /* ===== save it yourself ===== */
+  .save{padding:92px 0;border-top:1px solid var(--border-subtle);background:#fff;}
+  .save .wrap{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center;}
+  .save h2{font-size:clamp(26px,3.4vw,38px);margin-top:12px;}
+  .save .lede{font-size:16.5px;line-height:1.55;color:var(--text-muted);margin:16px 0 0;max-width:40ch;}
+  .save .note{display:flex;gap:9px;align-items:flex-start;margin-top:18px;font-size:13.5px;color:var(--text-subtle);max-width:42ch;}
+  .save .note .lucide{width:15px;height:15px;color:var(--blue);flex:0 0 auto;margin-top:1px;}
+  .ltab .lr{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:18px 0;border-bottom:1px solid var(--border-subtle);}
+  .ltab .lr:first-child{border-top:1px solid var(--border-subtle);}
+  .ltab .lr .what{font-size:15px;color:var(--text-muted);}
+  .ltab .lr .amt{font-family:var(--font-display);font-weight:800;font-size:19px;color:var(--text-strong);white-space:nowrap;}
+  .ltab .lr.win .what{color:var(--text-strong);font-weight:700;}
+  .ltab .lr.win .amt{color:var(--blue7);}
+
+  /* ===== reviews ===== */
+  .reviews{padding:90px 0;border-top:1px solid var(--border-subtle);}
+  .reviews .head{text-align:center;margin-bottom:44px;}
+  .reviews h2{font-size:clamp(28px,3.6vw,42px);margin-top:12px;}
+  .ogrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .ocard{background:#fff;border:1px solid var(--border-subtle);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow-xs);}
+  .ocard .stars{color:var(--blue);font-size:15px;letter-spacing:2px;}
+  .ocard .q{font-size:15.5px;line-height:1.55;color:var(--text-body);font-weight:500;}
+  .ocard .by{margin-top:auto;}
+  .ocard .nm{font-weight:700;font-size:14px;color:var(--text-strong);}
+  .ocard .lc{font-size:12.5px;color:var(--text-subtle);margin-top:2px;}
+
+  /* ===== close ===== */
+  .close{position:relative;padding:108px 0;text-align:center;background:radial-gradient(130% 110% at 50% 128%, var(--accent-100), var(--accent-50) 42%, var(--paper) 78%);border-top:1px solid var(--border-subtle);overflow:hidden;}
+  .close .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--accent-200);border-radius:999px;padding:7px 16px;font-size:13px;font-weight:700;color:var(--blue7);margin-bottom:20px;box-shadow:var(--shadow-xs);}
+  .close .badge .lucide{width:15px;height:15px;color:var(--blue);}
+  .close h2{font-size:clamp(34px,5.2vw,60px);max-width:17ch;margin:0 auto;}
+  .close .price{margin-top:16px;font-size:15px;color:var(--text-muted);}
+  .close .price b{color:var(--text-strong);font-weight:800;}
+  .close .go{margin-top:30px;}
+  .close .fine{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px 20px;justify-content:center;font-size:13px;color:var(--text-subtle);}
+  .close .fine span{display:inline-flex;align-items:center;gap:6px;}
+  .close .fine .lucide{width:14px;height:14px;color:var(--blue);}
+  footer{padding:40px 0 56px;border-top:1px solid var(--border-subtle);}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center;}
+  footer .legal{font-size:12.5px;line-height:1.6;color:var(--text-subtle);max-width:66ch;}
+  footer a{color:var(--text-muted);text-decoration:underline;}
+
+  /* opt-in / lead capture */
+  .optin{padding:72px 0;border-bottom:1px solid var(--border-subtle);background:var(--cloud-50);}
+  .optin-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;background:#fff;border:1px solid var(--border-subtle);border-radius:20px;padding:40px 44px;box-shadow:0 22px 50px -34px rgba(20,32,44,.4);}
+  .optin-copy h2{font-size:clamp(23px,2.6vw,30px);margin:12px 0 0;}
+  .optin-copy p{font-size:15.5px;line-height:1.6;color:var(--text-muted);margin-top:12px;max-width:46ch;}
+  .optin-form{display:flex;flex-direction:column;gap:12px;}
+  .optin-form input{width:100%;box-sizing:border-box;background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:15px 16px;font-family:var(--font-sans);font-size:15.5px;color:var(--text-strong);outline:none;transition:border-color .15s;}
+  .optin-form input:focus{border-color:var(--accent-600);}
+  .optin-form input::placeholder{color:var(--text-subtle);}
+  .optin-form .btn{width:100%;}
+  .optin-fine{font-size:12.5px;color:var(--text-subtle);line-height:1.5;}
+  .optin-done{display:none;align-items:center;gap:10px;background:var(--accent-50);border:1px solid var(--accent-200);border-radius:12px;padding:16px 18px;font-size:14.5px;font-weight:600;color:var(--accent-800);}
+  .optin-done .lucide{width:18px;height:18px;color:var(--accent-700);flex:0 0 auto;}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+  @media (max-width:920px){ .optin-inner{grid-template-columns:1fr;gap:24px;padding:30px 26px;} }
+
+  .reveal.in{animation:rise .7s cubic-bezier(.2,0,0,1) both;}
+  @keyframes rise{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:none;}}
+  @media (prefers-reduced-motion: reduce){ .reveal.in{animation:none;} }
+
+  @media (max-width:920px){
+    .deadband .wrap,.spot .wrap,.evi .wrap,.save .wrap{grid-template-columns:1fr;gap:32px;}
+    .ogrid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><svg class="shield" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 3.5 L40 9 V23.5 C40 33.8 33.2 40.8 24 44 C14.8 40.8 8 33.8 8 23.5 V9 Z" fill="#3E6E9C"/><path d="M16.5 24 l5 5 l10 -12.5" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Owedify <small>· Disability appeals</small></a>
+    <a class="btn btn-accent" href="https://owedify.lemonsqueezy.com/checkout/buy/dba3c23f-c2b7-4b7c-ac51-54b8ce2ceee0">Get the kit · $29</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow">SSDI Disability Appeal Kit</div>
+    <h1 class="disp">Denied for disability? The appeal is where people win.</h1>
+    <p class="sub">Most first claims are turned down. The kit walks you through every level of appeal, drafts your request, and counts the 65 days you have to file, on any device.</p>
+    <div class="buy">
+      <a class="btn btn-accent btn-lg" href="https://owedify.lemonsqueezy.com/checkout/buy/dba3c23f-c2b7-4b7c-ac51-54b8ce2ceee0">Get the kit</a>
+      <div class="price"><b>$29.</b> One time, yours forever.</div>
+    </div>
+  </div>
+  <div class="showcase-embed">
+    <iframe src="mockup-ssdi-b.html" title="Owedify SSDI app on every device" scrolling="no" loading="lazy"></iframe>
+  </div>
+</header>
+
+<section class="ladder">
+  <div class="wrap">
+    <div class="head reveal"><div class="eyebrow">How the appeal works</div><h2 class="disp">Four chances, not one.</h2><p>A denial is not the final word. Social Security gives you four levels of appeal, and each one is a fresh look at your case. The kit prepares the right request for whichever level you are on.</p></div>
+    <div class="rungs">
+      <div class="rung reveal"><div class="num">1</div><div><div class="rt"><h3>Reconsideration</h3><span class="form">SSA-561</span></div><p>Someone who was not part of the first decision reviews your full file again. The kit drafts this request from your answers.</p></div></div>
+      <div class="rung key reveal"><div class="num">2</div><div><div class="rt"><h3>Hearing before a judge</h3><span class="form">HA-501</span></div><p>You appear before an administrative law judge who looks at everything fresh, in person or by video, instead of a paper review.</p><span class="flag"><i class="lucide" data-lucide="trending-up"></i> The largest share of approvals happen at this level</span></div></div>
+      <div class="rung reveal"><div class="num">3</div><div><div class="rt"><h3>Appeals Council review</h3><span class="form">HA-520</span></div><p>If the hearing did not go your way, the council checks the judge's decision for legal or procedural mistakes.</p></div></div>
+      <div class="rung reveal"><div class="num">4</div><div><div class="rt"><h3>Federal court</h3></div><p>The final step. A judge outside Social Security reviews your case. The kit helps you keep your paperwork in order long before you ever get here.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="deadband">
+  <div class="wrap">
+    <div class="big reveal">65<span>days to file</span></div>
+    <div class="reveal">
+      <h2 class="disp">The countdown starts the day listed on your notice.</h2>
+      <p>You get 60 days to appeal, plus 5 for mailing, from the date printed on your denial. Miss it and you usually have to start the whole claim over. The kit counts the days for you and helps you add the deadline to your own calendar so your phone reminds you.</p>
+      <span class="chk"><i class="lucide" data-lucide="calendar-check"></i> Counted from your notice, added to your calendar</span>
+    </div>
+  </div>
+</section>
+
+<section class="spot">
+  <div class="wrap">
+    <div class="art reveal">
+      <div class="adphone"><div class="vp"><iframe src="ssdi-phone-ad.html" title="Owedify SSDI ad" scrolling="no" loading="lazy"></iframe></div></div>
+    </div>
+    <div class="copy reveal">
+      <div class="eyebrow">When the notice arrives</div>
+      <h2 class="disp">Owedify explains your denial and drafts your appeal.</h2>
+      <p class="lede">A denial letter is hard to read and easy to put off. The kit tells you exactly what it means and what to do before the deadline.</p>
+      <p class="detail">From a few answers it drafts your appeal request, points you to the right SSA form, and shows you the date it has to be in by. You read it, change anything, and file it yourself.</p>
+    </div>
+  </div>
+</section>
+
+<section class="evi">
+  <div class="wrap">
+    <div class="copy reveal">
+      <div class="eyebrow">What wins the case</div>
+      <h2 class="disp">Your medical records are the most important part.</h2>
+      <p class="lede">Appeals are won on evidence, not on how strongly you argue.</p>
+      <p class="detail">The kit shows you which records matter most: recent treatment notes, test results, and anything that documents how your condition limits a normal workday. It keeps a simple checklist so nothing is missing when you file, and reminds you to keep getting care while you wait.</p>
+      <div class="note"><i class="lucide" data-lucide="phone"></i><span>Not sure a record helps? Ask your doctor's office or call your local Social Security office, it is a normal question.</span></div>
+    </div>
+    <div class="art reveal">
+      <div class="evcard">
+        <div class="eh"><i class="lucide" data-lucide="folder-check"></i> Evidence for your appeal</div>
+        <div class="esub">The kit keeps track of what you have gathered</div>
+        <div class="evrow"><span class="ck"><i class="lucide" data-lucide="check"></i></span><div><div class="nm">Recent treatment notes</div><div class="mt">From every provider you see</div></div></div>
+        <div class="evrow"><span class="ck"><i class="lucide" data-lucide="check"></i></span><div><div class="nm">Test and imaging results</div><div class="mt">Labs, scans, specialist reports</div></div></div>
+        <div class="evrow"><span class="ck"><i class="lucide" data-lucide="check"></i></span><div><div class="nm">A function statement</div><div class="mt">How your condition limits a workday</div></div></div>
+        <div class="evrow"><span class="ck"><i class="lucide" data-lucide="check"></i></span><div><div class="nm">Your work and medication history</div><div class="mt">Updated for the appeal</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="save">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">What it costs to start</div>
+      <h2 class="disp">The first, most important steps made simple.</h2>
+      <p class="lede">A representative is an option, and often paid only if you win. But the appeal and the deadline are yours to handle now, for far less, and the request stays in your name.</p>
+      <div class="note"><i class="lucide" data-lucide="info"></i><span>If your case goes to a hearing, you can still bring in a representative at any point.</span></div>
+    </div>
+    <div class="ltab reveal">
+      <div class="lr"><span class="what">A disability representative</span><span class="amt">up to 25% of back pay</span></div>
+      <div class="lr"><span class="what">Letting the deadline pass</span><span class="amt">the claim closes</span></div>
+      <div class="lr win"><span class="what">The Owedify kit</span><span class="amt">$29, once</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="wrap">
+    <div class="head reveal"><div class="eyebrow">From people who used it</div><h2 class="disp">It made the appeal feel possible.</h2></div>
+    <div class="ogrid">
+      <div class="ocard reveal" data-review="1"><div class="stars" aria-label="5 out of 5">★★★★★</div><div class="q">I was denied and thought that was it. The kit showed me I had more chances than I thought and helped me file the reconsideration in time. My hearing is set.</div><div class="by"><div class="nm">Wanda K.</div><div class="lc">Knoxville, TN</div></div></div>
+      <div class="ocard reveal" data-review="2"><div class="stars" aria-label="5 out of 5">★★★★★</div><div class="q">The countdown and reminders the app provides was so helpful. Everything is provided for you to do it yourself and come organized. I was able to get my dissability approved!</div><div class="by"><div class="nm">Andre J.</div><div class="lc">Flint, MI</div></div></div>
+      <div class="ocard reveal" data-review="3"><div class="stars" aria-label="5 out of 5">★★★★★</div><div class="q">The checklist made me realize my file was missing so many records. I gathered them before the hearing and the judge approved me. I keep recommending!</div><div class="by"><div class="nm">Rosa M.</div><div class="lc">Fresno, CA</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap">
+    <div class="badge reveal"><i class="lucide" data-lucide="shield-check"></i> A denial is not the final decision</div>
+    <h2 class="disp reveal">File your appeal before your 65 days run out.</h2>
+    <div class="price reveal"><b>$29.</b> One time purchase, yours forever, on every device.</div>
+    <div class="go reveal"><a class="btn btn-accent btn-lg" href="https://owedify.lemonsqueezy.com/checkout/buy/dba3c23f-c2b7-4b7c-ac51-54b8ce2ceee0">Get the kit</a></div>
+    <div class="fine reveal"><span><i class="lucide" data-lucide="wifi-off"></i> Works offline</span><span><i class="lucide" data-lucide="user-x"></i> No account</span><span><i class="lucide" data-lucide="lock"></i> Nothing uploaded</span></div>
+  </div>
+</section>
+
+<section class="optin">
+  <div class="wrap">
+    <div class="optin-inner">
+      <div class="optin-copy">
+        <div class="eyebrow">Free, no purchase needed</div>
+        <h2 class="disp">Not ready yet? Get the free SSDI appeal guide.</h2>
+        <p>What to do in your 60-day appeal window, and the three mistakes that cost people winnable appeals. We will email it to you.</p>
+      </div>
+      <div>
+        <form class="optin-form" action="[OPT-IN FORM ACTION]" method="post" novalidate>
+          <label class="sr-only" for="optin-email">Email address</label>
+          <input id="optin-email" type="email" name="email" required placeholder="you@email.com" autocomplete="email">
+          <button class="btn btn-accent btn-lg" type="submit">Email me the free guide</button>
+          <div class="optin-fine">No spam. Unsubscribe anytime. We never sell your information.</div>
+        </form>
+        <div class="optin-done" id="optinDone"><i class="lucide" data-lucide="check-circle-2"></i> Thanks, check your inbox for the free guide.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top"><svg class="shield" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 3.5 L40 9 V23.5 C40 33.8 33.2 40.8 24 44 C14.8 40.8 8 33.8 8 23.5 V9 Z" fill="#3E6E9C"/><path d="M16.5 24 l5 5 l10 -12.5" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Owedify</a>
+    <div class="legal">Owedify is an educational self help tool that helps you write and track your own disability appeal. It is not legal advice, not a law firm, and not affiliated with the Social Security Administration. · <a href="https://owedify.com/#kits">Browse all kits</a></div>
+  </div>
+</footer>
+
+<script src="/lucide.min.js"></script>
+<script>
+  const io = new IntersectionObserver((ents) => {
+    ents.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach((el, i) => { el.style.animationDelay = (i % 4 * 70) + 'ms'; io.observe(el); });
+  const optinForm = document.querySelector('.optin-form');
+  if (optinForm) {
+    optinForm.addEventListener('submit', (e) => {
+      const email = optinForm.querySelector('input[type=email]');
+      if (!email.value || !email.checkValidity()) { email.reportValidity(); e.preventDefault(); return; }
+      if (optinForm.getAttribute('action').charAt(0) === '[') {
+        e.preventDefault();
+        optinForm.style.display = 'none';
+        document.getElementById('optinDone').style.display = 'flex';
+        icons();
+      }
+    });
+  }
+  function icons(){ if (window.lucide) window.lucide.createIcons(); }
+  icons(); setInterval(icons, 800);
+</script>
+  <script src="/owedify-consent-and-popup.js" defer></script>
+  <script src="/owedify-accessibility.js" defer></script>
+</body>
+</html>

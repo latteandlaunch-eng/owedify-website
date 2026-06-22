@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" data-kit="debt">
+<head>
+<meta name="p:domain_verify" content="6a511fc13104c3bea9ccd2ef9c337af4"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Debt Collection Defense Kit · Owedify</title>
+<link rel="stylesheet" href="/styles.css">
+<style>
+  :root{ --plum:var(--accent-600); --plum7:var(--accent-700); --ink:#26303A; --device:#22272F; --paper:#FCFBFC; }
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  body{background:var(--paper);color:var(--text-strong);font-family:var(--font-sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  ::selection{background:var(--accent-200);}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 40px;}
+  .disp{font-family:var(--font-display);font-weight:800;letter-spacing:-0.035em;line-height:1.04;text-wrap:balance;}
+  .eyebrow{font-family:var(--font-mono);font-weight:500;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--plum);}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:none;cursor:pointer;font-family:var(--font-sans);font-weight:700;border-radius:11px;white-space:nowrap;transition:transform .12s cubic-bezier(.2,0,0,1),background .15s;}
+  .btn:active{transform:scale(.97);}
+  .btn-accent{background:var(--plum);color:#fff;font-size:15px;padding:13px 22px;}
+  .btn-accent:hover{background:var(--plum7);}
+  .btn-lg{font-size:16px;padding:16px 30px;border-radius:12px;}
+  .nav .btn-accent{font-size:14px;padding:10px 18px;}
+
+  .nav{position:sticky;top:0;z-index:40;background:rgba(252,251,252,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-subtle);}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;}
+  .brand{display:flex;align-items:center;gap:9px;font-family:var(--font-display);font-weight:800;font-size:18px;letter-spacing:-0.02em;color:var(--ink);}
+  .brand small{font-weight:500;font-size:13px;color:var(--text-muted);font-family:var(--font-sans);}
+  .brand .shield{width:24px;height:24px;}
+
+  /* ===== hero ===== */
+  .hero{background:linear-gradient(180deg,var(--accent-50),var(--paper) 80%);padding:74px 0 40px;text-align:center;overflow:hidden;}
+  .hero h1{font-size:clamp(40px,5.6vw,72px);max-width:26ch;margin:18px auto 0;}
+  .hero .sub{font-size:19px;line-height:1.5;color:var(--text-muted);max-width:60ch;margin:22px auto 0;}
+  .hero .buy{display:inline-flex;align-items:center;gap:18px;margin-top:30px;flex-wrap:wrap;justify-content:center;}
+  .hero .price{font-size:14.5px;color:var(--text-muted);}
+  .hero .price b{color:var(--text-strong);font-weight:800;font-family:var(--font-display);font-size:16px;}
+
+  /* ===== device showcase (live real app) ===== */
+  .showcase-embed{width:100%;max-width:1180px;margin:46px auto 0;padding:0 20px;}
+  .showcase-embed iframe{width:100%;aspect-ratio:1024/560;border:0;display:block;}
+  .frame{position:absolute;}
+  .frame .vp{position:relative;overflow:hidden;background:#fff;}
+  .frame iframe{position:absolute;top:0;left:0;border:0;transform-origin:top left;}
+  /* laptop, center back */
+  .laptop{left:50%;transform:translateX(-50%);top:0;z-index:1;}
+  .laptop .lid{background:var(--device);border-radius:16px 16px 0 0;padding:11px 11px 0;box-shadow:0 40px 80px -40px rgba(34,42,51,.5);}
+  .laptop .vp{width:600px;height:375px;border-radius:6px;}
+  .laptop iframe{width:1200px;height:750px;transform:scale(0.5);}
+  .laptop .base{height:15px;background:linear-gradient(#33373F,var(--device));border-radius:0 0 14px 14px;width:660px;margin-left:-19px;box-shadow:0 18px 30px -16px rgba(34,42,51,.5);}
+  /* tablet, front-right corner */
+  .tablet{left:50%;transform:translateX(244px);bottom:16px;z-index:2;}
+  .tablet .lid{background:var(--device);border-radius:20px;padding:9px;box-shadow:0 34px 64px -34px rgba(34,42,51,.5);}
+  .tablet .vp{width:288px;height:216px;border-radius:9px;}
+  .tablet iframe{width:1152px;height:864px;transform:scale(0.25);}
+  /* phone, front-left corner, full-screen ad */
+  .phone{left:50%;transform:translateX(-432px);bottom:0;z-index:3;}
+  .phone .lid{background:#1C1B22;border-radius:32px;padding:8px;box-shadow:0 36px 64px -28px rgba(28,27,34,.6);}
+  .phone .vp{width:188px;height:396px;border-radius:24px;}
+  .phone iframe{width:376px;height:792px;transform:scale(0.5);}
+  .devlabels{display:flex;align-items:center;justify-content:center;margin:32px auto 0;}
+  .devlabels span{display:inline-flex;align-items:center;gap:9px;font-size:15px;font-weight:600;color:var(--text-strong);padding:0 24px;}
+  .devlabels span .lucide{width:18px;height:18px;color:var(--plum);}
+  .devlabels i.sep{width:1px;height:18px;background:#D7DCE2;}
+
+  /* ===== icon value row ===== */
+  .values{padding:104px 0 96px;}
+  .values .head{max-width:740px;margin:0 0 56px;}
+  .values h2{font-size:clamp(30px,4vw,48px);margin-top:12px;}
+  .values .head p{font-size:17.5px;line-height:1.55;color:var(--text-muted);margin:16px 0 0;text-align:left;max-width:60ch;}
+  .vgrid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:18px;overflow:hidden;}
+  .vitem{background:#fff;padding:30px;}
+  .vitem .top{display:flex;align-items:center;gap:13px;}
+  .vitem .top .lucide{width:22px;height:22px;color:var(--plum);}
+  .vitem h3{font-family:var(--font-display);font-weight:800;font-size:20px;letter-spacing:-0.02em;margin:0;color:var(--text-strong);}
+  .vitem p{font-size:14.5px;line-height:1.58;color:var(--text-muted);margin:12px 0 0;}
+
+  /* ===== ad spotlight (animated ad on phone + copy) ===== */
+  .spot{background:var(--accent-50);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);}
+  .spot .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:84px 40px;}
+  .spot .copy .eyebrow{margin-bottom:12px;}
+  .spot h2{font-size:clamp(28px,3.6vw,42px);}
+  .spot .lede{font-size:18px;line-height:1.5;color:var(--text-body);margin:16px 0 0;font-weight:500;max-width:38ch;}
+  .spot p.detail{font-size:15px;line-height:1.6;color:var(--text-muted);margin:12px 0 0;max-width:44ch;}
+  .spot .art{display:flex;justify-content:center;}
+  .adphone{width:266px;background:#1C1B22;border-radius:40px;padding:9px;box-shadow:0 44px 80px -34px rgba(28,27,34,.55);}
+  .adphone .vp{width:248px;height:536px;border-radius:32px;overflow:hidden;background:#1B2A3A;position:relative;}
+  .adphone iframe{position:absolute;top:0;left:0;width:248px;height:536px;border:0;}
+
+  /* ===== save it yourself ===== */
+  .save{padding:88px 0;}
+  .save .wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;}
+  .save h2{font-size:clamp(26px,3.4vw,38px);margin-top:12px;}
+  .save .lede{font-size:16px;line-height:1.55;color:var(--text-muted);margin:16px 0 0;max-width:38ch;}
+  .ltab .lr{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--border-subtle);}
+  .ltab .lr:first-child{border-top:1px solid var(--border-subtle);}
+  .ltab .lr .what{font-size:15px;color:var(--text-muted);}
+  .ltab .lr .amt{font-family:var(--font-display);font-weight:800;font-size:19px;color:var(--text-strong);white-space:nowrap;}
+  .ltab .lr.win .what{color:var(--text-strong);font-weight:700;}
+  .ltab .lr.win .amt{color:var(--plum7);}
+
+  /* ===== reviews ===== */
+  .reviews{padding:88px 0;}
+  .reviews .head{text-align:center;margin-bottom:44px;}
+  .reviews h2{font-size:clamp(28px,3.6vw,42px);margin-top:12px;}
+  .ogrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .ocard{background:#fff;border:1px solid var(--border-subtle);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow-xs);}
+  .ocard .stars{color:var(--plum);font-size:15px;letter-spacing:2px;}
+  .ocard .q{font-size:15.5px;line-height:1.55;color:var(--text-body);font-weight:500;}
+  .ocard .by{margin-top:auto;}
+  .ocard .nm{font-weight:700;font-size:14px;color:var(--text-strong);}
+  .ocard .lc{font-size:12.5px;color:var(--text-subtle);margin-top:2px;}
+
+  /* ===== close ===== */
+  .close{position:relative;padding:108px 0;text-align:center;background:radial-gradient(130% 110% at 50% 128%, var(--accent-100), var(--accent-50) 42%, var(--paper) 78%);overflow:hidden;}
+  .close .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--accent-200);border-radius:999px;padding:7px 16px;font-size:13px;font-weight:700;color:var(--plum7);margin-bottom:20px;box-shadow:var(--shadow-xs);}
+  .close .badge .lucide{width:15px;height:15px;color:var(--plum);}
+  .close h2{font-size:clamp(34px,5.2vw,60px);max-width:16ch;margin:0 auto;}
+  .close .price{margin-top:16px;font-size:15px;color:var(--text-muted);}
+  .close .price b{color:var(--text-strong);font-weight:800;}
+  .close .go{margin-top:30px;}
+  .close .fine{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px 20px;justify-content:center;font-size:13px;color:var(--text-subtle);}
+  .close .fine span{display:inline-flex;align-items:center;gap:6px;}
+  .close .fine .lucide{width:14px;height:14px;color:var(--plum);}
+  footer{padding:40px 0 56px;border-top:1px solid var(--border-subtle);}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center;}
+  footer .legal{font-size:12.5px;line-height:1.6;color:var(--text-subtle);max-width:64ch;}
+  footer a{color:var(--text-muted);text-decoration:underline;}
+
+  .reveal.in{animation:rise .7s cubic-bezier(.2,0,0,1) both;}
+  @keyframes rise{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:none;}}
+  @media (prefers-reduced-motion: reduce){ .reveal.in{animation:none;} }
+
+  @media (max-width:920px){
+    .values .head{grid-template-columns:1fr;gap:14px;}
+    .values .head p{text-align:left;}
+    .vgrid{grid-template-columns:1fr;}
+    .spot .wrap,.save .wrap{grid-template-columns:1fr;gap:36px;}
+    .ogrid{grid-template-columns:1fr;}
+  }
+  @media (max-width:760px){
+    .showcase{height:auto;max-width:340px;}
+    .frame{position:static !important;transform:none !important;margin:0 auto 20px;}
+    .laptop iframe{transform:scale(0.28);}.laptop .vp{width:336px;height:210px;}.laptop .base{width:372px;}
+    .tablet{display:none;}
+    .phone .vp{width:206px;height:434px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><svg class="shield" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 3.5 L40 9 V23.5 C40 33.8 33.2 40.8 24 44 C14.8 40.8 8 33.8 8 23.5 V9 Z" fill="#8A5A74"/><path d="M16.5 24 l5 5 l10 -12.5" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Owedify <small>· Debt defense</small></a>
+    <a class="btn btn-accent" href="https://owedify.lemonsqueezy.com/checkout/buy/2b1af1b5-3cf0-4313-a135-09676b9b15d4">Get the kit · $29</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow">Debt Collection Defense Kit</div>
+    <h1 class="disp">Most people pay debts they legally did not have to.</h1>
+    <p class="sub">Federal law gives you the right to demand proof before you pay anything. One written letter, sent within 30 days of a collector's first contact, requires them to stop and prove the debt is valid. The app walks you through every step, on any device.</p>
+    <div class="buy">
+      <a class="btn btn-accent btn-lg" href="https://owedify.lemonsqueezy.com/checkout/buy/2b1af1b5-3cf0-4313-a135-09676b9b15d4">Get the kit</a>
+      <div class="price"><b>$29.</b> One time, yours forever.</div>
+    </div>
+  </div>
+  <div class="showcase-embed">
+    <iframe src="mockup-debt-showcase.html" title="Owedify Debt app on every device" scrolling="no" loading="lazy"></iframe>
+  </div>
+</header>
+
+<section class="values">
+  <div class="wrap">
+    <div class="head reveal"><div class="eyebrow">What the kit does</div><h2 class="disp">Four things the kit handles for you, step by step.</h2><p>Open it on any device and it walks you through each one in plain language.</p></div>
+    <div class="vgrid">
+      <div class="vitem reveal"><div class="top"><i class="lucide" data-lucide="file-check"></i><h3>Drafts your letter</h3></div><p>A validation letter, written from your answers, that makes collection pause until they prove the debt.</p></div>
+      <div class="vitem reveal"><div class="top"><i class="lucide" data-lucide="hourglass"></i><h3>Checks the debt's age</h3></div><p>Tells you whether the debt is past the legal deadline for suing you in your state, and warns you before a small payment revives it.</p></div>
+      <div class="vitem reveal"><div class="top"><i class="lucide" data-lucide="clipboard-list"></i><h3>Logs every call</h3></div><p>You note each call as it happens, building a clean, printable record you can hand a lawyer.</p></div>
+      <div class="vitem reveal"><div class="top"><i class="lucide" data-lucide="calendar-clock"></i><h3>Tracks the deadline</h3></div><p>Tracks the 30-day window from the collector's first contact, so you know exactly when you need to act.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="spot">
+  <div class="wrap">
+    <div class="copy reveal">
+      <div class="eyebrow">When a collector calls</div>
+      <h2 class="disp">A word-for-word script, ready before the call.</h2>
+      <p class="lede">Most people say the wrong thing on a collector call because they are not prepared. The kit includes a call script you save to your phone and read from when they call.</p>
+      <p class="detail">It also covers the four things to never say or do on the first call, including the small payment trap that can revive a debt you may not legally owe. After the call, the kit drafts your validation letter from your answers.</p>
+    </div>
+    <div class="art reveal">
+      <div class="adphone"><div class="vp"><iframe src="debt-phone-ad.html" title="Owedify Debt ad" scrolling="no" loading="lazy"></iframe></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="save">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">What it costs to do it yourself</div>
+      <h2 class="disp">The kit costs $29. Everything else costs more.</h2>
+      <p class="lede">Debt settlement companies and attorneys charge far more, and some take a percentage of everything you owe. The kit costs $29 and every step stays in your hands.</p>
+    </div>
+    <div class="ltab reveal">
+      <div class="lr"><span class="what">A debt settlement company</span><span class="amt">15 to 25% of the total balance</span></div>
+      <div class="lr"><span class="what">A lawyer's retainer</span><span class="amt">hundreds up front</span></div>
+      <div class="lr win"><span class="what">The Owedify kit</span><span class="amt">$29, once</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="wrap">
+    <div class="head reveal"><div class="eyebrow">From people who used it</div><h2 class="disp">Real results from people who used it.</h2></div>
+    <div class="ogrid">
+      <div class="ocard reveal" data-review="1"><div class="stars" aria-label="5 out of 5">★★★★★</div><div class="q">The scripts helped me so much I knew exactly what to say, and the letter the app created finally got the collection calls to stop until they could prove it. They never did the debt was dropped. Highly recommend!</div><div class="by"><div class="nm">Renee A.</div><div class="lc">Akron, OH</div></div></div>
+      <div class="ocard reveal" data-review="2"><div class="stars" aria-label="5 out of 5">★★★★★</div><div class="q">The Owedify app helped me realize my debt was past the legal deadline to sue. I almost made a payment because I was scared. So glad I had the help of the kit, if not I would have accidently reset my deadline and made myself liable to pay the debt again.</div><div class="by"><div class="nm">Hector M.</div><div class="lc">El Paso, TX</div></div></div>
+      <div class="ocard reveal" data-review="3"><div class="stars" aria-label="5 out of 5">★★★★★</div><div class="q">I got an unexpected summons and I had no idea what to do. I was searching for help online and came across Owedify and I am so happy I did! It walked me through the entire process and definitely made this process less stressful.</div><div class="by"><div class="nm">Tanya P.</div><div class="lc">Macon, GA</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap">
+    <div class="badge reveal"><i class="lucide" data-lucide="shield-check"></i> Ready before the next call</div>
+    <h2 class="disp reveal">The debt is not settled until you say it is.</h2>
+    <div class="price reveal"><b>$29.</b> One time purchase, yours forever, on every device.</div>
+    <div class="go reveal"><a class="btn btn-accent btn-lg" href="https://owedify.lemonsqueezy.com/checkout/buy/2b1af1b5-3cf0-4313-a135-09676b9b15d4">Get the kit</a></div>
+    <div class="fine reveal"><span><i class="lucide" data-lucide="wifi-off"></i> Works offline</span><span><i class="lucide" data-lucide="user-x"></i> No account</span><span><i class="lucide" data-lucide="lock"></i> Nothing uploaded</span></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top"><svg class="shield" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 3.5 L40 9 V23.5 C40 33.8 33.2 40.8 24 44 C14.8 40.8 8 33.8 8 23.5 V9 Z" fill="#8A5A74"/><path d="M16.5 24 l5 5 l10 -12.5" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Owedify</a>
+    <div class="legal">Owedify is an educational self help tool that helps you write and track your own disputes. It is not legal advice, not a law firm, and not affiliated with any collector or court. · <a href="https://owedify.com/#kits">Browse all kits</a></div>
+  </div>
+</footer>
+
+<script src="/lucide.min.js"></script>
+<script>
+  const io = new IntersectionObserver((ents) => {
+    ents.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach((el, i) => { el.style.animationDelay = (i % 4 * 70) + 'ms'; io.observe(el); });
+  function icons(){ if (window.lucide) window.lucide.createIcons(); }
+  icons(); setInterval(icons, 800);
+</script>
+  <script src="/owedify-consent-and-popup.js" defer></script>
+  <script src="/owedify-accessibility.js" defer></script>
+</body>
+</html>

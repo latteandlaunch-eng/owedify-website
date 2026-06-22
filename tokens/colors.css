@@ -1,0 +1,94 @@
+/* ============================================================
+   OWEDIFY · COLORS, "Slate & Cloud"
+   Calm, credible, never harsh. Navy carries authority,
+   teal is the "win" accent, cloud neutrals carry the UI.
+   ============================================================ */
+:root {
+  /* ---- Brand: Navy (ink / authority) ---- */
+  --navy-900: #14222F;
+  --navy-800: #1B2A3A;
+  --navy-700: #22384F;   /* PRIMARY BRAND */
+  --navy-600: #2C4660;
+  --navy-500: #3A5673;
+  --navy-400: #54718F;
+
+  /* ---- Accent: Teal (the "win" / progress / success-of-action) ---- */
+  --teal-800: #244E46;
+  --teal-700: #2E6358;
+  --teal-600: #3C7E72;   /* ACCENT */
+  --teal-500: #4E978A;
+  --teal-400: #6BA99D;
+  --teal-300: #7FB3A8;
+  --teal-200: #B6D6CF;
+  --teal-100: #DCEDE9;
+
+  /* ---- Neutrals: Cloud (cool grays) ---- */
+  --white:     #FFFFFF;
+  --cloud-50:  #F8FAFC;  /* app background */
+  --cloud-100: #F3F5F8;  /* sunken surface */
+  --cloud-200: #E9EDF2;  /* hairline fills */
+  --cloud-300: #DBE2EA;  /* subtle borders */
+  --mist-400:  #C7D2DC;  /* default border */
+  --slate-400: #94A3B2;  /* disabled text / icons */
+  --slate-500: #6B7B8A;  /* muted text */
+  --slate-600: #4D5E6D;  /* secondary text */
+  --slate-700: #36495A;  /* strong body */
+
+  /* ---- Semantic status (desaturated, calm) ---- */
+  --green-600: #2E7D5B;  /* success */
+  --green-100: #DCEFE4;
+  --gold-600:  #B58A3C;  /* warning / deadline (gold, not orange) */
+  --gold-100:  #F3E9D2;
+  --red-600:   #A6504C;  /* error (muted brick, not fire-red) */
+  --red-100:   #F1DEDC;
+  --info-600:  #3E6E9C;  /* informational blue */
+  --info-100:  #DCE7F1;
+
+  /* ============================================================
+     SEMANTIC ALIASES, reference these in product code
+     ============================================================ */
+  --color-bg:            var(--cloud-50);
+  --color-surface:       var(--white);
+  --color-surface-sunken:var(--cloud-100);
+  --color-surface-raised:var(--white);
+
+  --text-strong:  var(--navy-800);
+  --text-body:    var(--slate-700);
+  --text-muted:   var(--slate-500);
+  --text-subtle:  var(--slate-400);
+  --text-on-dark: var(--white);
+  --text-on-accent: var(--white);
+
+  --border:        var(--mist-400);
+  --border-subtle: var(--cloud-300);
+  --border-strong: var(--slate-400);
+
+  --brand:        var(--navy-700);
+  --brand-hover:  var(--navy-800);
+  --brand-active: var(--navy-900);
+  --brand-ink:    var(--navy-800);
+
+  /* ---- Accent ramp (PER-KIT THEMEABLE) ----
+     Default = Teal (Medical Bills). Each kit overrides this whole ramp via a
+     [data-kit="…"] scope in kit-accents.css. Reference these, never raw --teal-*,
+     anywhere a surface should reskin per kit. */
+  --accent-50:   #F0F6F4;
+  --accent-100:  var(--teal-100);
+  --accent-200:  var(--teal-200);
+  --accent-300:  var(--teal-300);
+  --accent-600:  var(--teal-600);
+  --accent-700:  var(--teal-700);
+  --accent-800:  var(--teal-800);
+
+  --accent:       var(--accent-600);
+  --accent-hover: var(--accent-700);
+  --accent-active:var(--accent-800);
+  --accent-soft:  var(--accent-100);
+
+  --focus-ring:   rgba(60, 126, 114, 0.40); /* teal-600 @ 40%, themed per kit */
+
+  --success: var(--green-600);  --success-soft: var(--green-100);
+  --warning: var(--gold-600);   --warning-soft: var(--gold-100);
+  --danger:  var(--red-600);    --danger-soft:  var(--red-100);
+  --info:    var(--info-600);   --info-soft:    var(--info-100);
+}

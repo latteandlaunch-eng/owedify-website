@@ -1,0 +1,33 @@
+/* ============================================================
+   OWEDIFY · RADII, BORDERS, SHADOWS, MOTION
+   Soft, cool-tinted shadows (navy, never neutral-black).
+   Calm motion, short fades & small lifts, no bounce.
+   ============================================================ */
+:root {
+  /* radii */
+  --radius-xs:   6px;
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-card: 18px;
+  --radius-xl:   22px;
+  --radius-pill: 999px;
+
+  /* borders */
+  --border-width: 1px;
+  --border-width-strong: 1.5px;
+
+  /* shadows, tinted with navy (rgb of #1B2A3A = 27,42,58) */
+  --shadow-xs: 0 1px 2px rgba(27,42,58,0.05);
+  --shadow-sm: 0 1px 2px rgba(27,42,58,0.05), 0 2px 6px -2px rgba(27,42,58,0.08);
+  --shadow-md: 0 1px 2px rgba(27,42,58,0.04), 0 12px 28px -14px rgba(27,42,58,0.22);
+  --shadow-lg: 0 2px 4px rgba(27,42,58,0.04), 0 24px 48px -24px rgba(27,42,58,0.30);
+  --shadow-focus: 0 0 0 3px var(--focus-ring);
+
+  /* motion */
+  --ease-standard: cubic-bezier(0.2, 0.0, 0.0, 1.0); /* @kind other */
+  --ease-out:      cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
+  --dur-fast:   120ms; /* @kind other */
+  --dur-base:   180ms; /* @kind other */
+  --dur-slow:   280ms; /* @kind other */
+}
